@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Bootstrap Framework Mastery - Responsive design, component library, and customization">
+    <title>Bootstrap Framework | CET138 Portfolio</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+    
+    <style>
+        /* Premium Section Page Styling - Matching Home Page Excellence */
+        body { 
+            font-family: 'Manrope', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; 
+            font-size: 1.1rem; 
+            line-height: 1.65; 
+            color: #1a202c; 
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%); 
+            letter-spacing: -0.01em; 
+            font-weight: 400;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+        
+        /* Enhanced Typography - Matching Home Page */
+        h1, h2, h3, h4, h5, h6, .navbar-brand, .btn, .fw-bold { 
+            font-family: 'Manrope', 'Inter', sans-serif; 
+            font-weight: 700; 
+            letter-spacing: -0.025em; 
+            line-height: 1.2;
+        }
+        h1 { font-size: 3.5rem; font-weight: 900; margin-bottom: 1.5rem; color: #1a202c; letter-spacing: -0.04em; }
+        h2 { font-size: 2.75rem; font-weight: 800; margin-bottom: 1.25rem; color: #1a202c; letter-spacing: -0.03em; }
+        h3 { font-size: 2rem; font-weight: 700; margin-bottom: 1rem; color: #2d3748; letter-spacing: -0.02em; }
+        h4 { font-size: 1.5rem; font-weight: 600; margin-bottom: 0.75rem; color: #2d3748; letter-spacing: -0.01em; }
+        .lead { font-size: 1.3rem; font-weight: 400; line-height: 1.6; color: #4a5568; }
+        p { margin-bottom: 1.25rem; color: #2d3748; }
+        
+        /* Premium Background Gradient - Bootstrap Purple Theme */
+        .page-header {
+            background: linear-gradient(135deg, #7952b3 0%, #6f42c1 50%, #6610f2 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+        
+        .page-header .container {
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* Enhanced Cards - Premium Style */
+        .card {
+            border: none;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(15, 23, 42, 0.08);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            background: white;
+            overflow: hidden;
+        }
+        
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(15, 23, 42, 0.15);
+        }
+        
+        .card-title {
+            background: linear-gradient(135deg, #7952b3 0%, #6f42c1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        /* Section Styling */
+        .section-title {
+            background: linear-gradient(135deg, #7952b3 0%, #6f42c1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 3rem;
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 3rem;
+            letter-spacing: -0.04em;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .section-title { font-size: 2.25rem; }
+            h1 { font-size: 2.75rem; }
+        }
+        
+        @media (max-width: 576px) {
+            .section-title { font-size: 2rem; }
+            h1 { font-size: 2.25rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand" href="../modern-portfolio.html">
+                <span class="fw-bold">Portfolio</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../modern-portfolio.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="fullstack.html">Full Stack</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="html.html">HTML</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="css.html">CSS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="bootstrap.html">Bootstrap</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="javascript.html">JavaScript</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Section Title & Introduction -->
+        <section class="page-header py-5 hero-section" data-parallax>
+            <div class="container">
+                <div class="row align-items-center min-vh-50">
+                    <div class="col-lg-12 text-center">
+                        <h1 class="display-4 fw-bold mb-3"><i class="fab fa-bootstrap me-2"></i>Bootstrap Framework</h1>
+                        <p class="lead mb-0">Components, responsive grid, utilities, and theme customization for production-ready UI.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    <!-- Table of Contents -->
+    <section class="py-4 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <div class="card p-4">
+                        <h5 class="fw-bold text-primary mb-3">
+                            <i class="fas fa-list me-2"></i>Table of Contents
+                        </h5>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <ul class="list-unstyled mb-0">
+                                    <li><a href="#grid-system" class="text-decoration-none">1. Grid System</a></li>
+                                    <li><a href="#components" class="text-decoration-none">2. Pre-built Components</a></li>
+                                    <li><a href="#customization" class="text-decoration-none">3. Customization & Theming</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <ul class="list-unstyled mb-0">
+                                    <li><a href="#bootstrap-best-practices" class="text-decoration-none">4. Best Practices</a></li>
+                                    <li><a href="#bootstrap-summary" class="text-decoration-none">5. Summary</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Grid System Subsection -->
+    <section id="grid-system" class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="fw-bold text-primary mb-4">
+                        <i class="fas fa-th me-2"></i>Grid System
+                    </h2>
+                    <p class="lead mb-4">Bootstrap's 12-column grid system creates responsive layouts that adapt to any screen size.</p>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <div class="card h-100 p-4 tilt-card" data-tilt-depth="35">
+                        <h5 class="fw-bold mb-3">Explanation</h5>
+                        <p>The grid system uses containers, rows, and columns to layout content:</p>
+                        <ul class="mb-3">
+                            <li><strong>Container:</strong> Centers and contains content</li>
+                            <li><strong>Row:</strong> Horizontal wrapper for columns</li>
+                            <li><strong>Column:</strong> Content blocks (col-sm, col-md, col-lg, col-xl)</li>
+                            <li><strong>Responsive:</strong> Different column sizes for different screens</li>
+                        </ul>
+                        <div class="code-example">
+                            <pre><code>&lt;div class="container"&gt;
+  &lt;div class="row"&gt;
+    &lt;div class="col-md-8"&gt;Main&lt;/div&gt;
+    &lt;div class="col-md-4"&gt;Sidebar&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card h-100 p-4 tilt-card" data-tilt-depth="35">
+                        <h5 class="fw-bold mb-3">Working Example</h5>
+                        <div class="bootstrap-grid-demo">
+                            <div class="row g-2 mb-3">
+                                <div class="col-12">
+                                    <div class="grid-demo-item">col-12 (Full Width)</div>
+                                </div>
+                            </div>
+                            <div class="row g-2 mb-3">
+                                <div class="col-6">
+                                    <div class="grid-demo-item">col-6</div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="grid-demo-item">col-6</div>
+                                </div>
+                            </div>
+                            <div class="row g-2 mb-3">
+                                <div class="col-4">
+                                    <div class="grid-demo-item">col-4</div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="grid-demo-item">col-4</div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="grid-demo-item">col-4</div>
+                                </div>
+                            </div>
+                            <div class="row g-2">
+                                <div class="col-md-8">
+                                    <div class="grid-demo-item">col-md-8</div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="grid-demo-item">col-md-4</div>
+                                </div>
+                            </div>
+                        </div>
+                        <small class="text-muted">
+                            <strong>Annotation:</strong> Grid columns automatically resize based on screen width and breakpoints.
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pre-built Components Subsection -->
+    <section id="components" class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="fw-bold text-success mb-4">
+                        <i class="fas fa-puzzle-piece me-2"></i>Pre-built Components
+                    </h2>
+                    <p class="lead mb-4">Bootstrap provides ready-to-use components for common UI patterns like navigation, cards, modals, and forms.</p>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="bootstrap-demo-card">
+                        <h5 class="fw-bold mb-3">Cards & Buttons</h5>
+                        <div class="card">
+                            <div class="card-body">
+                                <h6 class="card-title">Sample Card</h6>
+                                <p class="card-text">This is a Bootstrap card component with content.</p>
+                                <button class="btn btn-primary">Primary</button>
+                                <button class="btn btn-outline-secondary">Secondary</button>
+                            </div>
+                        </div>
+                        <small class="text-muted d-block mt-2">
+                            <strong>Annotation:</strong> Cards organize content in flexible containers.
+                        </small>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="bootstrap-demo-card">
+                        <h5 class="fw-bold mb-3">Alerts & Progress</h5>
+                        <div class="alert alert-success" role="alert">
+                            <i class="fas fa-check-circle me-2"></i>Success alert example!
+                        </div>
+                        <div class="alert alert-warning" role="alert">
+                            <i class="fas fa-exclamation-triangle me-2"></i>Warning alert example!
+                        </div>
+                        <label class="form-label">Progress Example:</label>
+                        <div class="progress mb-2">
+                            <div class="progress-bar bg-success progress-75" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" aria-label="Progress demonstration"></div>
+                        </div>
+                        <small class="text-muted">
+                            <strong>Annotation:</strong> Alerts and progress bars provide user feedback.
+                        </small>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="bootstrap-demo-card">
+                        <h5 class="fw-bold mb-3">Modal & Tooltip</h5>
+                        <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal1">
+                            Launch Modal
+                        </button>
+                        <br>
+                        <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="top" title="This is a tooltip!">
+                            Hover for Tooltip
+                        </button>
+                        
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel1">Bootstrap Modal</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        This is a working Bootstrap modal component!
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary">Save changes</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <small class="text-muted d-block mt-2">
+                            <strong>Annotation:</strong> Modals and tooltips enhance user interaction.
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Customization/Theming Subsection -->
+    <section id="customization" class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="fw-bold text-warning mb-4">
+                        <i class="fas fa-palette me-2"></i>Customization & Theming
+                    </h2>
+                    <p class="lead mb-4">Bootstrap can be customized with CSS variables, Sass, or custom classes to match your brand.</p>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <div class="card h-100 p-4 tilt-card" data-tilt-depth="35">
+                        <h5 class="fw-bold mb-3">CSS Custom Properties</h5>
+                        <p>Bootstrap 5 uses CSS variables for easy customization:</p>
+                        <div class="code-example mb-3">
+                            <pre><code>:root {
+  --bs-primary: #0d6efd;
+  --bs-success: #198754;
+  --bs-danger: #dc3545;
+}
+
+.btn-custom {
+  --bs-btn-bg: #6f42c1;
+  --bs-btn-border-color: #6f42c1;
+}</code></pre>
+                        </div>
+                        <button class="btn btn-custom text-white">Custom Button</button>
+                        <small class="text-muted d-block mt-2">
+                            <strong>Annotation:</strong> CSS variables allow runtime theme changes.
+                        </small>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card h-100 p-4 tilt-card" data-tilt-depth="35">
+                        <h5 class="fw-bold mb-3">Utility Classes</h5>
+                        <p>Bootstrap utilities provide quick styling without custom CSS:</p>
+                        <div class="mb-3">
+                            <div class="p-3 m-2 bg-primary text-white rounded">
+                                .p-3 .m-2 .bg-primary .text-white .rounded
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center p-2 border">
+                                <span>Left</span>
+                                <span>Center</span>
+                                <span>Right</span>
+                            </div>
+                        </div>
+                        <div class="code-example">
+                            <pre><code>&lt;div class="d-flex justify-content-between"&gt;
+  &lt;span&gt;Left&lt;/span&gt;
+  &lt;span&gt;Right&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+                        </div>
+                        <small class="text-muted">
+                            <strong>Annotation:</strong> Utilities provide consistent spacing and alignment.
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Best Practices Subsection -->
+    <section id="bootstrap-best-practices" class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="fw-bold text-info mb-4">
+                        <i class="fas fa-star me-2"></i>Best Practices
+                    </h2>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-3">
+                    <div class="card h-100 p-4 text-center tilt-card" data-tilt-depth="30">
+                        <i class="fas fa-code fa-3x text-primary mb-3"></i>
+                        <h5 class="fw-bold">Clean Customization</h5>
+                        <ul class="list-unstyled">
+                            <li>Use CSS variables</li>
+                            <li>Override with custom classes</li>
+                            <li>Avoid modifying Bootstrap files</li>
+                            <li>Document customizations</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card h-100 p-4 text-center tilt-card" data-tilt-depth="30">
+                        <i class="fas fa-recycle fa-3x text-success mb-3"></i>
+                        <h5 class="fw-bold">Reusability</h5>
+                        <ul class="list-unstyled">
+                            <li>Create component patterns</li>
+                            <li>Use consistent spacing</li>
+                            <li>Standardize color schemes</li>
+                            <li>Build reusable templates</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card h-100 p-4 text-center tilt-card" data-tilt-depth="30">
+                        <i class="fas fa-universal-access fa-3x text-warning mb-3"></i>
+                        <h5 class="fw-bold">Accessibility</h5>
+                        <ul class="list-unstyled">
+                            <li>Use semantic components</li>
+                            <li>Include ARIA attributes</li>
+                            <li>Test with screen readers</li>
+                            <li>Ensure keyboard navigation</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card h-100 p-4 text-center tilt-card" data-tilt-depth="30">
+                        <i class="fas fa-mobile-alt fa-3x text-danger mb-3"></i>
+                        <h5 class="fw-bold">Mobile-First</h5>
+                        <ul class="list-unstyled">
+                            <li>Start with mobile layouts</li>
+                            <li>Use responsive utilities</li>
+                            <li>Test on real devices</li>
+                            <li>Optimize touch targets</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Summary -->
+    <section id="bootstrap-summary" class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <div class="card p-4">
+                        <h3 class="fw-bold text-primary mb-3">Summary</h3>
+                        <p class="lead mb-3">Bootstrap accelerates development with its comprehensive component library, responsive grid system, and utility classes. It ensures consistent, professional designs while maintaining flexibility for customization.</p>
+                        <div class="alert alert-success mb-0">
+                            <strong>Key Takeaway:</strong> Bootstrap's benefits include rapid development, consistent design systems, responsive layouts, and extensive community support, making it ideal for both prototyping and production applications.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    </section>
+
+    <!-- Components Showcase -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="section-title text-center mb-5">Bootstrap Components</h2>
+                </div>
+            </div>
+            
+            <div class="row">
+                <!-- Cards -->
+                <div class="col-lg-4 mb-4">
+                    <h4>Cards</h4>
+                    <div class="card">
+                        <img loading="lazy" src="https://via.placeholder.com/300x200/007bff/ffffff?text=Card+Image" class="card-img-top" alt="Card image">
+                        <div class="card-body">
+                            <h5 class="card-title">Card Title</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Buttons & Alerts -->
+                <div class="col-lg-4 mb-4">
+                    <h4>Buttons & Alerts</h4>
+                    <div class="mb-3">
+                        <button type="button" class="btn btn-primary me-2">Primary</button>
+                        <button type="button" class="btn btn-secondary me-2">Secondary</button>
+                        <button type="button" class="btn btn-success">Success</button>
+                    </div>
+                    <div class="mb-3">
+                        <button type="button" class="btn btn-outline-warning me-2">Warning</button>
+                        <button type="button" class="btn btn-outline-danger me-2">Danger</button>
+                        <button type="button" class="btn btn-outline-info">Info</button>
+                    </div>
+                    <div class="alert alert-success" role="alert">
+                        <i class="fas fa-check-circle me-2"></i>
+                        A simple success alert with an icon!
+                    </div>
+                    <div class="alert alert-warning" role="alert">
+                        <i class="fas fa-exclamation-triangle me-2"></i>
+                        A simple warning alert—check it out!
+                    </div>
+                </div>
+                
+                <!-- Forms -->
+                <div class="col-lg-4 mb-4">
+                    <h4>Forms</h4>
+                    <form>
+                        <div class="mb-3">
+                            <label for="exampleEmail" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="exampleEmail" placeholder="name@example.com">
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleSelect" class="form-label">Example select</label>
+                            <select class="form-select" id="exampleSelect">
+                                <option>Choose...</option>
+                                <option>Option 1</option>
+                                <option>Option 2</option>
+                                <option>Option 3</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="flexCheckDefault">
+                                <label class="form-check-label" for="flexCheckDefault">
+                                    Default checkbox
+                                </label>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Additional Components Row -->
+            <div class="row mt-4">
+                <!-- Badges & Progress -->
+                <div class="col-lg-6 mb-4">
+                    <h4>Badges & Progress Bars</h4>
+                    <div class="mb-3">
+                        <span class="badge bg-primary me-2">Primary</span>
+                        <span class="badge bg-secondary me-2">Secondary</span>
+                        <span class="badge bg-success me-2">Success</span>
+                        <span class="badge bg-danger me-2">Danger</span>
+                        <span class="badge bg-warning text-dark me-2">Warning</span>
+                        <span class="badge bg-info text-dark">Info</span>
+                    </div>
+                    
+                    <div class="mb-2">
+                        <div class="progress progress-height">
+                            <div class="progress-bar progress-25" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" aria-label="25% progress">25%</div>
+                        </div>
+                    </div>
+                    <div class="mb-2">
+                        <div class="progress progress-height">
+                            <div class="progress-bar bg-success progress-50" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" aria-label="50% progress">50%</div>
+                        </div>
+                    </div>
+                    <div class="mb-2">
+                        <div class="progress progress-height">
+                            <div class="progress-bar bg-warning progress-75" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" aria-label="75% progress">75%</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- List Groups -->
+                <div class="col-lg-6 mb-4">
+                    <h4>List Groups</h4>
+                    <ul class="list-group">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span><i class="fas fa-html5 me-2 text-danger"></i>HTML5</span>
+                            <span class="badge bg-primary rounded-pill">Advanced</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span><i class="fab fa-css3-alt me-2 text-primary"></i>CSS3</span>
+                            <span class="badge bg-primary rounded-pill">Expert</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span><i class="fab fa-js-square me-2 text-warning"></i>JavaScript</span>
+                            <span class="badge bg-primary rounded-pill">Proficient</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span><i class="fab fa-bootstrap me-2 text-purple"></i>Bootstrap</span>
+                            <span class="badge bg-primary rounded-pill">Advanced</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Modals & Tooltips -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="section-title text-center mb-5">Interactive Components</h2>
+                </div>
+            </div>
+            
+            <div class="row text-center">
+                <div class="col-lg-3 mb-4">
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal2">
+                        <i class="fas fa-window-maximize me-2"></i>Launch Modal
+                    </button>
+                </div>
+                
+                <div class="col-lg-3 mb-4">
+                    <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="top" title="This is a tooltip!">
+                        <i class="fas fa-info-circle me-2"></i>Hover for Tooltip
+                    </button>
+                </div>
+                
+                <div class="col-lg-3 mb-4">
+                    <button class="btn btn-success" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                        <i class="fas fa-chevron-down me-2"></i>Toggle Collapse
+                    </button>
+                </div>
+                
+                <div class="col-lg-3 mb-4">
+                    <div class="dropdown">
+                        <button class="btn btn-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-bars me-2"></i>Dropdown
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Something else</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Collapse Example -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="collapse" id="collapseExample">
+                        <div class="card card-body">
+                            <h5>Collapsible Content</h5>
+                            <p>This is some placeholder content for the collapse component. It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. Bootstrap's collapse JavaScript plugin is used to show and hide content.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Utility Classes -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="section-title text-center mb-5">Utility Classes</h2>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="utility-demo-card">
+                        <h4>Spacing Utilities</h4>
+                        <p>Bootstrap includes utilities for controlling margin and padding.</p>
+                        
+                        <div class="utility-examples">
+                            <div class="p-3 mb-2 bg-light border">Padding: <code>p-3</code></div>
+                            <div class="m-3 p-2 bg-primary text-white">Margin: <code>m-3</code></div>
+                            <div class="mt-4 mb-4 p-2 bg-success text-white">Margin Top/Bottom: <code>mt-4 mb-4</code></div>
+                        </div>
+                        
+                        <h5 class="mt-4">Text Utilities</h5>
+                        <div class="text-center p-2 bg-light mb-2">Centered text</div>
+                        <div class="text-end p-2 bg-light mb-2">Right aligned text</div>
+                        <div class="text-uppercase p-2 bg-light mb-2">uppercase text</div>
+                        <div class="fw-bold p-2 bg-light">Bold text</div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="utility-demo-card">
+                        <h4>Display & Flexbox Utilities</h4>
+                        <p>Control display properties and flexbox behavior with utility classes.</p>
+                        
+                        <div class="d-flex justify-content-between align-items-center p-3 bg-light mb-3">
+                            <span>Flex item 1</span>
+                            <span>Flex item 2</span>
+                            <span>Flex item 3</span>
+                        </div>
+                        
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-primary" type="button">Full width button</button>
+                            <button class="btn btn-outline-secondary" type="button">Another full width button</button>
+                        </div>
+                        
+                        <h5 class="mt-4">Color Utilities</h5>
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="text-primary p-2">.text-primary</div>
+                                <div class="text-success p-2">.text-success</div>
+                                <div class="text-warning p-2">.text-warning</div>
+                            </div>
+                            <div class="col-6">
+                                <div class="bg-primary text-white p-2 mb-1">.bg-primary</div>
+                                <div class="bg-success text-white p-2 mb-1">.bg-success</div>
+                                <div class="bg-warning text-dark p-2">.bg-warning</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Customization -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h2 class="section-title mb-4">Bootstrap Customization</h2>
+                    <p class="lead">Bootstrap can be customized to match your brand and design requirements.</p>
+                    
+                    <div class="row mt-5">
+                        <div class="col-md-4">
+                            <div class="customization-option">
+                                <i class="fas fa-palette fa-3x text-primary mb-3"></i>
+                                <h5>Custom Colors</h5>
+                                <p>Override default color schemes with custom CSS variables and SASS customization.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="customization-option">
+                                <i class="fas fa-cogs fa-3x text-success mb-3"></i>
+                                <h5>Component Modification</h5>
+                                <p>Extend and modify existing components to fit specific design requirements.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="customization-option">
+                                <i class="fas fa-code fa-3x text-info mb-3"></i>
+                                <h5>Custom Build</h5>
+                                <p>Include only the components you need to reduce file size and improve performance.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="code-example mt-4 text-start">
+                        <h5>Custom CSS Variables Example:</h5>
+                        <pre><code>:root {
+  --bs-primary: #0d6efd;
+  --bs-success: #198754;
+  --bs-danger: #dc3545;
+  --bs-border-radius: 0.375rem;
+}
+
+.btn-custom {
+  background-color: var(--bs-primary);
+  border-color: var(--bs-primary);
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel2">Bootstrap Modal</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>This is a Bootstrap modal component demonstration. Modals are used to display content in a layer above your application.</p>
+                    <ul>
+                        <li>Lightweight and flexible</li>
+                        <li>Keyboard and screen reader accessible</li>
+                        <li>Responsive design</li>
+                        <li>Customizable styling</li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <section class="py-4 bg-dark text-light">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <div class="nav-link-prev">
+                        <a href="css.html" class="btn btn-outline-light">
+                            <i class="fas fa-arrow-left me-2"></i>
+                            Previous: CSS3
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <div class="nav-link-next">
+                        <a href="javascript.html" class="btn btn-primary">
+                            Next: JavaScript
+                            <i class="fas fa-arrow-right ms-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light py-4">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0">&copy; 2025 CET138 Full Stack Development Portfolio</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <small>Bootstrap Framework - Responsive Component Library</small>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script src="../js/main.js"></script>
+    
+    <!-- Initialize Tooltips -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize all tooltips
+            var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+            var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl);
+            });
+        });
+    </script>
+</body>
+</html>

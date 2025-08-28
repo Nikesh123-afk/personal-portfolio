@@ -1,0 +1,1572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="JavaScript ES6+ Mastery - Modern programming, DOM manipulation, and interactive applications">
+    <title>JavaScript ES6+ | CET138 Portfolio</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+    
+    <style>
+        /* Premium Section Page Styling - Matching Home Page Excellence */
+        body { 
+            font-family: 'Manrope', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; 
+            font-size: 1.1rem; 
+            line-height: 1.65; 
+            color: #1a202c; 
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%); 
+            letter-spacing: -0.01em; 
+            font-weight: 400;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+        
+        /* Enhanced Typography - Matching Home Page */
+        h1, h2, h3, h4, h5, h6, .navbar-brand, .btn, .fw-bold { 
+            font-family: 'Manrope', 'Inter', sans-serif; 
+            font-weight: 700; 
+            letter-spacing: -0.025em; 
+            line-height: 1.2;
+        }
+        h1 { font-size: 3.5rem; font-weight: 900; margin-bottom: 1.5rem; color: #1a202c; letter-spacing: -0.04em; }
+        h2 { font-size: 2.75rem; font-weight: 800; margin-bottom: 1.25rem; color: #1a202c; letter-spacing: -0.03em; }
+        h3 { font-size: 2rem; font-weight: 700; margin-bottom: 1rem; color: #2d3748; letter-spacing: -0.02em; }
+        h4 { font-size: 1.5rem; font-weight: 600; margin-bottom: 0.75rem; color: #2d3748; letter-spacing: -0.01em; }
+        .lead { font-size: 1.3rem; font-weight: 400; line-height: 1.6; color: #4a5568; }
+        p { margin-bottom: 1.25rem; color: #2d3748; }
+        
+        /* Premium Background Gradient - JavaScript Yellow Theme */
+        .page-header {
+            background: linear-gradient(135deg, #f7df1e 0%, #ffeb3b 50%, #ffc107 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 1;
+        }
+        
+        .page-header .container {
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* Enhanced Cards - Premium Style */
+        .card {
+            border: none;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(15, 23, 42, 0.08);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            background: white;
+            overflow: hidden;
+        }
+        
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(15, 23, 42, 0.15);
+        }
+        
+        .card-title {
+            background: linear-gradient(135deg, #f7df1e 0%, #ffb300 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        /* Section Styling */
+        .section-title {
+            background: linear-gradient(135deg, #f7df1e 0%, #ffb300 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 3rem;
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 3rem;
+            letter-spacing: -0.04em;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .section-title { font-size: 2.25rem; }
+            h1 { font-size: 2.75rem; }
+        }
+        
+        @media (max-width: 576px) {
+            .section-title { font-size: 2rem; }
+            h1 { font-size: 2.25rem; }
+        }
+
+        /* YGGY.ai Inspired Dark Mode */
+        [data-theme="dark"] {
+            --primary-color: #8b5cf6;
+            --secondary-color: #a855f7;
+            --bg-primary: #121212;
+            --bg-secondary: #1a1a1a;
+            --bg-tertiary: #222222;
+            --text-primary: #f4f4f4;
+            --text-secondary: #cfcfcf;
+            --text-muted: #a6a6a6;
+            --border-color: #2d3748;
+            --card-bg: #1a1a1a;
+            --card-shadow: rgba(0, 0, 0, 0.4);
+        }
+
+        [data-theme="dark"] body {
+            background: var(--bg-primary);
+            color: var(--text-primary);
+        }
+
+        [data-theme="dark"] .page-header {
+            background: linear-gradient(135deg, #f7df1e 0%, #ffeb3b 50%, #ffc107 100%);
+        }
+
+        [data-theme="dark"] .card {
+            background: var(--card-bg);
+            border: 1px solid rgba(247, 223, 30, 0.2);
+            color: var(--text-primary);
+            box-shadow: 0 10px 40px var(--card-shadow);
+        }
+
+        [data-theme="dark"] .card:hover {
+            border-color: #f7df1e;
+            box-shadow: 0 20px 60px rgba(247, 223, 30, 0.3);
+            transform: translateY(-2px);
+        }
+
+        [data-theme="dark"] .navbar {
+            background: rgba(10, 10, 10, 0.95) !important;
+            border-bottom: 1px solid rgba(247, 223, 30, 0.3);
+            backdrop-filter: blur(20px);
+        }
+
+        [data-theme="dark"] .navbar-brand,
+        [data-theme="dark"] .nav-link {
+            color: var(--text-primary) !important;
+        }
+
+        [data-theme="dark"] .nav-link:hover {
+            color: #f7df1e !important;
+        }
+
+        [data-theme="dark"] .bg-light {
+            background: var(--bg-secondary) !important;
+        }
+
+    [data-theme="dark"] .text-muted { color: var(--text-muted) !important; }
+    [data-theme="dark"] a:not(.btn):not(.nav-link) { color: #f9e27d; }
+    [data-theme="dark"] a:not(.btn):not(.nav-link):hover { color: #fff0a6; }
+    [data-theme="dark"] .form-control { color: var(--text-primary); }
+    [data-theme="dark"] .form-control::placeholder { color: var(--text-muted); opacity: 1; }
+
+        [data-theme="dark"] .toc-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(247, 223, 30, 0.2);
+            box-shadow: 0 10px 40px var(--card-shadow);
+        }
+
+        [data-theme="dark"] .card-title {
+            background: linear-gradient(135deg, #f7df1e 0%, #ffb300 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        [data-theme="dark"] .section-title {
+            background: linear-gradient(135deg, #f7df1e 0%, #ffb300 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Table of Contents (matches screenshot styling) */
+        .toc-section { margin-top: -24px; }
+        .toc-card {
+            background: linear-gradient(180deg, #ffffff 0%, #ffffff 65%, #f8f9fb 100%);
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(15, 23, 42, 0.15);
+            padding: 1.25rem 1.5rem;
+            border: 1px solid rgba(247, 223, 30, 0.15);
+        }
+        .toc-heading {
+            display: flex;
+            align-items: center;
+            gap: .6rem;
+            margin-bottom: .75rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #f7df1e 0%, #ffb300 60%, #ff9800 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .toc-heading i { color: #f7df1e; opacity: .95; -webkit-text-fill-color: initial; }
+        .toc-list {
+            counter-reset: item;
+            columns: 2;
+            column-gap: 3rem;
+            list-style: none;
+            margin: 0;
+            padding: 0 .25rem .25rem .25rem;
+        }
+        @media (max-width: 768px) { .toc-list { columns: 1; } }
+        .toc-list li {
+            break-inside: avoid;
+            position: relative;
+            margin: .5rem 0;
+            padding-left: 2rem;
+        }
+        .toc-list li::before {
+            counter-increment: item;
+            content: counter(item) ".";
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: #2563eb;
+            font-weight: 700;
+        }
+        .toc-link {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 600;
+        }
+    .toc-link:hover { text-decoration: underline; }
+    /* Anchor offset handled globally via ../css/style.css */
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="../modern-portfolio.html">
+                <i class="fas fa-code me-2"></i>
+                CET138 Portfolio
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../modern-portfolio.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="fullstack.html">Full Stack</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="html.html">HTML</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="css.html">CSS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="bootstrap.html">Bootstrap</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="javascript.html">JavaScript</a>
+                    </li>
+                    <li class="nav-item">
+                        <button class="btn btn-outline-light btn-sm ms-2" id="themeToggle" onclick="toggleTheme()" title="Toggle Dark Mode">
+                            <i class="fas fa-moon" id="themeIcon"></i>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Section Title & Introduction -->
+    <section class="page-header py-5 hero-section" data-parallax>
+        <div class="container">
+            <div class="row align-items-center min-vh-50">
+                <div class="col-lg-12 text-center">
+                    <h1 class="display-4 fw-bold mb-3"><i class="fab fa-js-square me-2"></i>JavaScript ES6+</h1>
+                    <p class="lead mb-0">Modern programming, DOM manipulation, async patterns, and interactive applications.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Table of Contents -->
+    <section class="toc-section py-3">
+        <div class="container">
+            <div class="toc-card">
+                <h6 class="toc-heading"><i class="fas fa-list-ul"></i> Table of Contents</h6>
+                <ol id="tocListJs" class="toc-list"></ol>
+            </div>
+        </div>
+    </section>
+
+    <!-- DOM Manipulation Subsection -->
+    <section id="dom-manipulation" class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="fw-bold text-success mb-4">
+                        <i class="fas fa-code me-2"></i>DOM Manipulation
+                    </h2>
+                    <p class="lead mb-4">JavaScript can dynamically modify HTML elements, handle events, and create interactive user interfaces.</p>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-8">
+                    <div class="card h-100 p-4 tilt-card" data-tilt-depth="35">
+                        <h5 class="fw-bold mb-3">Interactive Demo</h5>
+                        <div class="dom-demo-container">
+                            <div class="mb-3">
+                                <label for="colorInput" class="form-label">Choose Background Color:</label>
+                                <select id="colorInput" class="form-select" onchange="changeBackground()" aria-label="Choose background color">
+                                    <option value="#ffffff">White</option>
+                                    <option value="#e3f2fd">Light Blue</option>
+                                    <option value="#f3e5f5">Light Purple</option>
+                                    <option value="#e8f5e8">Light Green</option>
+                                    <option value="#fff3e0">Light Orange</option>
+                                </select>
+                            </div>
+                            
+                            <div id="demo-box" class="demo-box p-4 border rounded mb-3">
+                                <h6>Interactive Box</h6>
+                                <p id="demo-text">Click the buttons below to see DOM manipulation in action!</p>
+                                <span id="click-counter">Clicks: 0</span>
+                            </div>
+                            
+                            <div class="demo-controls">
+                                <button onclick="addElement()" class="btn btn-primary me-2">Add Element</button>
+                                <button onclick="changeText()" class="btn btn-success me-2">Change Text</button>
+                                <button onclick="toggleClass()" class="btn btn-warning me-2">Toggle Style</button>
+                                <button onclick="removeElements()" class="btn btn-danger">Clear All</button>
+                            </div>
+                        </div>
+                        <small class="text-muted d-block mt-3">
+                            <strong>Annotation:</strong> DOM methods allow real-time content and style manipulation.
+                        </small>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card h-100 p-4 tilt-card" data-tilt-depth="35">
+                        <h5 class="fw-bold mb-3">Code Example</h5>
+                        <div class="code-example">
+                            <pre><code>// Select Elements
+const box = document.getElementById('demo-box');
+const text = document.querySelector('#demo-text');
+
+// Modify Content
+text.textContent = 'New text content';
+
+// Add Event Listener
+box.addEventListener('click', () => {
+  box.classList.toggle('highlight');
+});
+
+// Create New Element
+const newElement = document.createElement('div');
+newElement.innerHTML = 'Dynamic content';
+box.appendChild(newElement);</code></pre>
+                        </div>
+                        <div class="alert alert-info mt-3">
+                            <small>
+                                <strong>Key Methods:</strong><br>
+                                • getElementById()<br>
+                                • querySelector()<br>
+                                • addEventListener()<br>
+                                • createElement()<br>
+                                • appendChild()
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mini Project Subsection -->
+    <section id="mini-project" class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="fw-bold text-warning mb-4">
+                        <i class="fas fa-project-diagram me-2"></i>Mini Project: Todo List App
+                    </h2>
+                    <p class="lead mb-4">A complete todo list application demonstrating form handling, local storage, and dynamic UI updates.</p>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <div class="card h-100 p-4">
+                        <h5 class="fw-bold mb-3">Todo List Application</h5>
+                        <div class="todo-app">
+                            <form id="todo-form" class="mb-3">
+                                <div class="input-group">
+                                    <input type="text" id="todo-input" class="form-control" placeholder="Enter a new task..." required>
+                                    <button class="btn btn-primary" type="submit">
+                                        <i class="fas fa-plus me-1"></i>Add
+                                    </button>
+                                </div>
+                            </form>
+                            
+                            <div class="todo-filters mb-3">
+                                <button onclick="filterTodos('all')" class="btn btn-outline-secondary btn-sm active" id="filter-all">All</button>
+                                <button onclick="filterTodos('active')" class="btn btn-outline-secondary btn-sm" id="filter-active">Active</button>
+                                <button onclick="filterTodos('completed')" class="btn btn-outline-secondary btn-sm" id="filter-completed">Completed</button>
+                            </div>
+                            
+                            <ul id="todo-list" class="list-group">
+                                <!-- Dynamic todo items will be added here -->
+                            </ul>
+                            
+                            <div class="todo-stats mt-3">
+                                <small class="text-muted">
+                                    <span id="todo-count">0</span> items • 
+                                    <button onclick="clearCompleted()" class="btn btn-link btn-sm p-0">Clear completed</button>
+                                </small>
+                            </div>
+                        </div>
+                        <small class="text-muted d-block mt-3">
+                            <strong>Annotation:</strong> Demonstrates CRUD operations, event handling, and data persistence.
+                        </small>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card h-100 p-4">
+                        <h5 class="fw-bold mb-3">Implementation Highlights</h5>
+                        <div class="code-example mb-3">
+                            <pre><code>class TodoApp {
+  constructor() {
+    this.todos = JSON.parse(localStorage.getItem('todos')) || [];
+    this.render();
+  }
+  
+  addTodo(text) {
+    const todo = {
+      id: Date.now(),
+      text: text,
+      completed: false
+    };
+    this.todos.push(todo);
+    this.save();
+    this.render();
+  }
+  
+  save() {
+    localStorage.setItem('todos', JSON.stringify(this.todos));
+  }
+}</code></pre>
+                        </div>
+                        <div class="feature-list">
+                            <h6 class="fw-bold">Features Implemented:</h6>
+                            <ul class="list-unstyled">
+                                <li><i class="fas fa-check text-success me-2"></i>Add new tasks</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Mark as complete</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Filter by status</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Delete tasks</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Local storage persistence</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Real-time statistics</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Best Practices Subsection -->
+    <section id="js-best-practices" class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="fw-bold text-info mb-4">
+                        <i class="fas fa-star me-2"></i>JavaScript Best Practices
+                    </h2>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-3">
+                    <div class="card h-100 p-4 text-center tilt-card" data-tilt-depth="30">
+                        <i class="fas fa-code fa-3x text-primary mb-3"></i>
+                        <h5 class="fw-bold">Clean Code</h5>
+                        <ul class="list-unstyled">
+                            <li>Use meaningful variable names</li>
+                            <li>Write pure functions</li>
+                            <li>Avoid global variables</li>
+                            <li>Comment complex logic</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card h-100 p-4 text-center tilt-card" data-tilt-depth="30">
+                        <i class="fas fa-bug fa-3x text-success mb-3"></i>
+                        <h5 class="fw-bold">Error Handling</h5>
+                        <ul class="list-unstyled">
+                            <li>Use try-catch blocks</li>
+                            <li>Validate user inputs</li>
+                            <li>Handle async errors</li>
+                            <li>Provide user feedback</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card h-100 p-4 text-center tilt-card" data-tilt-depth="30">
+                        <i class="fas fa-rocket fa-3x text-warning mb-3"></i>
+                        <h5 class="fw-bold">Performance</h5>
+                        <ul class="list-unstyled">
+                            <li>Minimize DOM queries</li>
+                            <li>Use event delegation</li>
+                            <li>Debounce user inputs</li>
+                            <li>Optimize loops</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card h-100 p-4 text-center tilt-card" data-tilt-depth="30">
+                        <i class="fas fa-shield-alt fa-3x text-danger mb-3"></i>
+                        <h5 class="fw-bold">Security</h5>
+                        <ul class="list-unstyled">
+                            <li>Sanitize user inputs</li>
+                            <li>Validate on server-side</li>
+                            <li>Avoid eval() function</li>
+                            <li>Use HTTPS for APIs</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Summary -->
+    <section id="js-summary" class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <div class="card p-4">
+                        <h3 class="fw-bold text-primary mb-3">Summary</h3>
+                        <p class="lead mb-3">Modern JavaScript (ES6+) provides powerful features for creating dynamic, interactive web applications. From arrow functions and async/await to comprehensive DOM manipulation, JavaScript is essential for front-end development.</p>
+                        <div class="alert alert-success mb-0">
+                            <strong>Key Takeaway:</strong> JavaScript's evolution from simple scripting to a full-featured programming language makes it indispensable for modern web development, enabling everything from simple interactions to complex single-page applications.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="es6-syntax" class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="section-title text-center mb-5">ES6+ Modern Syntax</h2>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="js-demo-card">
+                        <h3>Arrow Functions & Destructuring</h3>
+                        <p>Modern syntax for cleaner, more concise code.</p>
+                        
+                        <div class="code-demo mb-4">
+                            <h5>Arrow Functions:</h5>
+                            <pre><code>// Traditional function
+function add(a, b) {
+    return a + b;
+}
+
+// Arrow function
+const add = (a, b) => a + b;
+
+// Arrow function with multiple lines
+const processUser = (user) => {
+    const { name, age } = user;
+    return `${name} is ${age} years old`;
+};</code></pre>
+                        </div>
+                        
+                        <div class="interactive-demo">
+                            <h5>Try it:</h5>
+                            <div class="input-group mb-3">
+                                <input type="number" class="form-control" id="num1" placeholder="First number" value="5">
+                                <input type="number" class="form-control" id="num2" placeholder="Second number" value="3">
+                                <button class="btn btn-primary" onclick="demonstrateArrowFunction()">Calculate</button>
+                            </div>
+                            <div id="arrowResult" class="alert alert-info">Result will appear here</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="js-demo-card">
+                        <h3>Template Literals & Destructuring</h3>
+                        <p>Enhanced string formatting and variable extraction.</p>
+                        
+                        <div class="code-demo mb-4">
+                            <h5>Template Literals:</h5>
+                            <pre><code>// Template literals with variables
+const name = 'JavaScript';
+const version = 'ES6+';
+const message = `Learning ${name} ${version}`;
+
+// Multi-line strings
+const html = `
+    &lt;div class="card"&gt;
+        &lt;h3&gt;${name}&lt;/h3&gt;
+        &lt;p&gt;Version: ${version}&lt;/p&gt;
+    &lt;/div&gt;
+`;
+
+// Destructuring assignment
+const user = { name: 'John', age: 30, city: 'Toronto' };
+const { name, age } = user;</code></pre>
+                        </div>
+                        
+                        <div class="interactive-demo">
+                            <h5>Try it:</h5>
+                            <input type="text" class="form-control mb-2" id="userName" placeholder="Enter your name" value="Student">
+                            <input type="number" class="form-control mb-2" id="userAge" placeholder="Enter your age" value="20">
+                            <button class="btn btn-success" onclick="demonstrateTemplateLiterals()">Generate Message</button>
+                            <div id="templateResult" class="alert alert-success mt-3">Template result will appear here</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DOM Manipulation -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="section-title text-center mb-5">DOM Manipulation & Event Handling</h2>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="dom-demo-container">
+                        <h3>Interactive DOM Demo</h3>
+                        <p>Demonstrate real-time DOM manipulation and event handling.</p>
+                        
+                        <div class="dom-playground">
+                            <div class="controls mb-4">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label class="form-label">Element Type:</label>
+                                        <select class="form-select" id="elementType" aria-label="Select element type to create">
+                                            <option value="div">Div</option>
+                                            <option value="p">Paragraph</option>
+                                            <option value="h3">Heading</option>
+                                            <option value="button">Button</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="form-label">Text Content:</label>
+                                        <input type="text" class="form-control" id="elementText" placeholder="Enter text" value="Dynamic Element">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="form-label">CSS Class:</label>
+                                        <select class="form-select" id="elementClass" aria-label="Select style class for new element">
+                                            <option value="alert alert-primary">Primary Alert</option>
+                                            <option value="alert alert-success">Success Alert</option>
+                                            <option value="btn btn-warning">Warning Button</option>
+                                            <option value="card p-3">Card Style</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <div class="row mt-3">
+                                    <div class="col-12">
+                                        <button class="btn btn-primary me-2" onclick="createElement()">Create Element</button>
+                                        <button class="btn btn-success me-2" onclick="modifyLastElement()">Modify Last</button>
+                                        <button class="btn btn-warning me-2" onclick="addEventToLast()">Add Event</button>
+                                        <button class="btn btn-danger" onclick="clearPlayground()">Clear All</button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="playground-area" id="playground">
+                                <div class="empty-state text-center text-muted py-5">
+                                    <i class="fas fa-plus-circle fa-3x mb-3"></i>
+                                    <p>Create elements using the controls above</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="code-explanation">
+                        <h4>DOM Methods</h4>
+                        
+                        <div class="method-example mb-3">
+                            <h6>Creating Elements</h6>
+                            <pre><code>// Create new element
+const element = document.createElement('div');
+element.textContent = 'Hello World';
+element.className = 'alert alert-info';
+
+// Append to DOM
+document.body.appendChild(element);</code></pre>
+                        </div>
+                        
+                        <div class="method-example mb-3">
+                            <h6>Selecting Elements</h6>
+                            <pre><code>// Select by ID
+const element = document.getElementById('myId');
+
+// Select by class
+const elements = document.querySelectorAll('.myClass');
+
+// Select by attribute
+const inputs = document.querySelectorAll('input[type="text"]');</code></pre>
+                        </div>
+                        
+                        <div class="method-example mb-3">
+                            <h6>Event Handling</h6>
+                            <pre><code>// Add event listener
+element.addEventListener('click', (event) => {
+    console.log('Element clicked!');
+    event.preventDefault();
+});
+
+// Remove event listener
+element.removeEventListener('click', handler);</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Async Programming -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="section-title text-center mb-5">Asynchronous Programming</h2>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="async-demo-card">
+                        <h3>Promises & Async/Await</h3>
+                        <p>Modern asynchronous programming patterns for handling API calls and time-based operations.</p>
+                        
+                        <div class="async-controls mb-4">
+                            <button class="btn btn-primary me-2" onclick="demonstratePromise()">Promise Demo</button>
+                            <button class="btn btn-success me-2" onclick="demonstrateAsyncAwait()">Async/Await Demo</button>
+                            <button class="btn btn-info" onclick="fetchDataDemo()">Fetch API Demo</button>
+                        </div>
+                        
+                        <div class="async-output">
+                            <div id="asyncResults" class="results-container">
+                                <div class="placeholder-text text-muted">
+                                    <i class="fas fa-clock me-2"></i>
+                                    Async operation results will appear here...
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="loading-demo mt-4">
+                            <h5>Loading States</h5>
+                            <button class="btn btn-warning" onclick="simulateLoading()">Simulate Loading</button>
+                            <div id="loadingState" class="mt-2"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="async-code-examples">
+                        <h3>Async Code Examples</h3>
+                        
+                        <div class="code-example mb-4">
+                            <h5>Promises</h5>
+                            <pre><code>// Creating a Promise
+const fetchData = () => {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            const success = Math.random() > 0.3;
+            if (success) {
+                resolve({ data: 'Success!', timestamp: Date.now() });
+            } else {
+                reject(new Error('Failed to fetch data'));
+            }
+        }, 1000);
+    });
+};
+
+// Using Promises
+fetchData()
+    .then(result => console.log(result))
+    .catch(error => console.error(error));</code></pre>
+                        </div>
+                        
+                        <div class="code-example mb-4">
+                            <h5>Async/Await</h5>
+                            <pre><code>// Async function
+const getData = async () => {
+    try {
+        const response = await fetch('/api/data');
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Error:', error);
+        throw error;
+    }
+};
+
+// Using async function
+const loadData = async () => {
+    const data = await getData();
+    displayData(data);
+};</code></pre>
+                        </div>
+                        
+                        <div class="code-example">
+                            <h5>Fetch API</h5>
+                            <pre><code>// GET request
+const response = await fetch('https://api.example.com/data');
+const data = await response.json();
+
+// POST request
+const postData = await fetch('/api/users', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ name: 'John', age: 30 })
+});</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Object-Oriented Programming -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="section-title text-center mb-5">Object-Oriented Programming</h2>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="oop-demo-container">
+                        <h3>Class-Based Programming Demo</h3>
+                        <p>Create and interact with JavaScript classes and objects.</p>
+                        
+                        <div class="class-controls mb-4">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label class="form-label">Student Name:</label>
+                                    <input type="text" class="form-control" id="studentName" placeholder="Enter name" value="John Doe">
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label">Student Age:</label>
+                                    <input type="number" class="form-control" id="studentAge" placeholder="Enter age" value="20">
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label">Course:</label>
+                                    <input type="text" class="form-control" id="studentCourse" placeholder="Enter course" value="CET138">
+                                </div>
+                            </div>
+                            
+                            <div class="row mt-3">
+                                <div class="col-12">
+                                    <button class="btn btn-primary me-2" onclick="createStudent()">Create Student</button>
+                                    <button class="btn btn-success me-2" onclick="addGrade()">Add Grade</button>
+                                    <button class="btn btn-info me-2" onclick="showStudent()">Show Details</button>
+                                    <button class="btn btn-warning" onclick="calculateGPA()">Calculate GPA</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="student-display" id="studentDisplay">
+                            <div class="no-student text-center text-muted py-4">
+                                <i class="fas fa-user-graduate fa-3x mb-3"></i>
+                                <p>Create a student to see class methods in action</p>
+                            </div>
+                        </div>
+                        
+                        <div class="grade-input mt-4 d-none" id="gradeInput">
+                            <div class="input-group">
+                                <input type="number" class="form-control" id="gradeValue" placeholder="Enter grade (0-100)" min="0" max="100">
+                                <input type="text" class="form-control" id="gradeSubject" placeholder="Subject">
+                                <button class="btn btn-success" onclick="submitGrade()">Add Grade</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="oop-code-example">
+                        <h4>Class Definition</h4>
+                        
+                        <pre><code>class Student {
+    constructor(name, age, course) {
+        this.name = name;
+        this.age = age;
+        this.course = course;
+        this.grades = [];
+    }
+    
+    addGrade(subject, grade) {
+        this.grades.push({ subject, grade });
+    }
+    
+    calculateGPA() {
+        if (this.grades.length === 0) return 0;
+        const total = this.grades.reduce(
+            (sum, item) => sum + item.grade, 0
+        );
+        return (total / this.grades.length).toFixed(2);
+    }
+    
+    getDetails() {
+        return `${this.name}, Age: ${this.age}, Course: ${this.course}`;
+    }
+    
+    // Static method
+    static createHonorsStudent(name, age) {
+        const student = new Student(name, age, 'Honors Program');
+        return student;
+    }
+}
+
+// Using the class
+const student = new Student('John', 20, 'CET138');
+student.addGrade('Math', 85);
+student.addGrade('Science', 92);
+console.log(student.calculateGPA()); // 88.50</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Calculator -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="section-title text-center mb-5">Interactive Application Demo</h2>
+                </div>
+            </div>
+            
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="calculator-demo">
+                        <h3 class="text-center mb-4">JavaScript Calculator</h3>
+                        <div class="calculator">
+                            <div class="calculator-display">
+                                <label for="calculatorDisplay" class="visually-hidden">Calculator Display</label>
+                                <input type="text" id="calculatorDisplay" class="form-control form-control-lg text-end" readonly value="0" title="Calculator Display" aria-label="Calculator Display">
+                            </div>
+                            <div class="calculator-buttons">
+                                <button class="btn btn-secondary" onclick="clearCalculator()">AC</button>
+                                <button class="btn btn-secondary" onclick="deleteLast()">⌫</button>
+                                <button class="btn btn-secondary" onclick="appendToDisplay('/')">/</button>
+                                <button class="btn btn-warning" onclick="appendToDisplay('*')">×</button>
+                                
+                                <button class="btn btn-primary" onclick="appendToDisplay('7')">7</button>
+                                <button class="btn btn-primary" onclick="appendToDisplay('8')">8</button>
+                                <button class="btn btn-primary" onclick="appendToDisplay('9')">9</button>
+                                <button class="btn btn-warning" onclick="appendToDisplay('-')">-</button>
+                                
+                                <button class="btn btn-primary" onclick="appendToDisplay('4')">4</button>
+                                <button class="btn btn-primary" onclick="appendToDisplay('5')">5</button>
+                                <button class="btn btn-primary" onclick="appendToDisplay('6')">6</button>
+                                <button class="btn btn-warning" onclick="appendToDisplay('+')">+</button>
+                                
+                                <button class="btn btn-primary" onclick="appendToDisplay('1')">1</button>
+                                <button class="btn btn-primary" onclick="appendToDisplay('2')">2</button>
+                                <button class="btn btn-primary" onclick="appendToDisplay('3')">3</button>
+                                <button class="btn btn-success calculator-equals" onclick="calculateResult()" rowspan="2">=</button>
+                                
+                                <button class="btn btn-primary calculator-zero" onclick="appendToDisplay('0')">0</button>
+                                <button class="btn btn-primary" onclick="appendToDisplay('.')">.</button>
+                            </div>
+                        </div>
+                        
+                        <div class="calculator-features mt-4">
+                            <h5>Calculator Features:</h5>
+                            <ul class="list-unstyled">
+                                <li><i class="fas fa-check text-success me-2"></i>Basic arithmetic operations</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Decimal number support</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Clear and delete functions</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Keyboard input support</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Error handling</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="calculator-code">
+                        <h4>Calculator Implementation</h4>
+                        
+                        <pre><code>class Calculator {
+    constructor() {
+        this.display = document.getElementById('calculatorDisplay');
+        this.currentInput = '0';
+        this.shouldResetDisplay = false;
+    }
+    
+    appendToDisplay(value) {
+        if (this.shouldResetDisplay) {
+            this.currentInput = '';
+            this.shouldResetDisplay = false;
+        }
+        
+        if (this.currentInput === '0' && value !== '.') {
+            this.currentInput = value;
+        } else {
+            this.currentInput += value;
+        }
+        
+        this.updateDisplay();
+    }
+    
+    calculate() {
+        try {
+            // Safely evaluate the expression
+            const result = Function('"use strict"; return (' + 
+                this.currentInput.replace(/×/g, '*') + ')')();
+            this.currentInput = result.toString();
+            this.shouldResetDisplay = true;
+            this.updateDisplay();
+        } catch (error) {
+            this.currentInput = 'Error';
+            this.shouldResetDisplay = true;
+            this.updateDisplay();
+        }
+    }
+    
+    clear() {
+        this.currentInput = '0';
+        this.updateDisplay();
+    }
+    
+    updateDisplay() {
+        this.display.value = this.currentInput;
+    }
+}
+
+// Initialize calculator
+const calc = new Calculator();</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Navigation -->
+    <section class="py-4 bg-dark text-light">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <div class="nav-link-prev">
+                        <a href="bootstrap.html" class="btn btn-outline-light">
+                            <i class="fas fa-arrow-left me-2"></i>
+                            Previous: Bootstrap
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <div class="nav-link-next">
+                        <a href="../modern-portfolio.html" class="btn btn-primary">
+                            Back to Home
+                            <i class="fas fa-home ms-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light py-4">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0">&copy; 2025 CET138 Full Stack Development Portfolio</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <small>JavaScript ES6+ - Modern Web Programming</small>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script src="../js/main.js"></script>
+    
+    <!-- Page TOC Builder -->
+    <script>
+        (function() {
+            const slugify = (t) => (t || '')
+                .toLowerCase()
+                .replace(/[^\w\s-]/g, '')
+                .trim()
+                .replace(/\s+/g, '-');
+
+            function buildTOC(listEl) {
+                if (!listEl) return;
+                const headings = Array.from(document.querySelectorAll('section h2'));
+                listEl.innerHTML = '';
+                headings.forEach((h) => {
+                    if (!h.id) h.id = slugify(h.textContent);
+                    const li = document.createElement('li');
+                    const a = document.createElement('a');
+                    a.className = 'toc-link';
+                    a.href = `#${h.id}`;
+                    a.textContent = h.textContent;
+                    a.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        const target = document.getElementById(h.id);
+                        if (target) {
+                            // Rely on CSS scroll-margin-top and html scroll-padding-top
+                            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }
+                    });
+                    li.appendChild(a);
+                    listEl.appendChild(li);
+                });
+            }
+
+            document.addEventListener('DOMContentLoaded', () => {
+                buildTOC(document.getElementById('tocListJs'));
+            });
+        })();
+    </script>
+    
+    <!-- JavaScript Demo Functions -->
+    <script>
+        // Current student instance
+        let currentStudent = null;
+        
+        // Arrow function demo
+        const demonstrateArrowFunction = () => {
+            const num1 = parseFloat(document.getElementById('num1').value) || 0;
+            const num2 = parseFloat(document.getElementById('num2').value) || 0;
+            
+            // Using arrow function
+            const add = (a, b) => a + b;
+            const result = add(num1, num2);
+            
+            document.getElementById('arrowResult').innerHTML = 
+                `<strong>Result:</strong> ${num1} + ${num2} = ${result}`;
+        };
+        
+        // Template literals demo
+        const demonstrateTemplateLiterals = () => {
+            const name = document.getElementById('userName').value || 'User';
+            const age = document.getElementById('userAge').value || 0;
+            
+            // Using template literals and destructuring
+            const user = { name, age, location: 'Toronto' };
+            const { name: userName, age: userAge, location } = user;
+            
+            const message = `Hello, my name is ${userName}. I am ${userAge} years old and I live in ${location}.`;
+            
+            document.getElementById('templateResult').innerHTML = 
+                `<strong>Generated Message:</strong><br>${message}`;
+        };
+        
+        // DOM manipulation functions
+        let elementCounter = 0;
+        
+        const createElement = () => {
+            const type = document.getElementById('elementType').value;
+            const text = document.getElementById('elementText').value || 'New Element';
+            const className = document.getElementById('elementClass').value;
+            
+            const element = document.createElement(type);
+            element.textContent = text;
+            element.className = className;
+            element.id = `dynamic-element-${++elementCounter}`;
+            
+            const playground = document.getElementById('playground');
+            if (playground.querySelector('.empty-state')) {
+                playground.innerHTML = '';
+            }
+            
+            playground.appendChild(element);
+        };
+        
+        const modifyLastElement = () => {
+            const playground = document.getElementById('playground');
+            const lastElement = playground.lastElementChild;
+            
+            if (lastElement && !lastElement.classList.contains('empty-state')) {
+                lastElement.style.transform = 'scale(1.1)';
+                lastElement.style.transition = 'transform 0.3s ease';
+                lastElement.textContent += ' (Modified!)';
+                
+                setTimeout(() => {
+                    lastElement.style.transform = 'scale(1)';
+                }, 500);
+            }
+        };
+        
+        const addEventToLast = () => {
+            const playground = document.getElementById('playground');
+            const lastElement = playground.lastElementChild;
+            
+            if (lastElement && !lastElement.classList.contains('empty-state')) {
+                lastElement.addEventListener('click', function() {
+                    this.style.backgroundColor = this.style.backgroundColor === 'lightgreen' ? '' : 'lightgreen';
+                });
+                lastElement.style.cursor = 'pointer';
+                lastElement.title = 'Click me!';
+            }
+        };
+        
+        const clearPlayground = () => {
+            const playground = document.getElementById('playground');
+            playground.innerHTML = `
+                <div class="empty-state text-center text-muted py-5">
+                    <i class="fas fa-plus-circle fa-3x mb-3"></i>
+                    <p>Create elements using the controls above</p>
+                </div>
+            `;
+            elementCounter = 0;
+        };
+        
+        // Async programming demos
+        const demonstratePromise = () => {
+            const resultsContainer = document.getElementById('asyncResults');
+            resultsContainer.innerHTML = '<div class="loading">Loading Promise...</div>';
+            
+            const simulateAsyncOperation = () => {
+                return new Promise((resolve, reject) => {
+                    setTimeout(() => {
+                        const success = Math.random() > 0.3;
+                        if (success) {
+                            resolve({ message: 'Promise resolved successfully!', timestamp: new Date().toLocaleTimeString() });
+                        } else {
+                            reject(new Error('Promise was rejected'));
+                        }
+                    }, 1500);
+                });
+            };
+            
+            simulateAsyncOperation()
+                .then(result => {
+                    resultsContainer.innerHTML = `
+                        <div class="alert alert-success">
+                            <strong>Promise Success:</strong> ${result.message}<br>
+                            <small>Time: ${result.timestamp}</small>
+                        </div>
+                    `;
+                })
+                .catch(error => {
+                    resultsContainer.innerHTML = `
+                        <div class="alert alert-danger">
+                            <strong>Promise Error:</strong> ${error.message}
+                        </div>
+                    `;
+                });
+        };
+        
+        const demonstrateAsyncAwait = async () => {
+            const resultsContainer = document.getElementById('asyncResults');
+            resultsContainer.innerHTML = '<div class="loading">Loading Async/Await...</div>';
+            
+            const fetchUserData = async (userId) => {
+                // Simulate API delay
+                await new Promise(resolve => setTimeout(resolve, 1000));
+                
+                return {
+                    id: userId,
+                    name: `User ${userId}`,
+                    email: `user${userId}@example.com`,
+                    joinDate: new Date().toLocaleDateString()
+                };
+            };
+            
+            try {
+                const userData = await fetchUserData(Math.floor(Math.random() * 100));
+                resultsContainer.innerHTML = `
+                    <div class="alert alert-info">
+                        <strong>Async/Await Success:</strong><br>
+                        Name: ${userData.name}<br>
+                        Email: ${userData.email}<br>
+                        Join Date: ${userData.joinDate}
+                    </div>
+                `;
+            } catch (error) {
+                resultsContainer.innerHTML = `
+                    <div class="alert alert-danger">
+                        <strong>Async/Await Error:</strong> ${error.message}
+                    </div>
+                `;
+            }
+        };
+        
+        const fetchDataDemo = async () => {
+            const resultsContainer = document.getElementById('asyncResults');
+            resultsContainer.innerHTML = '<div class="loading">Fetching data...</div>';
+            
+            try {
+                // Using JSONPlaceholder API for demo
+                const response = await fetch('https://jsonplaceholder.typicode.com/posts/1');
+                const data = await response.json();
+                
+                resultsContainer.innerHTML = `
+                    <div class="alert alert-success">
+                        <strong>Fetch API Success:</strong><br>
+                        <strong>Title:</strong> ${data.title}<br>
+                        <strong>Body:</strong> ${data.body.substring(0, 100)}...
+                    </div>
+                `;
+            } catch (error) {
+                resultsContainer.innerHTML = `
+                    <div class="alert alert-warning">
+                        <strong>Fetch Demo:</strong> Unable to fetch from external API<br>
+                        <small>This might be due to CORS policy or network restrictions</small>
+                    </div>
+                `;
+            }
+        };
+        
+        const simulateLoading = () => {
+            const loadingState = document.getElementById('loadingState');
+            loadingState.innerHTML = '<div class="spinner-border text-primary" role="status"><span class="visually-hidden">Loading...</span></div>';
+            
+            setTimeout(() => {
+                loadingState.innerHTML = '<div class="alert alert-success">Loading completed!</div>';
+            }, 2000);
+        };
+        
+        // OOP Student class demo
+        class Student {
+            constructor(name, age, course) {
+                this.name = name;
+                this.age = age;
+                this.course = course;
+                this.grades = [];
+            }
+            
+            addGrade(subject, grade) {
+                this.grades.push({ subject, grade: parseFloat(grade) });
+            }
+            
+            calculateGPA() {
+                if (this.grades.length === 0) return 0;
+                const total = this.grades.reduce((sum, item) => sum + item.grade, 0);
+                return (total / this.grades.length).toFixed(2);
+            }
+            
+            getDetails() {
+                return {
+                    name: this.name,
+                    age: this.age,
+                    course: this.course,
+                    gradeCount: this.grades.length,
+                    gpa: this.calculateGPA()
+                };
+            }
+        }
+        
+        const createStudent = () => {
+            const name = document.getElementById('studentName').value || 'Student';
+            const age = document.getElementById('studentAge').value || 20;
+            const course = document.getElementById('studentCourse').value || 'CET138';
+            
+            currentStudent = new Student(name, age, course);
+            showStudent();
+        };
+        
+        const addGrade = () => {
+            if (!currentStudent) {
+                alert('Please create a student first!');
+                return;
+            }
+            
+            const gradeInput = document.getElementById('gradeInput');
+            gradeInput.style.display = 'block';
+            document.getElementById('gradeValue').focus();
+        };
+        
+        const submitGrade = () => {
+            const grade = document.getElementById('gradeValue').value;
+            const subject = document.getElementById('gradeSubject').value || 'Subject';
+            
+            if (grade && grade >= 0 && grade <= 100) {
+                currentStudent.addGrade(subject, grade);
+                document.getElementById('gradeValue').value = '';
+                document.getElementById('gradeSubject').value = '';
+                document.getElementById('gradeInput').style.display = 'none';
+                showStudent();
+            } else {
+                alert('Please enter a valid grade (0-100)');
+            }
+        };
+        
+        const showStudent = () => {
+            if (!currentStudent) return;
+            
+            const details = currentStudent.getDetails();
+            const gradesList = currentStudent.grades.map(g => 
+                `<li class="list-group-item d-flex justify-content-between">
+                    <span>${g.subject}</span>
+                    <span class="badge bg-primary">${g.grade}</span>
+                </li>`
+            ).join('');
+            
+            document.getElementById('studentDisplay').innerHTML = `
+                <div class="card">
+                    <div class="card-header">
+                        <h5><i class="fas fa-user me-2"></i>${details.name}</h5>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>Age:</strong> ${details.age}</p>
+                        <p><strong>Course:</strong> ${details.course}</p>
+                        <p><strong>GPA:</strong> <span class="badge bg-success">${details.gpa}</span></p>
+                        
+                        <h6>Grades (${details.gradeCount}):</h6>
+                        <ul class="list-group">
+                            ${gradesList || '<li class="list-group-item text-muted">No grades added yet</li>'}
+                        </ul>
+                    </div>
+                </div>
+            `;
+        };
+        
+        const calculateGPA = () => {
+            if (!currentStudent) {
+                alert('Please create a student first!');
+                return;
+            }
+            
+            const gpa = currentStudent.calculateGPA();
+            alert(`Current GPA: ${gpa}\nTotal Grades: ${currentStudent.grades.length}`);
+        };
+        
+        // Calculator functions
+        let calculatorInput = '0';
+        let shouldResetDisplay = false;
+        
+        const appendToDisplay = (value) => {
+            const display = document.getElementById('calculatorDisplay');
+            
+            if (shouldResetDisplay) {
+                calculatorInput = '';
+                shouldResetDisplay = false;
+            }
+            
+            if (calculatorInput === '0' && value !== '.') {
+                calculatorInput = value;
+            } else {
+                calculatorInput += value;
+            }
+            
+            display.value = calculatorInput;
+        };
+        
+        const calculateResult = () => {
+            const display = document.getElementById('calculatorDisplay');
+            
+            try {
+                // Replace × with * for evaluation
+                const expression = calculatorInput.replace(/×/g, '*');
+                const result = Function('"use strict"; return (' + expression + ')')();
+                calculatorInput = result.toString();
+                shouldResetDisplay = true;
+                display.value = calculatorInput;
+            } catch (error) {
+                calculatorInput = 'Error';
+                shouldResetDisplay = true;
+                display.value = calculatorInput;
+            }
+        };
+        
+        const clearCalculator = () => {
+            calculatorInput = '0';
+            document.getElementById('calculatorDisplay').value = calculatorInput;
+        };
+        
+        const deleteLast = () => {
+            if (calculatorInput.length > 1) {
+                calculatorInput = calculatorInput.slice(0, -1);
+            } else {
+                calculatorInput = '0';
+            }
+            document.getElementById('calculatorDisplay').value = calculatorInput;
+        };
+        
+        // Keyboard support for calculator
+        document.addEventListener('keydown', (event) => {
+            const key = event.key;
+            
+            if (key >= '0' && key <= '9' || key === '.') {
+                appendToDisplay(key);
+            } else if (key === '+' || key === '-' || key === '*' || key === '/') {
+                appendToDisplay(key === '*' ? '×' : key);
+            } else if (key === 'Enter' || key === '=') {
+                calculateResult();
+            } else if (key === 'Escape' || key === 'Delete') {
+                clearCalculator();
+            } else if (key === 'Backspace') {
+                deleteLast();
+            }
+        });
+
+        // YGGY.ai Theme System
+        function toggleTheme() {
+            const currentTheme = document.body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            document.body.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            
+            // Update icon
+            const icon = document.getElementById('themeIcon');
+            icon.className = newTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+        }
+
+        // Initialize theme
+        function initTheme() {
+            const savedTheme = localStorage.getItem('theme');
+            const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const defaultTheme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
+            
+            document.body.setAttribute('data-theme', defaultTheme);
+            
+            const icon = document.getElementById('themeIcon');
+            if (icon) {
+                icon.className = defaultTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+            }
+        }
+
+        // Initialize theme on page load
+        document.addEventListener('DOMContentLoaded', initTheme);
+    </script>
+</body>
+</html>

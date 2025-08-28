@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CSS3 Advanced Techniques - Modern styling, animations, and responsive design">
+    <title>CSS3 Advanced | CET138 Portfolio</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts: Manrope (primary) + Inter for enhanced readability -->
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        /* Premium Section Page Styling - Matching Home Page Excellence */
+        body { 
+            font-family: 'Manrope', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; 
+            font-size: 1.1rem; 
+            line-height: 1.65; 
+            color: #1a202c; 
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%); 
+            letter-spacing: -0.01em; 
+            font-weight: 400;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+        
+        /* Enhanced Typography - Matching Home Page */
+        h1, h2, h3, h4, h5, h6, .navbar-brand, .btn, .fw-bold { 
+            font-family: 'Manrope', 'Inter', sans-serif; 
+            font-weight: 700; 
+            letter-spacing: -0.025em; 
+            line-height: 1.2;
+        }
+        h1 { font-size: 3.5rem; font-weight: 900; margin-bottom: 1.5rem; color: #1a202c; letter-spacing: -0.04em; }
+        h2 { font-size: 2.75rem; font-weight: 800; margin-bottom: 1.25rem; color: #1a202c; letter-spacing: -0.03em; }
+        h3 { font-size: 2rem; font-weight: 700; margin-bottom: 1rem; color: #2d3748; letter-spacing: -0.02em; }
+        h4 { font-size: 1.5rem; font-weight: 600; margin-bottom: 0.75rem; color: #2d3748; letter-spacing: -0.01em; }
+        .lead { font-size: 1.3rem; font-weight: 400; line-height: 1.6; color: #4a5568; }
+        p { margin-bottom: 1.25rem; color: #2d3748; }
+        
+        /* Premium Background Gradient - CSS Blue Theme */
+        .page-header {
+            background: linear-gradient(135deg, #1572b6 0%, #33a9dc 50%, #40e0d0 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+        
+        .page-header .container {
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* Enhanced Cards - Premium Style */
+        .card {
+            border: none;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(15, 23, 42, 0.08);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            background: white;
+            overflow: hidden;
+        }
+        
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(15, 23, 42, 0.15);
+        }
+        
+        .card-title {
+            background: linear-gradient(135deg, #1572b6 0%, #33a9dc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        /* Section Styling */
+        .section-title {
+            background: linear-gradient(135deg, #1572b6 0%, #33a9dc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 3rem;
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 3rem;
+            letter-spacing: -0.04em;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .section-title { font-size: 2.25rem; }
+            h1 { font-size: 2.75rem; }
+        }
+        
+        @media (max-width: 576px) {
+            .section-title { font-size: 2rem; }
+            h1 { font-size: 2.25rem; }
+        }
+
+        /* Table of Contents (matches screenshot styling) */
+    .toc-section { margin-top: 16px; }
+        .toc-card {
+            background: linear-gradient(180deg, #ffffff 0%, #ffffff 65%, #f3f6fb 100%);
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(15, 23, 42, 0.15);
+            padding: 1.25rem 1.5rem;
+            border: 1px solid rgba(21, 114, 182, 0.08);
+        }
+        .toc-heading {
+            display: flex;
+            align-items: center;
+            gap: .6rem;
+            margin-bottom: .75rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #1572b6 0%, #33a9dc 60%, #40e0d0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .toc-heading i { color: #4da3ff; opacity: .9; -webkit-text-fill-color: initial; }
+        .toc-list {
+            counter-reset: item;
+            columns: 2;
+            column-gap: 3rem;
+            list-style: none;
+            margin: 0;
+            padding: 0 .25rem .25rem .25rem;
+        }
+        @media (max-width: 768px) { .toc-list { columns: 1; } }
+        .toc-list li {
+            break-inside: avoid;
+            position: relative;
+            margin: .5rem 0;
+            padding-left: 2rem;
+        }
+        .toc-list li::before {
+            counter-increment: item;
+            content: counter(item) ".";
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: #3b82f6;
+            font-weight: 700;
+        }
+        .toc-link {
+            color: #3b82f6;
+            text-decoration: none;
+            font-weight: 600;
+        }
+    .toc-link:hover { text-decoration: underline; }
+    /* Anchor offset handled globally via ../css/style.css */
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="../modern-portfolio.html">
+                <i class="fas fa-code me-2"></i>
+                CET138 Portfolio
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../modern-portfolio.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="fullstack.html">Full Stack</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="html.html">HTML</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="css.html">CSS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="bootstrap.html">Bootstrap</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="javascript.html">JavaScript</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Section Title & Introduction -->
+        <section class="page-header py-5 hero-section" data-parallax>
+            <div class="container">
+                <div class="row align-items-center min-vh-50">
+                    <div class="col-lg-12 text-center">
+                        <h1 class="display-4 fw-bold mb-3"><i class="fab fa-css3-alt me-2"></i>CSS3 Advanced Techniques</h1>
+                        <p class="lead mb-0">Modern layouts, animations, responsive design, and scalable CSS architecture.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    <!-- Table of Contents -->
+    <section class="toc-section py-3">
+        <div class="container">
+            <div class="toc-card">
+                <h6 class="toc-heading"><i class="fas fa-list-ul"></i> Table of Contents</h6>
+                <ol id="tocListCss" class="toc-list"></ol>
+            </div>
+        </div>
+    </section>
+
+    <!-- Layout Techniques Subsection -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="fw-bold text-primary mb-4">
+                        <i class="fas fa-th me-2"></i>Layout Techniques (Flexbox & Grid)
+                    </h2>
+                    <p class="lead mb-4">Modern CSS provides powerful layout systems for creating flexible, responsive designs.</p>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <div class="card h-100 p-4 tilt-card" data-tilt-depth="35">
+                        <h5 class="fw-bold mb-3">Flexbox Demo</h5>
+                        <p>Flexbox is perfect for one-dimensional layouts and component alignment.</p>
+                        <div class="flexbox-demo-container">
+                            <div class="flex-item">Item 1</div>
+                            <div class="flex-item">Item 2</div>
+                            <div class="flex-item">Item 3</div>
+                        </div>
+                        <div class="code-example mt-3">
+                            <pre><code>.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}</code></pre>
+                        </div>
+                        <small class="text-muted">
+                            <strong>Annotation:</strong> Flexbox automatically distributes items with equal spacing.
+                        </small>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card h-100 p-4 tilt-card" data-tilt-depth="35">
+                        <h5 class="fw-bold mb-3">CSS Grid Demo</h5>
+                        <p>CSS Grid excels at two-dimensional layouts and complex page structures.</p>
+                        <div class="grid-demo-container">
+                            <div class="grid-item">Header</div>
+                            <div class="grid-item">Sidebar</div>
+                            <div class="grid-item">Main Content</div>
+                            <div class="grid-item">Footer</div>
+                        </div>
+                        <div class="code-example mt-3">
+                            <pre><code>.container {
+  display: grid;
+  grid-template-areas:
+    "header header"
+    "sidebar main"
+    "footer footer";
+}</code></pre>
+                        </div>
+                        <small class="text-muted">
+                            <strong>Annotation:</strong> Grid creates complex layouts with named areas.
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Responsive Design Subsection -->
+    <section id="responsive-design" class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="fw-bold text-success mb-4">
+                        <i class="fas fa-mobile-alt me-2"></i>Responsive Design
+                    </h2>
+                    <p class="lead mb-4">Media queries and flexible layouts ensure your design works on all screen sizes.</p>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <div class="card h-100 p-4 tilt-card" data-tilt-depth="35">
+                        <h5 class="fw-bold mb-3">Explanation</h5>
+                        <p>Responsive design uses media queries to apply different styles based on screen size, device orientation, and capabilities.</p>
+                        <ul class="mb-3">
+                            <li><strong>Mobile-first:</strong> Start with mobile styles, enhance for larger screens</li>
+                            <li><strong>Breakpoints:</strong> Common sizes (576px, 768px, 992px, 1200px)</li>
+                            <li><strong>Flexible units:</strong> Use %, em, rem, vw, vh instead of fixed pixels</li>
+                            <li><strong>Images:</strong> Make images responsive with max-width: 100%</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card h-100 p-4 tilt-card" data-tilt-depth="35">
+                        <h5 class="fw-bold mb-3">Working Example</h5>
+                        <div class="responsive-demo">
+                            <div class="responsive-container">
+                                <div class="responsive-grid">
+                                    <div class="responsive-item">Responsive Item 1</div>
+                                    <div class="responsive-item">Responsive Item 2</div>
+                                    <div class="responsive-item">Responsive Item 3</div>
+                                </div>
+                                <div class="breakpoint-indicator">
+                                    Current Breakpoint: <span id="current-breakpoint">Desktop</span>
+                                    <div class="viewport-size" id="viewport-size">Width: <span id="viewport-width">1200px+</span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="code-example mt-3">
+                            <pre><code>@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}</code></pre>
+                        </div>
+                        <small class="text-muted">
+                            <strong>Annotation:</strong> Resize your browser to see responsive behavior.
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modern CSS Features Subsection -->
+    <section id="modern-features" class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="fw-bold text-warning mb-4">
+                        <i class="fas fa-magic me-2"></i>Modern CSS Features
+                    </h2>
+                    <p class="lead mb-4">CSS3 animations, variables, and advanced selectors create engaging user experiences.</p>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="animation-showcase">
+                        <h5 class="fw-bold mb-3">Animations</h5>
+                        <div class="animation-item">
+                            <h6>Hover Effects</h6>
+                            <div class="hover-demo">
+                                <div class="hover-card">Hover me!</div>
+                            </div>
+                        </div>
+                        <div class="animation-item">
+                            <h6>Loading Spinner</h6>
+                            <div class="spinner-demo">
+                                <div class="spinner"></div>
+                            </div>
+                        </div>
+                        <small class="text-muted">
+                            <strong>Annotation:</strong> CSS animations provide smooth, hardware-accelerated effects.
+                        </small>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="theming-demo">
+                        <h5 class="fw-bold mb-3">CSS Variables</h5>
+                        <div class="themed-container">
+                            <div class="themed-card">
+                                <h6>Themed Component</h6>
+                                <button class="themed-button">Primary Button</button>
+                                <div class="color-palette">
+                                    <h6>Color Palette</h6>
+                                    <div class="palette-display">
+                                        <div class="color-swatch primary-color"></div>
+                                        <div class="color-swatch secondary-color"></div>
+                                        <div class="color-swatch accent-color"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <small class="text-muted">
+                            <strong>Annotation:</strong> CSS variables enable dynamic theming and maintainable code.
+                        </small>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="selectors-demo">
+                        <h5 class="fw-bold mb-3">Advanced Selectors</h5>
+                        <div class="selector-example">
+                            <h6>:nth-child() Demo</h6>
+                            <div class="nth-child-demo">
+                                <div class="item">1</div>
+                                <div class="item">2</div>
+                                <div class="item">3</div>
+                                <div class="item">4</div>
+                                <div class="item">5</div>
+                                <div class="item">6</div>
+                            </div>
+                        </div>
+                        <small class="text-muted">
+                            <strong>Annotation:</strong> Advanced selectors target specific elements without extra classes.
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Best Practices Subsection -->
+    <section id="css-best-practices" class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="fw-bold text-info mb-4">
+                        <i class="fas fa-star me-2"></i>Best Practices
+                    </h2>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-3">
+                    <div class="card h-100 p-4 text-center tilt-card" data-tilt-depth="30">
+                        <i class="fas fa-mobile-alt fa-3x text-success mb-3"></i>
+                        <h5 class="fw-bold">Mobile-First</h5>
+                        <ul class="list-unstyled">
+                            <li>Start with mobile styles</li>
+                            <li>Progressive enhancement</li>
+                            <li>Touch-friendly interactions</li>
+                            <li>Optimized performance</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card h-100 p-4 text-center tilt-card" data-tilt-depth="30">
+                        <i class="fas fa-code fa-3x text-primary mb-3"></i>
+                        <h5 class="fw-bold">Clean Code</h5>
+                        <ul class="list-unstyled">
+                            <li>Organize with comments</li>
+                            <li>Use consistent naming</li>
+                            <li>Avoid !important</li>
+                            <li>Group related styles</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card h-100 p-4 text-center tilt-card" data-tilt-depth="30">
+                        <i class="fas fa-universal-access fa-3x text-warning mb-3"></i>
+                        <h5 class="fw-bold">Accessibility</h5>
+                        <ul class="list-unstyled">
+                            <li>Sufficient color contrast</li>
+                            <li>Focus indicators</li>
+                            <li>Readable font sizes</li>
+                            <li>Reduce motion sensitivity</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card h-100 p-4 text-center tilt-card" data-tilt-depth="30">
+                        <i class="fas fa-tachometer-alt fa-3x text-danger mb-3"></i>
+                        <h5 class="fw-bold">Performance</h5>
+                        <ul class="list-unstyled">
+                            <li>Minimize CSS size</li>
+                            <li>Use efficient selectors</li>
+                            <li>Optimize animations</li>
+                            <li>Reduce repaints</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Summary -->
+    <section id="css-summary" class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <div class="card p-4">
+                        <h3 class="fw-bold text-primary mb-3">Summary</h3>
+                        <p class="lead mb-3">CSS3's powerful features enable developers to create professional, responsive, and engaging web designs. Modern layout systems, animations, and responsive techniques are essential for today's web.</p>
+                        <div class="alert alert-success mb-0">
+                            <strong>Key Takeaway:</strong> Mastering CSS3 layout systems, responsive design, and modern features empowers developers to create beautiful, accessible, and performant user interfaces that work seamlessly across all devices.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Animations & Transitions -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="section-title text-center mb-5">Animations & Transitions</h2>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="animation-showcase">
+                        <h3>CSS Animations</h3>
+                        <p>Create smooth, performant animations using CSS keyframes and transition properties.</p>
+                        
+                        <div class="animation-demos">
+                            <div class="animation-item">
+                                <h5>Hover Effects</h5>
+                                <div class="hover-demo">
+                                    <div class="hover-card">Hover me!</div>
+                                </div>
+                            </div>
+                            
+                            <div class="animation-item">
+                                <h5>Loading Spinner</h5>
+                                <div class="spinner-demo">
+                                    <div class="spinner"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="animation-item">
+                                <h5>Bouncing Ball</h5>
+                                <div class="bounce-demo">
+                                    <div class="bouncing-ball"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="animation-item">
+                                <h5>Fade In Animation</h5>
+                                <button class="btn btn-primary" onclick="triggerFadeIn()">Trigger Animation</button>
+                                <div class="fade-demo">
+                                    <div class="fade-element">I fade in!</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="animation-code">
+                        <h3>Animation Techniques</h3>
+                        
+                        <div class="technique-item">
+                            <h5>CSS Transitions</h5>
+                            <pre><code>.element {
+    transition: all 0.3s ease;
+}
+
+.element:hover {
+    transform: scale(1.1);
+    background-color: #007bff;
+}</code></pre>
+                        </div>
+                        
+                        <div class="technique-item">
+                            <h5>Keyframe Animations</h5>
+                            <pre><code>@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+.bouncing-element {
+    animation: bounce 2s infinite;
+}</code></pre>
+                        </div>
+                        
+                        <div class="technique-item">
+                            <h5>Transform Properties</h5>
+                            <pre><code>.transform-demo {
+    transform: 
+        rotate(45deg) 
+        scale(1.2) 
+        translateX(10px);
+    transform-origin: center;
+}</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Custom Properties & Theming -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="section-title text-center mb-5">Custom Properties & Dynamic Theming</h2>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="theming-demo">
+                        <h3>Interactive Theme Switcher</h3>
+                        <p>CSS Custom Properties (CSS Variables) enable dynamic theming and consistent design systems.</p>
+                        
+                        <div class="theme-controls mb-4">
+                            <button class="btn btn-primary" onclick="setTheme('blue')">Blue Theme</button>
+                            <button class="btn btn-success" onclick="setTheme('green')">Green Theme</button>
+                            <button class="btn btn-danger" onclick="setTheme('red')">Red Theme</button>
+                            <button class="btn btn-warning" onclick="setTheme('orange')">Orange Theme</button>
+                        </div>
+                        
+                        <div class="themed-container" id="themedContainer">
+                            <div class="themed-card">
+                                <h5>Dynamic Theme Card</h5>
+                                <p>This card changes colors based on the selected theme using CSS custom properties.</p>
+                                <button class="themed-button">Themed Button</button>
+                            </div>
+                        </div>
+                        
+                        <div class="color-palette mt-4">
+                            <h6>Current Color Palette:</h6>
+                            <div class="palette-display">
+                                <div class="color-swatch primary-color"></div>
+                                <div class="color-swatch secondary-color"></div>
+                                <div class="color-swatch accent-color"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="custom-properties-explanation">
+                        <h3>CSS Custom Properties</h3>
+                        
+                        <div class="property-example">
+                            <h5>Defining Variables</h5>
+                            <pre><code>:root {
+    --primary-color: #007bff;
+    --secondary-color: #6c757d;
+    --accent-color: #28a745;
+    --border-radius: 8px;
+    --font-size-base: 1rem;
+}</code></pre>
+                        </div>
+                        
+                        <div class="property-example">
+                            <h5>Using Variables</h5>
+                            <pre><code>.card {
+    background: var(--primary-color);
+    border-radius: var(--border-radius);
+    color: white;
+}
+
+.button {
+    background: var(--accent-color);
+    font-size: var(--font-size-base);
+}</code></pre>
+                        </div>
+                        
+                        <div class="property-example">
+                            <h5>Dynamic Updates with JavaScript</h5>
+                            <pre><code>// Change theme dynamically
+document.documentElement.style
+    .setProperty('--primary-color', '#dc3545');
+
+// Get current value
+const primaryColor = getComputedStyle(document.documentElement)
+    .getPropertyValue('--primary-color');</code></pre>
+                        </div>
+                        
+                        <div class="benefits-list mt-4">
+                            <h5>Benefits:</h5>
+                            <ul>
+                                <li>Consistent design systems</li>
+                                <li>Easy theme switching</li>
+                                <li>Dynamic color manipulation</li>
+                                <li>Reduced code repetition</li>
+                                <li>Runtime style updates</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Responsive Design -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="section-title text-center mb-5">Responsive Design with Media Queries</h2>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="responsive-demo">
+                        <h3>Responsive Layout Demo</h3>
+                        <p>Resize your browser window or view on different devices to see responsive behavior.</p>
+                        
+                        <div class="responsive-container">
+                            <div class="responsive-grid">
+                                <div class="responsive-item">
+                                    <h5>Desktop View</h5>
+                                    <p>Full width layout with multiple columns</p>
+                                </div>
+                                <div class="responsive-item">
+                                    <h5>Tablet View</h5>
+                                    <p>Adjusted layout for medium screens</p>
+                                </div>
+                                <div class="responsive-item">
+                                    <h5>Mobile View</h5>
+                                    <p>Single column layout for small screens</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="breakpoint-indicator mt-4">
+                            <h6>Current Breakpoint: <span id="currentBreakpoint">Desktop</span></h6>
+                            <div class="viewport-size">
+                                Viewport: <span id="viewportSize">Loading...</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="media-queries-info">
+                        <h4>Media Query Examples</h4>
+                        
+                        <div class="query-example">
+                            <h6>Mobile First Approach</h6>
+                            <pre><code>/* Base styles (mobile) */
+.container {
+    width: 100%;
+    padding: 1rem;
+}
+
+/* Tablet and up */
+@media (min-width: 768px) {
+    .container {
+        width: 750px;
+        margin: 0 auto;
+    }
+}
+
+/* Desktop and up */
+@media (min-width: 1024px) {
+    .container {
+        width: 1000px;
+    }
+}</code></pre>
+                        </div>
+                        
+                        <div class="query-example">
+                            <h6>Feature Queries</h6>
+                            <pre><code>/* Check for Grid support */
+@supports (display: grid) {
+    .layout {
+        display: grid;
+        grid-template-columns: 1fr 3fr;
+    }
+}
+
+/* Fallback for older browsers */
+@supports not (display: grid) {
+    .layout {
+        display: flex;
+    }
+}</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Advanced Selectors -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="section-title text-center mb-5">Advanced Selectors & Pseudo-elements</h2>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="selectors-demo">
+                        <h3>Interactive Selector Examples</h3>
+                        
+                        <div class="selector-example">
+                            <h5>Nth-child Selectors</h5>
+                            <div class="nth-child-demo">
+                                <div class="item">Item 1</div>
+                                <div class="item">Item 2</div>
+                                <div class="item">Item 3</div>
+                                <div class="item">Item 4</div>
+                                <div class="item">Item 5</div>
+                                <div class="item">Item 6</div>
+                            </div>
+                            <small>Every odd item has a different background</small>
+                        </div>
+                        
+                        <div class="selector-example">
+                            <h5>Pseudo-elements</h5>
+                            <div class="pseudo-demo">
+                                <p class="quote-text">This text has decorative quotes using ::before and ::after pseudo-elements.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="selector-example">
+                            <h5>Hover & Focus States</h5>
+                            <div class="interactive-elements">
+                                <button class="fancy-button">Hover Me</button>
+                                <input type="text" class="fancy-input" placeholder="Focus on me">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="selector-reference">
+                        <h3>Selector Reference</h3>
+                        
+                        <div class="reference-item">
+                            <h5>Attribute Selectors</h5>
+                            <pre><code>/* Has attribute */
+[data-active] { }
+
+/* Exact value */
+[type="email"] { }
+
+/* Contains value */
+[class*="btn"] { }
+
+/* Starts with */
+[href^="https"] { }
+
+/* Ends with */
+[src$=".jpg"] { }</code></pre>
+                        </div>
+                        
+                        <div class="reference-item">
+                            <h5>Structural Pseudo-classes</h5>
+                            <pre><code>/* First and last child */
+:first-child, :last-child { }
+
+/* Nth patterns */
+:nth-child(odd) { }
+:nth-child(3n+1) { }
+
+/* Only child */
+:only-child { }
+
+/* Empty elements */
+:empty { }</code></pre>
+                        </div>
+                        
+                        <div class="reference-item">
+                            <h5>Pseudo-elements</h5>
+                            <pre><code>/* Add content before/after */
+::before, ::after {
+    content: "";
+    display: block;
+}
+
+/* First line/letter */
+::first-line, ::first-letter { }
+
+/* Selection highlight */
+::selection { }</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Navigation -->
+    <section class="py-4 bg-dark text-light">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <div class="nav-link-prev">
+                        <a href="html.html" class="btn btn-outline-light">
+                            <i class="fas fa-arrow-left me-2"></i>
+                            Previous: HTML5
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <div class="nav-link-next">
+                        <a href="bootstrap.html" class="btn btn-primary">
+                            Next: Bootstrap Framework
+                            <i class="fas fa-arrow-right ms-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0">&copy; 2025 CET138 Full Stack Development Portfolio</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <small>CSS3 Advanced - Modern Styling & Layout Techniques</small>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Page TOC Builder -->
+    <script>
+        (function() {
+            const slugify = (t) => (t || '')
+                .toLowerCase()
+                .replace(/[^\w\s-]/g, '')
+                .trim()
+                .replace(/\s+/g, '-');
+
+            function buildTOC(listEl) {
+                if (!listEl) return;
+                // Collect primary h2 headings; also include Summary (may be h3)
+                const headings = Array.from(document.querySelectorAll('section h2'));
+                const summary = document.querySelector('#css-summary');
+                if (summary) {
+                    const summaryHeading = summary.querySelector('h2, h3, h4, h5, h6');
+                    if (summaryHeading) headings.push(summaryHeading);
+                }
+                listEl.innerHTML = '';
+                headings.forEach((h) => {
+                    // Ensure each heading has an id
+                    if (!h.id) h.id = slugify(h.textContent);
+                    const li = document.createElement('li');
+                    const a = document.createElement('a');
+                    a.className = 'toc-link';
+                    a.href = `#${h.id}`;
+                    a.textContent = h.textContent;
+                    a.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        const target = document.getElementById(h.id);
+                        if (target) {
+                            // Rely on CSS scroll-margin-top and html scroll-padding-top
+                            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }
+                    });
+                    li.appendChild(a);
+                    listEl.appendChild(li);
+                });
+            }
+
+            function initTOC() { buildTOC(document.getElementById('tocListCss')); }
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initTOC);
+            } else {
+                initTOC();
+            }
+        })();
+    </script>
+
+    <!-- Custom JavaScript -->
+    <script src="../js/main.js"></script>
+</body>
+</html>

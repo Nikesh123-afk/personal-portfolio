@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Full Stack Development - Understanding frontend, middleware, and backend development">
+    <title>Full Stack Development | CET138 Portfolio</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        /* Premium Section Page Styling - Matching Home Page Excellence */
+        body { 
+            font-family: 'Manrope', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; 
+            font-size: 1.1rem; 
+            line-height: 1.65; 
+            color: #1a202c; 
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%); 
+            letter-spacing: -0.01em; 
+            font-weight: 400;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+        
+        /* Enhanced Typography - Matching Home Page */
+        h1, h2, h3, h4, h5, h6, .navbar-brand, .btn, .fw-bold { 
+            font-family: 'Manrope', 'Inter', sans-serif; 
+            font-weight: 700; 
+            letter-spacing: -0.025em; 
+            line-height: 1.2;
+        }
+        h1 { font-size: 3.5rem; font-weight: 900; margin-bottom: 1.5rem; color: #1a202c; letter-spacing: -0.04em; }
+        h2 { font-size: 2.75rem; font-weight: 800; margin-bottom: 1.25rem; color: #1a202c; letter-spacing: -0.03em; }
+        h3 { font-size: 2rem; font-weight: 700; margin-bottom: 1rem; color: #2d3748; letter-spacing: -0.02em; }
+        h4 { font-size: 1.5rem; font-weight: 600; margin-bottom: 0.75rem; color: #2d3748; letter-spacing: -0.01em; }
+        .lead { font-size: 1.3rem; font-weight: 400; line-height: 1.6; color: #4a5568; }
+        p { margin-bottom: 1.25rem; color: #2d3748; }
+        
+        /* Premium Background Gradient */
+        .page-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #4facfe 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+        
+        .page-header .container {
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* Enhanced Cards - Premium Style */
+        .card {
+            border: none;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(15, 23, 42, 0.08);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            background: white;
+            overflow: hidden;
+        }
+        
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(15, 23, 42, 0.15);
+        }
+        
+        .card-body {
+            padding: 2rem;
+        }
+        
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #1a202c;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        /* Premium Buttons */
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            font-weight: 600;
+            border-radius: 12px;
+            padding: 0.8rem 2rem;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        /* Section Styling */
+        .section-title {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 3rem;
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 3rem;
+            letter-spacing: -0.04em;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .section-title { font-size: 2.25rem; }
+            h1 { font-size: 2.75rem; }
+            h2 { font-size: 2rem; }
+        }
+        
+        @media (max-width: 576px) {
+            .section-title { font-size: 2rem; }
+            h1 { font-size: 2.25rem; }
+        }
+
+        /* YGGY.ai Inspired Dark Mode */
+        [data-theme="dark"] {
+            --bg-primary: #121212;
+            --bg-secondary: #1a1a1a;
+            --card-bg: #1a1a1a;
+            --text-primary: #f4f4f4;
+            --text-secondary: #cfcfcf;
+            --text-muted: #a6a6a6;
+            --card-shadow: rgba(0, 0, 0, 0.4);
+        }
+
+        [data-theme="dark"] body { background: var(--bg-primary); color: var(--text-primary); }
+
+        [data-theme="dark"] .page-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #4facfe 100%);
+        }
+
+        [data-theme="dark"] .card {
+            background: var(--card-bg);
+            border: 1px solid rgba(102, 126, 234, 0.2);
+            color: var(--text-primary);
+            box-shadow: 0 10px 40px var(--card-shadow);
+        }
+
+        [data-theme="dark"] .navbar {
+            background: rgba(10, 10, 10, 0.95) !important;
+            backdrop-filter: blur(20px);
+        }
+
+        [data-theme="dark"] .navbar-brand,
+        [data-theme="dark"] .nav-link {
+            color: var(--text-primary) !important;
+        }
+
+    [data-theme="dark"] .bg-light { background: var(--bg-secondary) !important; }
+    [data-theme="dark"] a:not(.btn):not(.nav-link) { color: #cdb4ff; }
+    [data-theme="dark"] a:not(.btn):not(.nav-link):hover { color: #e0d0ff; }
+    [data-theme="dark"] .form-control { color: var(--text-primary); }
+    [data-theme="dark"] .form-control::placeholder { color: var(--text-muted); opacity: 1; }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="../modern-portfolio.html">
+                <i class="fas fa-code me-2"></i>
+                CET138 Portfolio
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../modern-portfolio.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="fullstack.html">Full Stack</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="html.html">HTML</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="css.html">CSS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="bootstrap.html">Bootstrap</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="javascript.html">JavaScript</a>
+                    </li>
+                    <li class="nav-item">
+                        <button class="btn btn-outline-light btn-sm ms-2" id="themeToggle" onclick="toggleTheme()" title="Toggle Dark Mode">
+                            <i class="fas fa-moon" id="themeIcon"></i>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Section Title & Introduction -->
+    <section class="page-header py-5 hero-section" data-parallax>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h1 class="display-4 fw-bold mb-3">
+                        <i class="fas fa-layer-group me-3"></i>
+                        Full Stack Development
+                    </h1>
+                    <p class="lead mb-3">
+                        Full Stack Development means building both the frontend (what users see) and backend (server, database, logic) of web applications. Mastering the full stack lets you create complete, robust, and scalable solutions.
+                    </p>
+                                        <p class="mb-0 text-muted">This section explores the architecture, technologies, and popular development stacks in modern web development.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Table of Contents -->
+    <section class="py-4 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <div class="card p-4">
+                        <h5 class="fw-bold text-primary mb-3">
+                            <i class="fas fa-list me-2"></i>Table of Contents
+                        </h5>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <ul class="list-unstyled mb-0">
+                                    <li><a href="#architecture" class="text-decoration-none">1. Architecture & Layers</a></li>
+                                    <li><a href="#technology-overview" class="text-decoration-none">2. Technology Overview</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <ul class="list-unstyled mb-0">
+                                    <li><a href="#popular-stacks" class="text-decoration-none">3. Popular Tech Stacks</a></li>
+                                    <li><a href="#fullstack-summary" class="text-decoration-none">4. Summary</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Architecture & Layers -->
+
+    <!-- Visual Layer Diagram & Tech Stack Overview -->
+    <section id="architecture" class="py-5">
+        <div class="container">
+            <div class="row g-4 align-items-center">
+                <div class="col-lg-6">
+                    <div class="card h-100 p-4 text-center shadow-sm tilt-card" data-tilt-depth="35">
+                        <h4 class="fw-bold text-primary mb-3">Web Application Layers</h4>
+                        <img loading="lazy" src="../assets/images/fullstack-layers.svg" alt="Full Stack Layers Diagram" class="img-fluid mb-3 fullstack-diagram">
+                        <ul class="list-unstyled mb-0">
+                            <li><strong>Frontend:</strong> User interface, UX, browser code (HTML, CSS, JS, frameworks)</li>
+                            <li><strong>Backend:</strong> Server logic, APIs, authentication, business rules</li>
+                            <li><strong>Database:</strong> Data storage, queries, relationships</li>
+                        </ul>
+                        <small class="text-muted">Diagram: Each layer is essential for a complete web app.</small>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card h-100 p-4 shadow-sm tilt-card" data-tilt-depth="35">
+                        <h4 class="fw-bold text-success mb-3">Tech Stack Overview</h4>
+                        <div class="row g-2">
+                            <div class="col-4 text-center">
+                                <div class="mb-2"><i class="fab fa-html5 fa-2x text-danger"></i></div>
+                                <span>HTML5</span>
+                            </div>
+                            <div class="col-4 text-center">
+                                <div class="mb-2"><i class="fab fa-css3-alt fa-2x text-primary"></i></div>
+                                <span>CSS3</span>
+                            </div>
+                            <div class="col-4 text-center">
+                                <div class="mb-2"><i class="fab fa-js-square fa-2x text-warning"></i></div>
+                                <span>JavaScript</span>
+                            </div>
+                            <div class="col-4 text-center">
+                                <div class="mb-2"><i class="fab fa-bootstrap fa-2x text-purple"></i></div>
+                                <span>Bootstrap</span>
+                            </div>
+                            <div class="col-4 text-center">
+                                <div class="mb-2"><i class="fas fa-server fa-2x text-secondary"></i></div>
+                                <span>Node.js / Express</span>
+                            </div>
+                            <div class="col-4 text-center">
+                                <div class="mb-2"><i class="fas fa-database fa-2x text-success"></i></div>
+                                <span>MongoDB / SQL</span>
+                            </div>
+                        </div>
+                        <small class="text-muted d-block mt-3">Each technology plays a role in a different layer of the stack.</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Stacks Examples -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row mb-4">
+                <div class="col-12 text-center">
+                    <h3 class="fw-bold text-primary mb-3">Popular Full Stack Combinations</h3>
+                    <p class="text-muted">Real-world stacks combine technologies for each layer. Here are some industry standards:</p>
+                </div>
+            </div>
+            <div class="row g-4 justify-content-center">
+                <div class="col-md-3">
+                    <div class="card h-100 text-center p-3">
+                        <h5 class="fw-bold">MERN</h5>
+                        <ul class="list-unstyled mb-2">
+                            <li>MongoDB</li>
+                            <li>Express.js</li>
+                            <li>React</li>
+                            <li>Node.js</li>
+                        </ul>
+                        <small class="text-muted">JavaScript everywhere</small>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card h-100 text-center p-3">
+                        <h5 class="fw-bold">MEAN</h5>
+                        <ul class="list-unstyled mb-2">
+                            <li>MongoDB</li>
+                            <li>Express.js</li>
+                            <li>Angular</li>
+                            <li>Node.js</li>
+                        </ul>
+                        <small class="text-muted">Enterprise JS stack</small>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card h-100 text-center p-3">
+                        <h5 class="fw-bold">LAMP</h5>
+                        <ul class="list-unstyled mb-2">
+                            <li>Linux</li>
+                            <li>Apache</li>
+                            <li>MySQL</li>
+                            <li>PHP</li>
+                        </ul>
+                        <small class="text-muted">Classic open-source stack</small>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card h-100 text-center p-3">
+                        <h5 class="fw-bold">JAMstack</h5>
+                        <ul class="list-unstyled mb-2">
+                            <li>JavaScript</li>
+                            <li>APIs</li>
+                            <li>Markup</li>
+                        </ul>
+                        <small class="text-muted">Modern static sites</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Summary / Key Takeaways -->
+    <section id="fullstack-summary" class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <div class="card p-4 shadow-sm">
+                        <h4 class="fw-bold text-success mb-3">Key Takeaways</h4>
+                        <ul class="mb-3">
+                            <li>Full stack developers can build, connect, and deploy every part of a web application.</li>
+                            <li>Understanding each layer (frontend, backend, database) is essential for robust solutions.</li>
+                            <li>Popular stacks (MERN, MEAN, LAMP, JAMstack) combine technologies for different needs.</li>
+                            <li>Mastering the full stack increases employability and project versatility.</li>
+                        </ul>
+                        <div class="alert alert-success mb-0">
+                            <strong>Summary:</strong> Full stack development is about versatility, problem-solving, and delivering complete, professional web solutions.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+    <!-- Architecture Layers -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="section-title text-center mb-5">Three-Tier Architecture</h2>
+                </div>
+            </div>
+            
+            <div class="row g-4 mb-5">
+                <!-- Frontend Layer -->
+                <div class="col-lg-4">
+                    <div class="architecture-layer frontend-layer">
+                        <div class="layer-header">
+                            <i class="fas fa-desktop"></i>
+                            <h3>Frontend Layer</h3>
+                            <span class="layer-badge">Presentation Tier</span>
+                        </div>
+                        <div class="layer-content">
+                            <h5>Technologies:</h5>
+                            <div class="tech-tags">
+                                <span class="tech-tag">HTML5</span>
+                                <span class="tech-tag">CSS3</span>
+                                <span class="tech-tag">JavaScript</span>
+                                <span class="tech-tag">React</span>
+                                <span class="tech-tag">Vue.js</span>
+                                <span class="tech-tag">Angular</span>
+                            </div>
+                            
+                            <h5 class="mt-4">Responsibilities:</h5>
+                            <ul class="responsibility-list">
+                                <li>User Interface (UI) Design</li>
+                                <li>User Experience (UX)</li>
+                                <li>Client-side Logic</li>
+                                <li>Responsive Design</li>
+                                <li>Browser Compatibility</li>
+                                <li>Performance Optimization</li>
+                            </ul>
+                            
+                            <div class="layer-example mt-4">
+                                <h6>Example Implementation:</h6>
+                                <div class="code-snippet">
+                                    <code>
+// React Component Example<br>
+function UserProfile({ user }) {<br>
+&nbsp;&nbsp;return (<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;div className="user-profile"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h2&gt;{user.name}&lt;/h2&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;{user.email}&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
+&nbsp;&nbsp;);<br>
+}
+                                    </code>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Middleware Layer -->
+                <div class="col-lg-4">
+                    <div class="architecture-layer middleware-layer">
+                        <div class="layer-header">
+                            <i class="fas fa-exchange-alt"></i>
+                            <h3>Middleware Layer</h3>
+                            <span class="layer-badge">Logic Tier</span>
+                        </div>
+                        <div class="layer-content">
+                            <h5>Technologies:</h5>
+                            <div class="tech-tags">
+                                <span class="tech-tag">Node.js</span>
+                                <span class="tech-tag">Express.js</span>
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">Django</span>
+                                <span class="tech-tag">PHP</span>
+                                <span class="tech-tag">Java</span>
+                            </div>
+                            
+                            <h5 class="mt-4">Responsibilities:</h5>
+                            <ul class="responsibility-list">
+                                <li>Business Logic Implementation</li>
+                                <li>API Development</li>
+                                <li>Authentication & Authorization</li>
+                                <li>Data Validation</li>
+                                <li>Request Processing</li>
+                                <li>Security Implementation</li>
+                            </ul>
+                            
+                            <div class="layer-example mt-4">
+                                <h6>Example Implementation:</h6>
+                                <div class="code-snippet">
+                                    <code>
+// Express.js API Route<br>
+app.post('/api/users', async (req, res) => {<br>
+&nbsp;&nbsp;try {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;const user = await User.create(req.body);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;res.status(201).json(user);<br>
+&nbsp;&nbsp;} catch (error) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;res.status(400).json({ error });<br>
+&nbsp;&nbsp;}<br>
+});
+                                    </code>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Backend Layer -->
+                <div class="col-lg-4">
+                    <div class="architecture-layer backend-layer">
+                        <div class="layer-header">
+                            <i class="fas fa-database"></i>
+                            <h3>Backend Layer</h3>
+                            <span class="layer-badge">Data Tier</span>
+                        </div>
+                        <div class="layer-content">
+                            <h5>Technologies:</h5>
+                            <div class="tech-tags">
+                                <span class="tech-tag">MySQL</span>
+                                <span class="tech-tag">PostgreSQL</span>
+                                <span class="tech-tag">MongoDB</span>
+                                <span class="tech-tag">Redis</span>
+                                <span class="tech-tag">AWS</span>
+                                <span class="tech-tag">Docker</span>
+                            </div>
+                            
+                            <h5 class="mt-4">Responsibilities:</h5>
+                            <ul class="responsibility-list">
+                                <li>Database Design & Management</li>
+                                <li>Data Storage & Retrieval</li>
+                                <li>Server Configuration</li>
+                                <li>Performance Optimization</li>
+                                <li>Backup & Recovery</li>
+                                <li>Scalability Planning</li>
+                            </ul>
+                            
+                            <div class="layer-example mt-4">
+                                <h6>Example Implementation:</h6>
+                                <div class="code-snippet">
+                                    <code>
+-- SQL Database Schema<br>
+CREATE TABLE users (<br>
+&nbsp;&nbsp;id SERIAL PRIMARY KEY,<br>
+&nbsp;&nbsp;name VARCHAR(100) NOT NULL,<br>
+&nbsp;&nbsp;email VARCHAR(100) UNIQUE,<br>
+&nbsp;&nbsp;created_at TIMESTAMP DEFAULT NOW()<br>
+);
+                                    </code>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Data Flow Diagram -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="data-flow-diagram">
+                        <h3 class="text-center mb-4">Data Flow in Full Stack Architecture</h3>
+                        <div class="flow-container">
+                            <div class="flow-step">
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <h5>User Interaction</h5>
+                                    <p>User interacts with the frontend interface</p>
+                                </div>
+                            </div>
+                            <div class="flow-arrow">→</div>
+                            <div class="flow-step">
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <h5>Request Processing</h5>
+                                    <p>Frontend sends request to middleware</p>
+                                </div>
+                            </div>
+                            <div class="flow-arrow">→</div>
+                            <div class="flow-step">
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <h5>Business Logic</h5>
+                                    <p>Middleware processes business logic</p>
+                                </div>
+                            </div>
+                            <div class="flow-arrow">→</div>
+                            <div class="flow-step">
+                                <div class="step-number">4</div>
+                                <div class="step-content">
+                                    <h5>Data Operation</h5>
+                                    <p>Backend performs database operations</p>
+                                </div>
+                            </div>
+                            <div class="flow-arrow">→</div>
+                            <div class="flow-step">
+                                <div class="step-number">5</div>
+                                <div class="step-content">
+                                    <h5>Response</h5>
+                                    <p>Data flows back to user interface</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Stacks -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="section-title text-center mb-5">Popular Technology Stacks</h2>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6">
+                    <div class="stack-card">
+                        <h4>MEAN Stack</h4>
+                        <div class="stack-components">
+                            <div class="component">
+                                <i class="fab fa-js-square"></i>
+                                <span>MongoDB</span>
+                            </div>
+                            <div class="component">
+                                <i class="fab fa-js-square"></i>
+                                <span>Express.js</span>
+                            </div>
+                            <div class="component">
+                                <i class="fab fa-angular"></i>
+                                <span>Angular</span>
+                            </div>
+                            <div class="component">
+                                <i class="fab fa-node-js"></i>
+                                <span>Node.js</span>
+                            </div>
+                        </div>
+                        <p class="stack-description">JavaScript-based full stack solution for rapid development</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="stack-card">
+                        <h4>LAMP Stack</h4>
+                        <div class="stack-components">
+                            <div class="component">
+                                <i class="fab fa-linux"></i>
+                                <span>Linux</span>
+                            </div>
+                            <div class="component">
+                                <i class="fas fa-server"></i>
+                                <span>Apache</span>
+                            </div>
+                            <div class="component">
+                                <i class="fas fa-database"></i>
+                                <span>MySQL</span>
+                            </div>
+                            <div class="component">
+                                <i class="fab fa-php"></i>
+                                <span>PHP</span>
+                            </div>
+                        </div>
+                        <p class="stack-description">Traditional and reliable stack for web applications</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="stack-card">
+                        <h4>MERN Stack</h4>
+                        <div class="stack-components">
+                            <div class="component">
+                                <i class="fas fa-database"></i>
+                                <span>MongoDB</span>
+                            </div>
+                            <div class="component">
+                                <i class="fab fa-js-square"></i>
+                                <span>Express.js</span>
+                            </div>
+                            <div class="component">
+                                <i class="fab fa-react"></i>
+                                <span>React</span>
+                            </div>
+                            <div class="component">
+                                <i class="fab fa-node-js"></i>
+                                <span>Node.js</span>
+                            </div>
+                        </div>
+                        <p class="stack-description">Modern JavaScript stack with React for dynamic UIs</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="stack-card">
+                        <h4>Django Stack</h4>
+                        <div class="stack-components">
+                            <div class="component">
+                                <i class="fab fa-python"></i>
+                                <span>Python</span>
+                            </div>
+                            <div class="component">
+                                <i class="fas fa-code"></i>
+                                <span>Django</span>
+                            </div>
+                            <div class="component">
+                                <i class="fas fa-database"></i>
+                                <span>PostgreSQL</span>
+                            </div>
+                            <div class="component">
+                                <i class="fab fa-js-square"></i>
+                                <span>JavaScript</span>
+                            </div>
+                        </div>
+                        <p class="stack-description">Python-based stack for robust and scalable applications</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits and Applications -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h2 class="mb-4">Benefits of Full Stack Development</h2>
+                    <div class="benefits-list">
+                        <div class="benefit-item">
+                            <i class="fas fa-dollar-sign text-success"></i>
+                            <div>
+                                <h5>Cost Efficiency</h5>
+                                <p>One developer can handle multiple aspects of development, reducing team size and coordination overhead.</p>
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="fas fa-clock text-primary"></i>
+                            <div>
+                                <h5>Faster Development</h5>
+                                <p>Streamlined development process with better understanding of the entire application architecture.</p>
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="fas fa-users text-info"></i>
+                            <div>
+                                <h5>Better Communication</h5>
+                                <p>Bridges the gap between frontend and backend teams, facilitating smoother collaboration.</p>
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="fas fa-cogs text-warning"></i>
+                            <div>
+                                <h5>Versatility</h5>
+                                <p>Ability to switch between different layers and adapt to various project requirements.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <h2 class="mb-4">Industry Applications</h2>
+                    <div class="applications-grid">
+                        <div class="application-card">
+                            <i class="fas fa-shopping-cart"></i>
+                            <h5>E-commerce Platforms</h5>
+                            <p>Complete online stores with payment processing, inventory management, and user accounts.</p>
+                        </div>
+                        <div class="application-card">
+                            <i class="fas fa-graduation-cap"></i>
+                            <h5>Educational Platforms</h5>
+                            <p>Learning management systems with course delivery, progress tracking, and assessments.</p>
+                        </div>
+                        <div class="application-card">
+                            <i class="fas fa-chart-line"></i>
+                            <h5>Business Applications</h5>
+                            <p>Enterprise software for CRM, project management, and data analytics.</p>
+                        </div>
+                        <div class="application-card">
+                            <i class="fas fa-mobile-alt"></i>
+                            <h5>Social Media Apps</h5>
+                            <p>Interactive platforms with real-time messaging, content sharing, and user engagement.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Required -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="section-title text-center mb-5">Essential Skills for Full Stack Developers</h2>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="skills-category">
+                        <h4><i class="fas fa-paint-brush me-2"></i>Frontend Skills</h4>
+                        <div class="skills-list">
+                            <div class="skill-item">
+                                <span>HTML5 & Semantic Markup</span>
+                                <div class="skill-level" data-level="95"></div>
+                            </div>
+                            <div class="skill-item">
+                                <span>CSS3 & Responsive Design</span>
+                                <div class="skill-level" data-level="90"></div>
+                            </div>
+                            <div class="skill-item">
+                                <span>JavaScript ES6+</span>
+                                <div class="skill-level" data-level="88"></div>
+                            </div>
+                            <div class="skill-item">
+                                <span>Frontend Frameworks</span>
+                                <div class="skill-level" data-level="85"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="skills-category">
+                        <h4><i class="fas fa-server me-2"></i>Backend Skills</h4>
+                        <div class="skills-list">
+                            <div class="skill-item">
+                                <span>Server-side Programming</span>
+                                <div class="skill-level" data-level="85"></div>
+                            </div>
+                            <div class="skill-item">
+                                <span>Database Management</span>
+                                <div class="skill-level" data-level="80"></div>
+                            </div>
+                            <div class="skill-item">
+                                <span>API Development</span>
+                                <div class="skill-level" data-level="88"></div>
+                            </div>
+                            <div class="skill-item">
+                                <span>Server Administration</span>
+                                <div class="skill-level" data-level="75"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="skills-category">
+                        <h4><i class="fas fa-tools me-2"></i>DevOps & Tools</h4>
+                        <div class="skills-list">
+                            <div class="skill-item">
+                                <span>Version Control (Git)</span>
+                                <div class="skill-level" data-level="92"></div>
+                            </div>
+                            <div class="skill-item">
+                                <span>Testing & Debugging</span>
+                                <div class="skill-level" data-level="80"></div>
+                            </div>
+                            <div class="skill-item">
+                                <span>Deployment & CI/CD</span>
+                                <div class="skill-level" data-level="78"></div>
+                            </div>
+                            <div class="skill-item">
+                                <span>Performance Optimization</span>
+                                <div class="skill-level" data-level="82"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Navigation -->
+    <section class="py-4 bg-dark text-light">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <div class="nav-link-prev">
+                        <a href="../modern-portfolio.html" class="btn btn-outline-light">
+                            <i class="fas fa-arrow-left me-2"></i>
+                            Back to Home
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <div class="nav-link-next">
+                        <a href="html.html" class="btn btn-primary">
+                            Next: HTML5 Mastery
+                            <i class="fas fa-arrow-right ms-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light py-4">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0">&copy; 2025 CET138 Full Stack Development Portfolio</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <small>Full Stack Development - Excellence in Understanding</small>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script src="../js/main.js"></script>
+    
+    <script>
+        // YGGY.ai Theme System
+        function toggleTheme() {
+            const currentTheme = document.body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            document.body.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            
+            const icon = document.getElementById('themeIcon');
+            icon.className = newTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+        }
+
+        function initTheme() {
+            const savedTheme = localStorage.getItem('theme');
+            const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const defaultTheme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
+            
+            document.body.setAttribute('data-theme', defaultTheme);
+            
+            const icon = document.getElementById('themeIcon');
+            if (icon) {
+                icon.className = defaultTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', initTheme);
+    </script>
+</body>
+</html>

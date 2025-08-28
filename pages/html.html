@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="HTML5 Mastery - Semantic markup, accessibility, and modern web standards">
+    <title>HTML5 Mastery | CET138 Portfolio</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+    
+    <style>
+        /* Premium Section Page Styling - Matching Home Page Excellence */
+        body { 
+            font-family: 'Manrope', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; 
+            font-size: 1.1rem; 
+            line-height: 1.65; 
+            color: #1a202c; 
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%); 
+            letter-spacing: -0.01em; 
+            font-weight: 400;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+        
+        /* Enhanced Typography - Matching Home Page */
+        h1, h2, h3, h4, h5, h6, .navbar-brand, .btn, .fw-bold { 
+            font-family: 'Manrope', 'Inter', sans-serif; 
+            font-weight: 700; 
+            letter-spacing: -0.025em; 
+            line-height: 1.2;
+        }
+        h1 { font-size: 3.5rem; font-weight: 900; margin-bottom: 1.5rem; color: #1a202c; letter-spacing: -0.04em; }
+        h2 { font-size: 2.75rem; font-weight: 800; margin-bottom: 1.25rem; color: #1a202c; letter-spacing: -0.03em; }
+        h3 { font-size: 2rem; font-weight: 700; margin-bottom: 1rem; color: #2d3748; letter-spacing: -0.02em; }
+        h4 { font-size: 1.5rem; font-weight: 600; margin-bottom: 0.75rem; color: #2d3748; letter-spacing: -0.01em; }
+        .lead { font-size: 1.3rem; font-weight: 400; line-height: 1.6; color: #4a5568; }
+        p { margin-bottom: 1.25rem; color: #2d3748; }
+        
+        /* Premium Background Gradient */
+        .page-header {
+            background: linear-gradient(135deg, #e34c26 0%, #f16529 50%, #ff6b35 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+        
+        .page-header .container {
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* Enhanced Cards - Premium Style */
+        .card {
+            border: none;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(15, 23, 42, 0.08);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            background: white;
+            overflow: hidden;
+        }
+        
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(15, 23, 42, 0.15);
+        }
+        
+        .card-title {
+            background: linear-gradient(135deg, #e34c26 0%, #f16529 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        /* Section Styling */
+        .section-title {
+            background: linear-gradient(135deg, #e34c26 0%, #f16529 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 3rem;
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 3rem;
+            letter-spacing: -0.04em;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .section-title { font-size: 2.25rem; }
+            h1 { font-size: 2.75rem; }
+        }
+        
+        @media (max-width: 576px) {
+            .section-title { font-size: 2rem; }
+            h1 { font-size: 2.25rem; }
+        }
+
+        /* YGGY.ai Inspired Dark Mode */
+        [data-theme="dark"] {
+            --bg-primary: #121212;
+            --bg-secondary: #1a1a1a;
+            --card-bg: #1a1a1a;
+            --text-primary: #f4f4f4;
+            --text-secondary: #cfcfcf;
+            --text-muted: #a6a6a6;
+            --card-shadow: rgba(0, 0, 0, 0.4);
+        }
+
+    [data-theme="dark"] body { background: var(--bg-primary); color: var(--text-primary); }
+
+        [data-theme="dark"] .page-header {
+            background: linear-gradient(135deg, #e34c26 0%, #f16529 50%, #ff6b35 100%);
+        }
+
+        [data-theme="dark"] .card {
+            background: var(--card-bg);
+            border: 1px solid rgba(227, 76, 38, 0.2);
+            color: var(--text-primary);
+            box-shadow: 0 10px 40px var(--card-shadow);
+        }
+
+        [data-theme="dark"] .navbar {
+            background: rgba(10, 10, 10, 0.95) !important;
+            backdrop-filter: blur(20px);
+        }
+
+        [data-theme="dark"] .navbar-brand,
+        [data-theme="dark"] .nav-link {
+            color: var(--text-primary) !important;
+        }
+
+    [data-theme="dark"] .bg-light { background: var(--bg-secondary) !important; }
+    [data-theme="dark"] a:not(.btn):not(.nav-link) { color: #ffb697; }
+    [data-theme="dark"] a:not(.btn):not(.nav-link):hover { color: #ffd4c2; }
+    [data-theme="dark"] .form-control { color: var(--text-primary); }
+    [data-theme="dark"] .form-control::placeholder { color: var(--text-muted); opacity: 1; }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="../modern-portfolio.html">
+                <i class="fas fa-code me-2"></i>
+                CET138 Portfolio
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../modern-portfolio.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="fullstack.html">Full Stack</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="html.html">HTML</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="css.html">CSS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="bootstrap.html">Bootstrap</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="javascript.html">JavaScript</a>
+                    </li>
+                    <li class="nav-item">
+                        <button class="btn btn-outline-light btn-sm ms-2" id="themeToggle" onclick="toggleTheme()" title="Toggle Dark Mode">
+                            <i class="fas fa-moon" id="themeIcon"></i>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Section Title & Introduction -->
+    <section class="page-header py-5 hero-section" data-parallax>
+        <div class="container">
+            <div class="row align-items-center min-vh-50">
+                <div class="col-lg-12 text-center">
+                    <h1 class="display-4 fw-bold mb-3"><i class="fab fa-html5 me-2"></i>HTML5 Mastery</h1>
+                    <p class="lead mb-0">Semantic structure, accessibility, and modern web standards for meaningful content.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Table of Contents -->
+    <section class="py-4 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <div class="card p-4 tilt-card" data-tilt-depth="35">
+                        <h5 class="fw-bold text-primary mb-3">
+                            <i class="fas fa-list me-2"></i>Table of Contents
+                        </h5>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <ul class="list-unstyled mb-0">
+                                    <li><a href="#semantic-elements" class="text-decoration-none">1. Semantic Elements</a></li>
+                                    <li><a href="#forms-inputs" class="text-decoration-none">2. Forms & Input Types</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <ul class="list-unstyled mb-0">
+                                    <li><a href="#best-practices" class="text-decoration-none">3. Best Practices</a></li>
+                                    <li><a href="#summary" class="text-decoration-none">4. Summary</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Concepts Subsections -->
+    <!-- Semantic Elements Subsection -->
+    <section id="semantic-elements" class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="fw-bold text-primary mb-4">
+                        <i class="fas fa-tags me-2"></i>Semantic Elements
+                    </h2>
+                    <p class="lead mb-4">Semantic HTML elements provide meaning to content, improving SEO, accessibility, and code maintainability.</p>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <div class="card h-100 p-4">
+                        <h5 class="fw-bold mb-3">Explanation</h5>
+                        <p>Semantic elements like <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;article&gt;</code>, and <code>&lt;footer&gt;</code> describe their meaning, not just appearance.</p>
+                        <ul class="mb-3">
+                            <li><strong>&lt;header&gt;</strong> - Page or section header</li>
+                            <li><strong>&lt;nav&gt;</strong> - Navigation links</li>
+                            <li><strong>&lt;main&gt;</strong> - Primary content</li>
+                            <li><strong>&lt;article&gt;</strong> - Standalone content</li>
+                            <li><strong>&lt;aside&gt;</strong> - Sidebar content</li>
+                            <li><strong>&lt;footer&gt;</strong> - Page or section footer</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card h-100 p-4">
+                        <h5 class="fw-bold mb-3">Working Example</h5>
+                        <div class="code-snippet">
+                            <pre><code>&lt;main&gt;
+  &lt;article&gt;
+    &lt;header&gt;
+      &lt;h1&gt;Article Title&lt;/h1&gt;
+      &lt;time datetime="2025-01-15"&gt;January 15, 2025&lt;/time&gt;
+    &lt;/header&gt;
+    &lt;section&gt;
+      &lt;p&gt;Article content here...&lt;/p&gt;
+    &lt;/section&gt;
+    &lt;aside&gt;
+      &lt;p&gt;Related information&lt;/p&gt;
+    &lt;/aside&gt;
+  &lt;/article&gt;
+&lt;/main&gt;</code></pre>
+                        </div>
+                        <small class="text-muted">
+                            <strong>Annotation:</strong> This structure is meaningful to screen readers, search engines, and developers.
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Forms & Inputs Subsection -->
+    <section id="forms-inputs" class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="fw-bold text-success mb-4">
+                        <i class="fas fa-wpforms me-2"></i>Forms & Inputs
+                    </h2>
+                    <p class="lead mb-4">Modern HTML5 forms provide built-in validation, accessibility features, and enhanced user experience.</p>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <div class="card h-100 p-4">
+                        <h5 class="fw-bold mb-3">Explanation</h5>
+                        <p>HTML5 introduced new input types, validation attributes, and accessibility features:</p>
+                        <ul class="mb-3">
+                            <li><strong>Input types:</strong> email, tel, url, date, number</li>
+                            <li><strong>Validation:</strong> required, pattern, min/max</li>
+                            <li><strong>Accessibility:</strong> labels, ARIA attributes</li>
+                            <li><strong>User experience:</strong> placeholder, autocomplete</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card h-100 p-4">
+                        <h5 class="fw-bold mb-3">Working Example</h5>
+                        <form class="needs-validation" novalidate>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email Address</label>
+                                <input type="email" class="form-control" id="email" required>
+                                <div class="invalid-feedback">Please provide a valid email.</div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="phone" class="form-label">Phone Number</label>
+                                <input type="tel" class="form-control" id="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="123-456-7890">
+                            </div>
+                            <div class="mb-3">
+                                <label for="age" class="form-label">Age</label>
+                                <input type="number" class="form-control" id="age" min="1" max="120">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                        <small class="text-muted d-block mt-2">
+                            <strong>Annotation:</strong> This form uses HTML5 validation with proper labels for accessibility.
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Best Practices Subsection -->
+    <section id="best-practices" class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="fw-bold text-info mb-4">
+                        <i class="fas fa-star me-2"></i>Best Practices
+                    </h2>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card h-100 p-4 text-center">
+                        <i class="fas fa-universal-access fa-3x text-success mb-3"></i>
+                        <h5 class="fw-bold">Accessibility</h5>
+                        <ul class="list-unstyled">
+                            <li>Use semantic elements</li>
+                            <li>Provide alt text for images</li>
+                            <li>Label all form inputs</li>
+                            <li>Maintain heading hierarchy</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 p-4 text-center">
+                        <i class="fas fa-search fa-3x text-primary mb-3"></i>
+                        <h5 class="fw-bold">SEO Optimization</h5>
+                        <ul class="list-unstyled">
+                            <li>Use proper heading structure</li>
+                            <li>Include meta descriptions</li>
+                            <li>Use semantic markup</li>
+                            <li>Optimize page titles</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 p-4 text-center">
+                        <i class="fas fa-code fa-3x text-warning mb-3"></i>
+                        <h5 class="fw-bold">Clean Code</h5>
+                        <ul class="list-unstyled">
+                            <li>Indent consistently</li>
+                            <li>Use lowercase tags</li>
+                            <li>Close all tags properly</li>
+                            <li>Validate your HTML</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Summary -->
+    <section id="summary" class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <div class="card p-4 tilt-card" data-tilt-depth="35">
+                        <h3 class="fw-bold text-primary mb-3">Summary</h3>
+                        <p class="lead mb-3">Strong HTML skills form the foundation of professional web development. Semantic markup improves accessibility, SEO, and maintainability.</p>
+                        <div class="alert alert-success mb-0">
+                            <strong>Key Takeaway:</strong> HTML5's semantic elements and modern form features enable developers to create accessible, user-friendly, and search-engine-optimized web content that works across all devices and browsers.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+    <!-- Semantic Elements -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="section-title text-center mb-5">Semantic HTML5 Elements</h2>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="semantic-explanation">
+                        <h3>Why Semantic Elements Matter</h3>
+                        <p>
+                            Semantic elements provide meaning to the content they contain, making it easier for browsers, search engines, and assistive technologies to understand the structure and purpose of web content.
+                        </p>
+                        
+                        <div class="benefits-list">
+                            <h5>Benefits:</h5>
+                            <ul>
+                                <li><strong>SEO Improvement:</strong> Search engines better understand content structure</li>
+                                <li><strong>Accessibility:</strong> Screen readers can navigate content more effectively</li>
+                                <li><strong>Code Readability:</strong> Developers can easily understand document structure</li>
+                                <li><strong>Maintenance:</strong> Easier to maintain and update code</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="semantic-demo">
+                        <h4>Semantic Structure Example</h4>
+                        <div class="code-example">
+                            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Semantic HTML5&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;header&gt;
+        &lt;nav&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;a href="#home"&gt;Home&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="#about"&gt;About&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/nav&gt;
+    &lt;/header&gt;
+    
+    &lt;main&gt;
+        &lt;section id="home"&gt;
+            &lt;h1&gt;Welcome&lt;/h1&gt;
+            &lt;article&gt;
+                &lt;h2&gt;Article Title&lt;/h2&gt;
+                &lt;p&gt;Article content...&lt;/p&gt;
+            &lt;/article&gt;
+        &lt;/section&gt;
+        
+        &lt;aside&gt;
+            &lt;h3&gt;Related Links&lt;/h3&gt;
+        &lt;/aside&gt;
+    &lt;/main&gt;
+    
+    &lt;footer&gt;
+        &lt;p&gt;&copy; 2025 Website&lt;/p&gt;
+    &lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Semantic Elements Grid -->
+            <div class="row mt-5">
+                <div class="col-lg-12">
+                    <h3 class="text-center mb-4">HTML5 Semantic Elements</h3>
+                    <div class="semantic-elements-grid">
+                        <div class="semantic-element-card">
+                            <h5>&lt;header&gt;</h5>
+                            <p>Represents introductory content or navigation links</p>
+                            <small class="text-muted">Used for page headers, article headers, or section headers</small>
+                        </div>
+                        
+                        <div class="semantic-element-card">
+                            <h5>&lt;nav&gt;</h5>
+                            <p>Defines navigation links within the document</p>
+                            <small class="text-muted">Main navigation, breadcrumbs, or pagination</small>
+                        </div>
+                        
+                        <div class="semantic-element-card">
+                            <h5>&lt;main&gt;</h5>
+                            <p>Contains the primary content of the document</p>
+                            <small class="text-muted">Should be unique and not contained within other semantic elements</small>
+                        </div>
+                        
+                        <div class="semantic-element-card">
+                            <h5>&lt;section&gt;</h5>
+                            <p>Represents a standalone section of content</p>
+                            <small class="text-muted">Chapters, tabs, or thematic groupings</small>
+                        </div>
+                        
+                        <div class="semantic-element-card">
+                            <h5>&lt;article&gt;</h5>
+                            <p>Self-contained, independently distributable content</p>
+                            <small class="text-muted">Blog posts, news articles, or user comments</small>
+                        </div>
+                        
+                        <div class="semantic-element-card">
+                            <h5>&lt;aside&gt;</h5>
+                            <p>Content related to but separate from main content</p>
+                            <small class="text-muted">Sidebars, callout boxes, or related links</small>
+                        </div>
+                        
+                        <div class="semantic-element-card">
+                            <h5>&lt;footer&gt;</h5>
+                            <p>Contains footer information for its section</p>
+                            <small class="text-muted">Copyright, contact info, or related documents</small>
+                        </div>
+                        
+                        <div class="semantic-element-card">
+                            <h5>&lt;figure&gt;</h5>
+                            <p>Self-contained content with optional caption</p>
+                            <small class="text-muted">Images, diagrams, code listings</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modern Form Elements -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="section-title text-center mb-5">Modern HTML5 Form Elements</h2>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="form-demo-container">
+                        <h3>Interactive Form Demo</h3>
+                        <form id="html5FormDemo" class="modern-form">
+                            <div class="form-group">
+                                <label for="userName">Full Name *</label>
+                                <input type="text" id="userName" name="userName" required 
+                                       placeholder="Enter your full name">
+                                <small class="form-help">Required field with text validation</small>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="userEmail">Email Address *</label>
+                                <input type="email" id="userEmail" name="userEmail" required 
+                                       placeholder="your@email.com">
+                                <small class="form-help">HTML5 email validation</small>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="userPhone">Phone Number</label>
+                                <input type="tel" id="userPhone" name="userPhone" 
+                                       placeholder="+1 (555) 123-4567">
+                                <small class="form-help">Telephone input type</small>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="birthDate">Date of Birth</label>
+                                <input type="date" id="birthDate" name="birthDate">
+                                <small class="form-help">Native date picker</small>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="experienceLevel">Experience Level: <span id="expValue">5</span></label>
+                                <input type="range" id="experienceLevel" name="experienceLevel" 
+                                       min="1" max="10" value="5" step="1">
+                                <div class="range-labels">
+                                    <span>Beginner</span>
+                                    <span>Expert</span>
+                                </div>
+                                <small class="form-help">Range slider input</small>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="skillLevel">Primary Skill</label>
+                                <select id="skillLevel" name="skillLevel" required>
+                                    <option value="">Choose your primary skill...</option>
+                                    <option value="html">HTML5</option>
+                                    <option value="css">CSS3</option>
+                                    <option value="javascript">JavaScript</option>
+                                    <option value="react">React</option>
+                                    <option value="nodejs">Node.js</option>
+                                </select>
+                                <small class="form-help">Select dropdown with validation</small>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="portfolio">Portfolio URL</label>
+                                <input type="url" id="portfolio" name="portfolio" 
+                                       placeholder="https://yourportfolio.com">
+                                <small class="form-help">URL validation</small>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="projectDescription">Project Description</label>
+                                <textarea id="projectDescription" name="projectDescription" 
+                                          rows="4" placeholder="Describe your latest project..."></textarea>
+                                <small class="form-help">Textarea for longer content</small>
+                            </div>
+                            
+                            <div class="form-group checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="newsletter" value="yes">
+                                    <span class="checkmark"></span>
+                                    Subscribe to newsletter
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="terms" value="yes" required>
+                                    <span class="checkmark"></span>
+                                    I agree to the terms and conditions *
+                                </label>
+                            </div>
+                            
+                            <div class="form-group radio-group">
+                                <label>Preferred Contact Method:</label>
+                                <label class="radio-label">
+                                    <input type="radio" name="contact" value="email" checked>
+                                    <span class="radiomark"></span>
+                                    Email
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="contact" value="phone">
+                                    <span class="radiomark"></span>
+                                    Phone
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="contact" value="neither">
+                                    <span class="radiomark"></span>
+                                    Neither
+                                </label>
+                            </div>
+                            
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-paper-plane me-2"></i>
+                                    Submit Form
+                                </button>
+                                <button type="reset" class="btn btn-secondary">
+                                    <i class="fas fa-undo me-2"></i>
+                                    Reset
+                                </button>
+                            </div>
+                        </form>
+                        
+                        <div id="formResponse" class="form-response mt-4"></div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="form-features">
+                        <h3>HTML5 Form Features</h3>
+                        
+                        <div class="feature-item">
+                            <h5><i class="fas fa-check-circle text-success me-2"></i>Input Validation</h5>
+                            <p>Built-in validation for email, URL, number, and required fields without JavaScript.</p>
+                            <div class="code-snippet">
+                                <code>&lt;input type="email" required&gt;</code>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-item">
+                            <h5><i class="fas fa-calendar text-primary me-2"></i>Date & Time Inputs</h5>
+                            <p>Native date, time, and datetime-local pickers for better user experience.</p>
+                            <div class="code-snippet">
+                                <code>&lt;input type="date"&gt;<br>&lt;input type="time"&gt;</code>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-item">
+                            <h5><i class="fas fa-sliders-h text-info me-2"></i>Range Controls</h5>
+                            <p>Slider inputs for numeric ranges with min, max, and step attributes.</p>
+                            <div class="code-snippet">
+                                <code>&lt;input type="range" min="1" max="10" step="1"&gt;</code>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-item">
+                            <h5><i class="fas fa-palette text-warning me-2"></i>Color Picker</h5>
+                            <p>Native color picker for easy color selection.</p>
+                            <div class="code-snippet">
+                                <code>&lt;input type="color"&gt;</code>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-item">
+                            <h5><i class="fas fa-search text-secondary me-2"></i>Search Input</h5>
+                            <p>Specialized search input with enhanced styling and behavior.</p>
+                            <div class="code-snippet">
+                                <code>&lt;input type="search" placeholder="Search..."&gt;</code>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Accessibility Features -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="section-title text-center mb-5">Accessibility & Best Practices</h2>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="accessibility-card">
+                        <i class="fas fa-universal-access fa-3x text-primary mb-3"></i>
+                        <h4>ARIA Labels</h4>
+                        <p>Accessible Rich Internet Applications (ARIA) attributes provide semantic information to assistive technologies.</p>
+                        <div class="example-code">
+                            <h6>Example:</h6>
+                            <code>&lt;button aria-label="Close dialog"&gt;×&lt;/button&gt;</code>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="accessibility-card">
+                        <i class="fas fa-eye fa-3x text-success mb-3"></i>
+                        <h4>Screen Reader Support</h4>
+                        <p>Proper heading hierarchy, alt text for images, and descriptive link text help screen readers navigate content.</p>
+                        <div class="example-code">
+                            <h6>Example:</h6>
+                            <code>&lt;img src="chart.png" alt="Sales increase of 25% in Q4"&gt;</code>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="accessibility-card">
+                        <i class="fas fa-keyboard fa-3x text-info mb-3"></i>
+                        <h4>Keyboard Navigation</h4>
+                        <p>Ensure all interactive elements are accessible via keyboard navigation with proper tab order.</p>
+                        <div class="example-code">
+                            <h6>Example:</h6>
+                            <code>&lt;a href="#main" class="skip-link"&gt;Skip to main content&lt;/a&gt;</code>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-5">
+                <div class="col-lg-6">
+                    <div class="best-practices">
+                        <h3>HTML5 Best Practices</h3>
+                        <div class="practice-list">
+                            <div class="practice-item">
+                                <i class="fas fa-check text-success"></i>
+                                <span>Use semantic HTML5 elements appropriately</span>
+                            </div>
+                            <div class="practice-item">
+                                <i class="fas fa-check text-success"></i>
+                                <span>Include proper DOCTYPE declaration</span>
+                            </div>
+                            <div class="practice-item">
+                                <i class="fas fa-check text-success"></i>
+                                <span>Set language attribute on html element</span>
+                            </div>
+                            <div class="practice-item">
+                                <i class="fas fa-check text-success"></i>
+                                <span>Use proper heading hierarchy (h1-h6)</span>
+                            </div>
+                            <div class="practice-item">
+                                <i class="fas fa-check text-success"></i>
+                                <span>Include meta description and viewport</span>
+                            </div>
+                            <div class="practice-item">
+                                <i class="fas fa-check text-success"></i>
+                                <span>Validate HTML with W3C validator</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="seo-optimization">
+                        <h3>SEO Optimization</h3>
+                        <div class="seo-checklist">
+                            <div class="seo-item">
+                                <h5>Meta Tags</h5>
+                                <p>Include descriptive title, meta description, and keywords</p>
+                                <code>&lt;meta name="description" content="Page description"&gt;</code>
+                            </div>
+                            
+                            <div class="seo-item">
+                                <h5>Heading Structure</h5>
+                                <p>Use proper heading hierarchy for content organization</p>
+                                <code>&lt;h1&gt;Main Title&lt;/h1&gt;<br>&lt;h2&gt;Section Title&lt;/h2&gt;</code>
+                            </div>
+                            
+                            <div class="seo-item">
+                                <h5>Alt Text</h5>
+                                <p>Descriptive alternative text for all images</p>
+                                <code>&lt;img src="image.jpg" alt="Descriptive text"&gt;</code>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Navigation -->
+    <section class="py-4 bg-dark text-light">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <div class="nav-link-prev">
+                        <a href="fullstack.html" class="btn btn-outline-light">
+                            <i class="fas fa-arrow-left me-2"></i>
+                            Previous: Full Stack
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <div class="nav-link-next">
+                        <a href="css.html" class="btn btn-primary">
+                            Next: CSS3 Advanced
+                            <i class="fas fa-arrow-right ms-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light py-4">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0">&copy; 2025 CET138 Full Stack Development Portfolio</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <small>HTML5 Mastery - Semantic & Accessible Web Development</small>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script src="../js/main.js"></script>
+    
+    <script>
+        // YGGY.ai Theme System
+        function toggleTheme() {
+            const currentTheme = document.body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            document.body.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            
+            const icon = document.getElementById('themeIcon');
+            icon.className = newTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+        }
+
+        function initTheme() {
+            const savedTheme = localStorage.getItem('theme');
+            const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const defaultTheme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
+            
+            document.body.setAttribute('data-theme', defaultTheme);
+            
+            const icon = document.getElementById('themeIcon');
+            if (icon) {
+                icon.className = defaultTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', initTheme);
+    </script>
+</body>
+</html>
