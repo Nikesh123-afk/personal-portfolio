@@ -5,9 +5,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     try {
         await initializePortfolio();
         // Store user preferences in localStorage
-        if (!localStorage.getItem('theme')) {
-            localStorage.setItem('theme', 'light');
-        }
+        // Theme system removed: no-op
     } catch (error) {
         console.error('Portfolio initialization failed:', error);
         showErrorNotification('Failed to initialize some features. Please refresh the page.');
@@ -27,12 +25,17 @@ async function initializePortfolio() {
             initializeParallax()
         ]);
         
-        // Initialize form validation
-        initializeFormValidation();
-    
-    // Display welcome message
-    console.log('🚀 Full Stack Development Portfolio Loaded Successfully!');
-    console.log('📚 This portfolio demonstrates HTML5, CSS3, Bootstrap, and JavaScript proficiency');
+        // Initialize form validation (optional; defined on index.html)
+        if (typeof initializeFormValidation === 'function') {
+            initializeFormValidation();
+        }
+        
+        // Display welcome message
+        console.log('🚀 Full Stack Development Portfolio Loaded Successfully!');
+        console.log('📚 This portfolio demonstrates HTML5, CSS3, Bootstrap, and JavaScript proficiency');
+    } catch (error) {
+        console.error('Error initializing portfolio:', error);
+    }
 }
 
 // Initialize pseudo-3D tilt cards

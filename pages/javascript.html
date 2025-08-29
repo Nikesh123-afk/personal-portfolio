@@ -4,6 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="JavaScript ES6+ Mastery - Modern programming, DOM manipulation, and interactive applications">
+    <link rel="canonical" href="https://your-portfolio-url.com/pages/javascript.html">
+    <meta property="og:title" content="JavaScript ES6+ | CET138 Portfolio">
+    <meta property="og:description" content="Modern JS: ES modules, async/await, DOM, and interactive apps with best practices.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://your-portfolio-url.com/pages/javascript.html">
+    <meta property="og:image" content="https://your-portfolio-url.com/assets/images/Picture11.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="JavaScript ES6+ | CET138 Portfolio">
+    <meta name="twitter:description" content="Modern JS: ES modules, async/await, DOM, and interactive apps with best practices.">
     <title>JavaScript ES6+ | CET138 Portfolio</title>
     
     <!-- Bootstrap CSS -->
@@ -17,6 +26,15 @@
     
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../css/style.css">
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Article",
+            "headline": "JavaScript ES6+",
+            "description": "Modern JS: ES modules, async/await, DOM, and interactive apps with best practices.",
+            "author": {"@type": "Person", "name": "Nikesh"}
+        }
+        </script>
     
     <style>
         /* Premium Section Page Styling - Matching Home Page Excellence */
@@ -256,7 +274,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
         <div class="container">
-            <a class="navbar-brand fw-bold" href="../modern-portfolio.html">
+            <a class="navbar-brand fw-bold" href="../index.html">
                 <i class="fas fa-code me-2"></i>
                 CET138 Portfolio
             </a>
@@ -266,7 +284,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="../modern-portfolio.html">Home</a>
+                        <a class="nav-link" href="../index.html">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="fullstack.html">Full Stack</a>
@@ -283,11 +301,7 @@
                     <li class="nav-item">
                         <a class="nav-link active" href="javascript.html">JavaScript</a>
                     </li>
-                    <li class="nav-item">
-                        <button class="btn btn-outline-light btn-sm ms-2" id="themeToggle" onclick="toggleTheme()" title="Toggle Dark Mode">
-                            <i class="fas fa-moon" id="themeIcon"></i>
-                        </button>
-                    </li>
+                    
                 </ul>
             </div>
         </div>
@@ -305,93 +319,125 @@
         </div>
     </section>
 
+        <!-- Todo App Script -->
+        <script>
+        (function(){
+            const sel = (id) => document.getElementById(id);
+            const form = sel('todo-form');
+            const input = sel('todo-input');
+            const list = sel('todo-list');
+            const count = sel('todo-count');
+            const filters = {
+                all: sel('filter-all'),
+                active: sel('filter-active'),
+                completed: sel('filter-completed')
+            };
+            let todos = [];
+            let currentFilter = 'all';
+
+            function load(){
+                try { todos = JSON.parse(localStorage.getItem('todos-v1')) || []; }
+                catch { todos = []; }
+            }
+            function save(){ localStorage.setItem('todos-v1', JSON.stringify(todos)); }
+
+            function render(){
+                list.innerHTML = '';
+                const visible = todos.filter(t => currentFilter==='all' ? true : currentFilter==='active' ? !t.completed : t.completed);
+                visible.forEach(t => {
+                    const li = document.createElement('li');
+                    li.className = 'list-group-item d-flex align-items-center justify-content-between';
+                    li.setAttribute('data-id', String(t.id));
+
+                    const left = document.createElement('div');
+                    left.className = 'form-check';
+                    const cb = document.createElement('input');
+                    cb.type = 'checkbox';
+                    cb.className = 'form-check-input';
+                    cb.checked = !!t.completed;
+                    cb.id = `todo-${t.id}`;
+                    cb.addEventListener('change', () => toggle(t.id));
+                    const lbl = document.createElement('label');
+                    lbl.className = 'form-check-label';
+                    lbl.htmlFor = cb.id;
+                    lbl.textContent = t.text;
+                    if (t.completed) lbl.style.textDecoration = 'line-through';
+                    left.append(cb, lbl);
+
+                    const del = document.createElement('button');
+                    del.className = 'btn btn-sm btn-outline-danger';
+                    del.type = 'button';
+                    del.setAttribute('aria-label', 'Delete task');
+                    del.innerHTML = '<i class="fas fa-trash"></i>';
+                    del.addEventListener('click', () => remove(t.id));
+
+                    li.append(left, del);
+                    list.appendChild(li);
+                });
+                count.textContent = String(todos.length);
+                Object.keys(filters).forEach(k => filters[k].classList.toggle('active', k===currentFilter));
+            }
+
+            function add(text){
+                const trimmed = text.trim();
+                if (!trimmed) return;
+                todos.push({ id: Date.now(), text: trimmed, completed: false });
+                save();
+                render();
+            }
+            function toggle(id){
+                const t = todos.find(x => x.id===id);
+                if (t){ t.completed = !t.completed; save(); render(); }
+            }
+            function remove(id){
+                todos = todos.filter(x => x.id!==id);
+                save();
+                render();
+            }
+            window.clearCompleted = function(){
+                todos = todos.filter(t => !t.completed);
+                save();
+                render();
+            }
+            window.filterTodos = function(name){
+                currentFilter = name;
+                render();
+            }
+
+            if (form){
+                form.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    add(input.value);
+                    input.value = '';
+                    input.focus();
+                });
+                input.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' && !e.shiftKey) {
+                        // form handler covers it; no extra
+                    }
+                });
+            }
+
+            load();
+            render();
+        })();
+        </script>
+
     <!-- Table of Contents -->
     <section class="toc-section py-3">
         <div class="container">
-            <div class="toc-card">
-                <h6 class="toc-heading"><i class="fas fa-list-ul"></i> Table of Contents</h6>
-                <ol id="tocListJs" class="toc-list"></ol>
-            </div>
-        </div>
-    </section>
-
-    <!-- DOM Manipulation Subsection -->
-    <section id="dom-manipulation" class="py-5 bg-light">
-        <div class="container">
             <div class="row">
-                <div class="col-lg-12">
-                    <h2 class="fw-bold text-success mb-4">
-                        <i class="fas fa-code me-2"></i>DOM Manipulation
-                    </h2>
-                    <p class="lead mb-4">JavaScript can dynamically modify HTML elements, handle events, and create interactive user interfaces.</p>
-                </div>
-            </div>
-            
-            <div class="row g-4">
-                <div class="col-lg-8">
-                    <div class="card h-100 p-4 tilt-card" data-tilt-depth="35">
-                        <h5 class="fw-bold mb-3">Interactive Demo</h5>
-                        <div class="dom-demo-container">
-                            <div class="mb-3">
-                                <label for="colorInput" class="form-label">Choose Background Color:</label>
-                                <select id="colorInput" class="form-select" onchange="changeBackground()" aria-label="Choose background color">
-                                    <option value="#ffffff">White</option>
-                                    <option value="#e3f2fd">Light Blue</option>
-                                    <option value="#f3e5f5">Light Purple</option>
-                                    <option value="#e8f5e8">Light Green</option>
-                                    <option value="#fff3e0">Light Orange</option>
-                                </select>
-                            </div>
-                            
-                            <div id="demo-box" class="demo-box p-4 border rounded mb-3">
-                                <h6>Interactive Box</h6>
-                                <p id="demo-text">Click the buttons below to see DOM manipulation in action!</p>
-                                <span id="click-counter">Clicks: 0</span>
-                            </div>
-                            
-                            <div class="demo-controls">
-                                <button onclick="addElement()" class="btn btn-primary me-2">Add Element</button>
-                                <button onclick="changeText()" class="btn btn-success me-2">Change Text</button>
-                                <button onclick="toggleClass()" class="btn btn-warning me-2">Toggle Style</button>
-                                <button onclick="removeElements()" class="btn btn-danger">Clear All</button>
-                            </div>
-                        </div>
-                        <small class="text-muted d-block mt-3">
-                            <strong>Annotation:</strong> DOM methods allow real-time content and style manipulation.
-                        </small>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="card h-100 p-4 tilt-card" data-tilt-depth="35">
-                        <h5 class="fw-bold mb-3">Code Example</h5>
-                        <div class="code-example">
-                            <pre><code>// Select Elements
-const box = document.getElementById('demo-box');
-const text = document.querySelector('#demo-text');
-
-// Modify Content
-text.textContent = 'New text content';
-
-// Add Event Listener
-box.addEventListener('click', () => {
-  box.classList.toggle('highlight');
-});
-
-// Create New Element
-const newElement = document.createElement('div');
-newElement.innerHTML = 'Dynamic content';
-box.appendChild(newElement);</code></pre>
-                        </div>
-                        <div class="alert alert-info mt-3">
-                            <small>
-                                <strong>Key Methods:</strong><br>
-                                • getElementById()<br>
-                                • querySelector()<br>
-                                • addEventListener()<br>
-                                • createElement()<br>
-                                • appendChild()
-                            </small>
-                        </div>
+                <div class="col-lg-10 mx-auto">
+                    <div class="toc-card" role="navigation" aria-label="Table of Contents">
+                        <h5 class="toc-heading mb-2">
+                            <i class="fas fa-list"></i>Table of Contents
+                        </h5>
+                        <ul class="toc-list">
+                            <li><a class="toc-link" href="#mini-project">1. Mini Project</a></li>
+                            <li><a class="toc-link" href="#js-best-practices">2. Best Practices</a></li>
+                            <li><a class="toc-link" href="#es6-syntax">3. ES6+ Syntax</a></li>
+                            <li><a class="toc-link" href="#js-summary">4. Summary</a></li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -425,9 +471,9 @@ box.appendChild(newElement);</code></pre>
                             </form>
                             
                             <div class="todo-filters mb-3">
-                                <button onclick="filterTodos('all')" class="btn btn-outline-secondary btn-sm active" id="filter-all">All</button>
-                                <button onclick="filterTodos('active')" class="btn btn-outline-secondary btn-sm" id="filter-active">Active</button>
-                                <button onclick="filterTodos('completed')" class="btn btn-outline-secondary btn-sm" id="filter-completed">Completed</button>
+                                <button type="button" onclick="filterTodos('all')" class="btn btn-outline-secondary btn-sm active" id="filter-all">All</button>
+                                <button type="button" onclick="filterTodos('active')" class="btn btn-outline-secondary btn-sm" id="filter-active">Active</button>
+                                <button type="button" onclick="filterTodos('completed')" class="btn btn-outline-secondary btn-sm" id="filter-completed">Completed</button>
                             </div>
                             
                             <ul id="todo-list" class="list-group">
@@ -437,7 +483,7 @@ box.appendChild(newElement);</code></pre>
                             <div class="todo-stats mt-3">
                                 <small class="text-muted">
                                     <span id="todo-count">0</span> items • 
-                                    <button onclick="clearCompleted()" class="btn btn-link btn-sm p-0">Clear completed</button>
+                                    <button type="button" onclick="clearCompleted()" class="btn btn-link btn-sm p-0">Clear completed</button>
                                 </small>
                             </div>
                         </div>
@@ -1096,7 +1142,7 @@ const calc = new Calculator();</code></pre>
                 </div>
                 <div class="col-md-6 text-md-end">
                     <div class="nav-link-next">
-                        <a href="../modern-portfolio.html" class="btn btn-primary">
+                        <a href="../index.html" class="btn btn-primary">
                             Back to Home
                             <i class="fas fa-home ms-2"></i>
                         </a>
@@ -1538,35 +1584,7 @@ const calc = new Calculator();</code></pre>
             }
         });
 
-        // YGGY.ai Theme System
-        function toggleTheme() {
-            const currentTheme = document.body.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            
-            document.body.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-            
-            // Update icon
-            const icon = document.getElementById('themeIcon');
-            icon.className = newTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
-        }
-
-        // Initialize theme
-        function initTheme() {
-            const savedTheme = localStorage.getItem('theme');
-            const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            const defaultTheme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
-            
-            document.body.setAttribute('data-theme', defaultTheme);
-            
-            const icon = document.getElementById('themeIcon');
-            if (icon) {
-                icon.className = defaultTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
-            }
-        }
-
-        // Initialize theme on page load
-        document.addEventListener('DOMContentLoaded', initTheme);
+    // Theme removed
     </script>
 </body>
 </html>

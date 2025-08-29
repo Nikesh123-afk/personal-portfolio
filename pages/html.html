@@ -4,6 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="HTML5 Mastery - Semantic markup, accessibility, and modern web standards">
+    <link rel="canonical" href="https://your-portfolio-url.com/pages/html.html">
+    <meta property="og:title" content="HTML5 Mastery | CET138 Portfolio">
+    <meta property="og:description" content="Semantic markup, accessibility, and modern web standards with clear examples and demos.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://your-portfolio-url.com/pages/html.html">
+    <meta property="og:image" content="https://your-portfolio-url.com/assets/images/Picture11.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="HTML5 Mastery | CET138 Portfolio">
+    <meta name="twitter:description" content="Semantic HTML, forms, and accessibility best practices—explained with working demos.">
+    <meta name="theme-color" content="#e34c26">
     <title>HTML5 Mastery | CET138 Portfolio</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -13,9 +23,20 @@
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../css/style.css">
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": "Nikesh",
+            "url": "https://your-portfolio-url.com",
+            "sameAs": [
+                "https://github.com/Nikesh123-afk"
+            ]
+        }
+        </script>
     
     <style>
-        /* Premium Section Page Styling - Matching Home Page Excellence */
+    /* Premium Section Page Styling - Matching Home Page Excellence */
         body { 
             font-family: 'Manrope', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; 
             font-size: 1.1rem; 
@@ -26,7 +47,12 @@
             font-weight: 400;
             scroll-behavior: smooth;
             overflow-x: hidden;
+            /* Prevent fixed-top navbar from overlapping content */
+            padding-top: 72px;
         }
+    /* Skip link for keyboard users */
+    .skip-link { position: absolute; left: -999px; top: auto; width: 1px; height: 1px; overflow: hidden; }
+    .skip-link:focus { position: fixed; left: 1rem; top: 1rem; width: auto; height: auto; padding: .5rem 1rem; background: #000; color: #fff; z-index: 10000; border-radius: .375rem; box-shadow: 0 4px 10px rgba(0,0,0,.25); }
         
         /* Enhanced Typography - Matching Home Page */
         h1, h2, h3, h4, h5, h6, .navbar-brand, .btn, .fw-bold { 
@@ -99,6 +125,42 @@
             margin-bottom: 3rem;
             letter-spacing: -0.04em;
         }
+
+    /* Code blocks */
+    pre { margin: 0; }
+    .code-snippet, .code-example { background: #0f172a; color: #e2e8f0; border-radius: 12px; padding: 1rem; overflow: auto; box-shadow: 0 6px 24px rgba(2, 6, 23, 0.2); }
+    .example-code code { display: inline-block; background: #0f172a; color: #e2e8f0; padding: .5rem .75rem; border-radius: .5rem; }
+
+    /* Semantic elements grid */
+    .semantic-elements-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; align-items: stretch; }
+    .semantic-element-card { background: #ffffff; border-radius: 12px; padding: 1.25rem; box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08); height: 100%; }
+    .semantic-element-card h5 { margin-bottom: .5rem; }
+    .semantic-element-card p { margin-bottom: .5rem; }
+
+    /* Modern form layout */
+    .modern-form .form-group { margin-bottom: 1rem; }
+    .modern-form label { display: block; font-weight: 600; margin-bottom: .35rem; }
+    .modern-form input[type="text"],
+    .modern-form input[type="email"],
+    .modern-form input[type="tel"],
+    .modern-form input[type="date"],
+    .modern-form input[type="range"],
+    .modern-form input[type="url"],
+    .modern-form textarea,
+    .modern-form select { width: 100%; border: 1px solid #e2e8f0; border-radius: .6rem; padding: .65rem .75rem; background: #fff; color: #1a202c; }
+    .modern-form input[type="range"] { padding: 0; }
+    .modern-form .form-help, .form-text { color: #64748b; font-size: .9rem; }
+    .modern-form .checkbox-group, .modern-form .radio-group { display: grid; gap: .5rem; }
+    .modern-form .checkbox-label, .modern-form .radio-label { display: inline-flex; align-items: center; gap: .5rem; cursor: pointer; }
+    .modern-form .form-actions { display: flex; gap: .75rem; flex-wrap: wrap; }
+
+    /* Feature and a11y cards */
+    .feature-item, .accessibility-card, .best-practices, .seo-item { background: #ffffff; border-radius: 12px; padding: 1rem; box-shadow: 0 6px 20px rgba(15,23,42,.08); margin-bottom: 1rem; }
+    .feature-item h5 { margin-bottom: .4rem; }
+    .practice-list .practice-item { display: flex; align-items: center; gap: .5rem; padding: .4rem 0; }
+
+    /* Light card balance inside bg-light sections */
+    .bg-light .card, .bg-light .feature-item, .bg-light .accessibility-card, .bg-light .seo-item { background: #ffffff; }
         
         /* Responsive Design */
         @media (max-width: 768px) {
@@ -111,52 +173,15 @@
             h1 { font-size: 2.25rem; }
         }
 
-        /* YGGY.ai Inspired Dark Mode */
-        [data-theme="dark"] {
-            --bg-primary: #121212;
-            --bg-secondary: #1a1a1a;
-            --card-bg: #1a1a1a;
-            --text-primary: #f4f4f4;
-            --text-secondary: #cfcfcf;
-            --text-muted: #a6a6a6;
-            --card-shadow: rgba(0, 0, 0, 0.4);
-        }
-
-    [data-theme="dark"] body { background: var(--bg-primary); color: var(--text-primary); }
-
-        [data-theme="dark"] .page-header {
-            background: linear-gradient(135deg, #e34c26 0%, #f16529 50%, #ff6b35 100%);
-        }
-
-        [data-theme="dark"] .card {
-            background: var(--card-bg);
-            border: 1px solid rgba(227, 76, 38, 0.2);
-            color: var(--text-primary);
-            box-shadow: 0 10px 40px var(--card-shadow);
-        }
-
-        [data-theme="dark"] .navbar {
-            background: rgba(10, 10, 10, 0.95) !important;
-            backdrop-filter: blur(20px);
-        }
-
-        [data-theme="dark"] .navbar-brand,
-        [data-theme="dark"] .nav-link {
-            color: var(--text-primary) !important;
-        }
-
-    [data-theme="dark"] .bg-light { background: var(--bg-secondary) !important; }
-    [data-theme="dark"] a:not(.btn):not(.nav-link) { color: #ffb697; }
-    [data-theme="dark"] a:not(.btn):not(.nav-link):hover { color: #ffd4c2; }
-    [data-theme="dark"] .form-control { color: var(--text-primary); }
-    [data-theme="dark"] .form-control::placeholder { color: var(--text-muted); opacity: 1; }
+    /* Dark mode removed */
     </style>
 </head>
 <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
         <div class="container">
-            <a class="navbar-brand fw-bold" href="../modern-portfolio.html">
+            <a class="navbar-brand fw-bold" href="../index.html">
                 <i class="fas fa-code me-2"></i>
                 CET138 Portfolio
             </a>
@@ -166,7 +191,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="../modern-portfolio.html">Home</a>
+                        <a class="nav-link" href="../index.html">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="fullstack.html">Full Stack</a>
@@ -183,15 +208,13 @@
                     <li class="nav-item">
                         <a class="nav-link" href="javascript.html">JavaScript</a>
                     </li>
-                    <li class="nav-item">
-                        <button class="btn btn-outline-light btn-sm ms-2" id="themeToggle" onclick="toggleTheme()" title="Toggle Dark Mode">
-                            <i class="fas fa-moon" id="themeIcon"></i>
-                        </button>
-                    </li>
+                    
                 </ul>
             </div>
         </div>
     </nav>
+
+    <main id="main-content" tabindex="-1">
 
     <!-- Section Title & Introduction -->
     <section class="page-header py-5 hero-section" data-parallax>
@@ -214,7 +237,7 @@
                         <h5 class="fw-bold text-primary mb-3">
                             <i class="fas fa-list me-2"></i>Table of Contents
                         </h5>
-                        <div class="row">
+                        <nav class="row" aria-label="Table of contents">
                             <div class="col-md-6">
                                 <ul class="list-unstyled mb-0">
                                     <li><a href="#semantic-elements" class="text-decoration-none">1. Semantic Elements</a></li>
@@ -227,7 +250,7 @@
                                     <li><a href="#summary" class="text-decoration-none">4. Summary</a></li>
                                 </ul>
                             </div>
-                        </div>
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -318,25 +341,85 @@
                 <div class="col-lg-6">
                     <div class="card h-100 p-4">
                         <h5 class="fw-bold mb-3">Working Example</h5>
-                        <form class="needs-validation" novalidate>
+            <form class="needs-validation" novalidate aria-describedby="validationStatus">
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email Address</label>
-                                <input type="email" class="form-control" id="email" required>
-                                <div class="invalid-feedback">Please provide a valid email.</div>
+                <input type="email" class="form-control" id="email" required autocomplete="email" aria-describedby="emailFeedback">
+                <div class="invalid-feedback" id="emailFeedback">Please provide a valid email.</div>
                             </div>
                             <div class="mb-3">
                                 <label for="phone" class="form-label">Phone Number</label>
-                                <input type="tel" class="form-control" id="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="123-456-7890">
+                <input type="tel" class="form-control" id="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="123-456-7890" title="Use ###-###-#### format" autocomplete="tel" aria-describedby="phoneHelpText">
+                <div class="form-text" id="phoneHelpText">Format: 123-456-7890</div>
                             </div>
                             <div class="mb-3">
                                 <label for="age" class="form-label">Age</label>
-                                <input type="number" class="form-control" id="age" min="1" max="120">
+                <input type="number" class="form-control" id="age" min="1" max="120" aria-describedby="ageHelp">
+                <div class="form-text" id="ageHelp">Enter a value between 1 and 120.</div>
                             </div>
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </form>
+            <div id="validationStatus" class="visually-hidden" role="status" aria-live="polite"></div>
                         <small class="text-muted d-block mt-2">
                             <strong>Annotation:</strong> This form uses HTML5 validation with proper labels for accessibility.
                         </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Media & Tables Accessibility Subsection -->
+    <section id="media-tables" class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="fw-bold text-warning mb-4">
+                        <i class="fas fa-universal-access me-2"></i>Accessible Media & Tables
+                    </h2>
+                    <p class="lead mb-4">Use descriptive alt text, captions, and table semantics to make content accessible.</p>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <div class="card h-100 p-4">
+                        <h5 class="fw-bold mb-3">Accessible Image</h5>
+                        <figure>
+                            <img src="../assets/images/Picture11.png" class="img-fluid" alt="Nikesh portfolio preview with cards and colorful headers">
+                            <figcaption class="mt-2 text-muted">Figure: Portfolio preview with semantic sections.</figcaption>
+                        </figure>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card h-100 p-4">
+                        <h5 class="fw-bold mb-3">Accessible Table</h5>
+                        <table class="table table-bordered table-striped">
+                            <caption class="text-muted">Comparison of HTML5 input types and built-in validation</caption>
+                            <thead>
+                                <tr>
+                                    <th scope="col">Input Type</th>
+                                    <th scope="col">Validation</th>
+                                    <th scope="col">Example</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">email</th>
+                                    <td>Format check</td>
+                                    <td>user@example.com</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">tel</th>
+                                    <td>Pattern</td>
+                                    <td>123-456-7890</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">number</th>
+                                    <td>min/max</td>
+                                    <td>1–120</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -557,25 +640,25 @@
                 <div class="col-lg-6">
                     <div class="form-demo-container">
                         <h3>Interactive Form Demo</h3>
-                        <form id="html5FormDemo" class="modern-form">
+               <form id="html5FormDemo" class="modern-form">
                             <div class="form-group">
                                 <label for="userName">Full Name *</label>
-                                <input type="text" id="userName" name="userName" required 
-                                       placeholder="Enter your full name">
+                    <input type="text" id="userName" name="userName" required 
+                        placeholder="Enter your full name" autocomplete="name">
                                 <small class="form-help">Required field with text validation</small>
                             </div>
                             
                             <div class="form-group">
                                 <label for="userEmail">Email Address *</label>
-                                <input type="email" id="userEmail" name="userEmail" required 
-                                       placeholder="your@email.com">
+                    <input type="email" id="userEmail" name="userEmail" required 
+                        placeholder="your@email.com" autocomplete="email">
                                 <small class="form-help">HTML5 email validation</small>
                             </div>
                             
                             <div class="form-group">
                                 <label for="userPhone">Phone Number</label>
-                                <input type="tel" id="userPhone" name="userPhone" 
-                                       placeholder="+1 (555) 123-4567">
+                    <input type="tel" id="userPhone" name="userPhone" 
+                        placeholder="+1 (555) 123-4567" autocomplete="tel">
                                 <small class="form-help">Telephone input type</small>
                             </div>
                             
@@ -598,7 +681,7 @@
                             
                             <div class="form-group">
                                 <label for="skillLevel">Primary Skill</label>
-                                <select id="skillLevel" name="skillLevel" required>
+                                <select id="skillLevel" name="skillLevel" required autocomplete="off">
                                     <option value="">Choose your primary skill...</option>
                                     <option value="html">HTML5</option>
                                     <option value="css">CSS3</option>
@@ -611,8 +694,8 @@
                             
                             <div class="form-group">
                                 <label for="portfolio">Portfolio URL</label>
-                                <input type="url" id="portfolio" name="portfolio" 
-                                       placeholder="https://yourportfolio.com">
+                    <input type="url" id="portfolio" name="portfolio" 
+                        placeholder="https://yourportfolio.com" autocomplete="url">
                                 <small class="form-help">URL validation</small>
                             </div>
                             
@@ -667,7 +750,7 @@
                             </div>
                         </form>
                         
-                        <div id="formResponse" class="form-response mt-4"></div>
+                        <div id="formResponse" class="form-response mt-4" role="status" aria-live="polite"></div>
                     </div>
                 </div>
                 
@@ -852,6 +935,8 @@
         </div>
     </section>
 
+    </main>
+
     <!-- Footer -->
     <footer class="bg-dark text-light py-4">
         <div class="container">
@@ -873,32 +958,52 @@
     <script src="../js/main.js"></script>
     
     <script>
-        // YGGY.ai Theme System
-        function toggleTheme() {
-            const currentTheme = document.body.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            
-            document.body.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-            
-            const icon = document.getElementById('themeIcon');
-            icon.className = newTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
-        }
+        // Bootstrap-like validation enhancement for forms using 'needs-validation'
+        (function () {
+            'use strict';
+            var forms = document.querySelectorAll('.needs-validation');
+            Array.prototype.slice.call(forms).forEach(function(form){
+                form.addEventListener('submit', function (event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                        var status = document.getElementById('validationStatus');
+                        if (status) {
+                            // Count invalid inputs and announce
+                            var invalids = form.querySelectorAll(':invalid');
+                            status.classList.remove('visually-hidden');
+                            status.textContent = 'Form has ' + invalids.length + ' error' + (invalids.length === 1 ? '' : 's') + '. Please review highlighted fields.';
+                        }
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        })();
 
-        function initTheme() {
-            const savedTheme = localStorage.getItem('theme');
-            const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            const defaultTheme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
-            
-            document.body.setAttribute('data-theme', defaultTheme);
-            
-            const icon = document.getElementById('themeIcon');
-            if (icon) {
-                icon.className = defaultTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+        // Interactive HTML5 form demo behavior
+        (function(){
+            var exp = document.getElementById('experienceLevel');
+            var expValue = document.getElementById('expValue');
+            if (exp && expValue) {
+                exp.addEventListener('input', function(){
+                    expValue.textContent = exp.value;
+                });
             }
-        }
-
-        document.addEventListener('DOMContentLoaded', initTheme);
+            var demoForm = document.getElementById('html5FormDemo');
+            var response = document.getElementById('formResponse');
+            if (demoForm && response) {
+                demoForm.addEventListener('submit', function(e){
+                    e.preventDefault();
+                    if (!demoForm.checkValidity()) {
+                        response.className = 'alert alert-danger';
+                        response.textContent = 'Please correct the highlighted fields.';
+                        return;
+                    }
+                    response.className = 'alert alert-success';
+                    response.textContent = 'Form submitted successfully (demo).';
+                });
+            }
+        })();
     </script>
 </body>
 </html>

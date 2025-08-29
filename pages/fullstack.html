@@ -4,6 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Full Stack Development - Understanding frontend, middleware, and backend development">
+    <link rel="canonical" href="https://your-portfolio-url.com/pages/fullstack.html">
+    <meta property="og:title" content="Full Stack Development | CET138 Portfolio">
+    <meta property="og:description" content="Frontend, middleware/API, and backend explained with diagrams, stacks, and best practices.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://your-portfolio-url.com/pages/fullstack.html">
+    <meta property="og:image" content="https://your-portfolio-url.com/assets/images/Picture11.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Full Stack Development | CET138 Portfolio">
+    <meta name="twitter:description" content="Frontend, middleware/API, and backend explained with diagrams, stacks, and best practices.">
     <title>Full Stack Development | CET138 Portfolio</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -13,6 +22,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../css/style.css">
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Article",
+            "headline": "Full Stack Development",
+            "description": "Frontend, middleware/API, and backend explained with diagrams, stacks, and best practices.",
+            "author": {"@type": "Person", "name": "Nikesh"}
+        }
+        </script>
     <style>
         /* Premium Section Page Styling - Matching Home Page Excellence */
         body { 
@@ -46,6 +64,10 @@
             background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #4facfe 100%);
             position: relative;
             overflow: hidden;
+            /* Full-bleed across viewport even when body is fixed width */
+            width: 100vw;
+            margin-left: calc(50% - 50vw);
+            margin-right: calc(50% - 50vw);
         }
         
         .page-header::before {
@@ -137,95 +159,81 @@
             h1 { font-size: 2.25rem; }
         }
 
-        /* YGGY.ai Inspired Dark Mode */
-        [data-theme="dark"] {
-            --bg-primary: #121212;
-            --bg-secondary: #1a1a1a;
-            --card-bg: #1a1a1a;
-            --text-primary: #f4f4f4;
-            --text-secondary: #cfcfcf;
-            --text-muted: #a6a6a6;
-            --card-shadow: rgba(0, 0, 0, 0.4);
+    /* Dark mode removed */
+        /* Accessible skip link */
+        .skip-link {
+            position: absolute;
+            left: -999px;
+            top: auto;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
         }
-
-        [data-theme="dark"] body { background: var(--bg-primary); color: var(--text-primary); }
-
-        [data-theme="dark"] .page-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #4facfe 100%);
+        .skip-link:focus {
+            position: fixed;
+            left: 1rem;
+            top: 1rem;
+            width: auto;
+            height: auto;
+            padding: .5rem 1rem;
+            background: #111;
+            color: #fff;
+            border-radius: .5rem;
+            z-index: 10000;
         }
-
-        [data-theme="dark"] .card {
-            background: var(--card-bg);
-            border: 1px solid rgba(102, 126, 234, 0.2);
-            color: var(--text-primary);
-            box-shadow: 0 10px 40px var(--card-shadow);
-        }
-
-        [data-theme="dark"] .navbar {
-            background: rgba(10, 10, 10, 0.95) !important;
-            backdrop-filter: blur(20px);
-        }
-
-        [data-theme="dark"] .navbar-brand,
-        [data-theme="dark"] .nav-link {
-            color: var(--text-primary) !important;
-        }
-
-    [data-theme="dark"] .bg-light { background: var(--bg-secondary) !important; }
-    [data-theme="dark"] a:not(.btn):not(.nav-link) { color: #cdb4ff; }
-    [data-theme="dark"] a:not(.btn):not(.nav-link):hover { color: #e0d0ff; }
-    [data-theme="dark"] .form-control { color: var(--text-primary); }
-    [data-theme="dark"] .form-control::placeholder { color: var(--text-muted); opacity: 1; }
     </style>
 </head>
 <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
         <div class="container">
-            <a class="navbar-brand fw-bold" href="../modern-portfolio.html">
-                <i class="fas fa-code me-2"></i>
-                CET138 Portfolio
+            <a class="navbar-brand fw-bold fs-4" href="../index.html#home">
+                <i class="fas fa-code me-2" aria-hidden="true"></i>
+                Nikesh-Stack
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Toggle navigation">
+            
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+            
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="../modern-portfolio.html">Home</a>
+                        <a class="nav-link fw-medium px-3" href="../index.html">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="fullstack.html">Full Stack</a>
+                        <a class="nav-link fw-medium px-3 active" href="fullstack.html" aria-current="page">Full Stack</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="html.html">HTML</a>
+                        <a class="nav-link fw-medium px-3" href="html.html">HTML</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="css.html">CSS</a>
+                        <a class="nav-link fw-medium px-3" href="css.html">CSS</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="bootstrap.html">Bootstrap</a>
+                        <a class="nav-link fw-medium px-3" href="bootstrap.html">Bootstrap</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="javascript.html">JavaScript</a>
-                    </li>
-                    <li class="nav-item">
-                        <button class="btn btn-outline-light btn-sm ms-2" id="themeToggle" onclick="toggleTheme()" title="Toggle Dark Mode">
-                            <i class="fas fa-moon" id="themeIcon"></i>
-                        </button>
+                        <a class="nav-link fw-medium px-3" href="javascript.html">JavaScript</a>
                     </li>
                 </ul>
+                <a href="../index.html#contact" class="btn btn-primary ms-3">
+                    <i class="fas fa-envelope me-2" aria-hidden="true"></i>Get in Touch
+                </a>
             </div>
         </div>
     </nav>
 
     <!-- Section Title & Introduction -->
-    <section class="page-header py-5 hero-section" data-parallax>
+    <main id="main-content">
+    <section class="page-header py-5 hero-section">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <h1 class="display-4 fw-bold mb-3">
-                        <i class="fas fa-layer-group me-3"></i>
+                        <i class="fas fa-layer-group me-3" aria-hidden="true"></i>
                         Full Stack Development
                     </h1>
                     <p class="lead mb-3">
@@ -265,6 +273,44 @@
             </div>
         </div>
     </section>
+
+        <!-- End-to-End Demo: Fetch from Public API -->
+        <section class="py-5 bg-light">
+                <div class="container">
+                        <h2 class="fw-bold text-primary mb-3"><i class="fas fa-plug me-2"></i>Frontend → API Demo</h2>
+                        <p class="mb-3">This demo fetches placeholder posts and renders titles. Includes loading and error states.</p>
+                        <div id="api-status" class="mb-2 text-muted" aria-live="polite">Idle</div>
+                        <button id="load-posts" class="btn btn-primary mb-3">Load Posts</button>
+                        <ul id="posts-list" class="list-group"></ul>
+                        <script>
+                        (function(){
+                            const btn = document.getElementById('load-posts');
+                            const list = document.getElementById('posts-list');
+                            const status = document.getElementById('api-status');
+                            if(!btn) return;
+                            const safeText = (s) => document.createTextNode(String(s));
+                            btn.addEventListener('click', async () => {
+                                status.textContent = 'Loading...';
+                                list.innerHTML = '';
+                                try {
+                                    const resp = await fetch('https://jsonplaceholder.typicode.com/posts?_limit=5');
+                                    if(!resp.ok) throw new Error('Network error: ' + resp.status);
+                                    const data = await resp.json();
+                                    data.forEach(post => {
+                                        const li = document.createElement('li');
+                                        li.className = 'list-group-item';
+                                        li.appendChild(safeText(post.title));
+                                        list.appendChild(li);
+                                    });
+                                    status.textContent = 'Loaded ' + data.length + ' posts.';
+                                } catch(err){
+                                    status.textContent = 'Failed to load posts: ' + err.message;
+                                }
+                            });
+                        })();
+                        </script>
+                </div>
+        </section>
     
     <!-- Architecture & Layers -->
 
@@ -273,9 +319,32 @@
         <div class="container">
             <div class="row g-4 align-items-center">
                 <div class="col-lg-6">
-                    <div class="card h-100 p-4 text-center shadow-sm tilt-card" data-tilt-depth="35">
+                    <div class="card h-100 p-4 text-center shadow-sm tilt-card">
                         <h4 class="fw-bold text-primary mb-3">Web Application Layers</h4>
-                        <img loading="lazy" src="../assets/images/fullstack-layers.svg" alt="Full Stack Layers Diagram" class="img-fluid mb-3 fullstack-diagram">
+                        <svg class="mb-3 w-100" viewBox="0 0 800 400" role="img" aria-labelledby="fullstackDiagramTitle fullstackDiagramDesc" xmlns="http://www.w3.org/2000/svg">
+                            <title id="fullstackDiagramTitle">Full Stack Layers Diagram</title>
+                            <desc id="fullstackDiagramDesc">Three stacked rectangles labeled Frontend, Middleware/API, and Database.</desc>
+                            <defs>
+                                <style>
+                                    .label{font-family: Manrope, Inter, Arial, sans-serif; font-size: 22px; fill:#1a202c; font-weight:700}
+                                </style>
+                                <marker id="arrow" markerWidth="10" markerHeight="10" refX="5" refY="3" orient="auto" markerUnits="strokeWidth">
+                                    <path d="M0,0 L0,6 L6,3 z" fill="#64748b"></path>
+                                </marker>
+                            </defs>
+                            <!-- Frontend -->
+                            <rect x="50" y="30" width="700" height="90" rx="14" ry="14" fill="#e3f2fd" stroke="#90caf9" stroke-width="2"/>
+                            <text class="label" x="400" y="85" text-anchor="middle">Frontend</text>
+                            <!-- Middleware/API -->
+                            <rect x="50" y="155" width="700" height="90" rx="14" ry="14" fill="#e8f5e9" stroke="#a5d6a7" stroke-width="2"/>
+                            <text class="label" x="400" y="210" text-anchor="middle">Middleware / API</text>
+                            <!-- Database -->
+                            <rect x="50" y="280" width="700" height="90" rx="14" ry="14" fill="#fff3e0" stroke="#ffcc80" stroke-width="2"/>
+                            <text class="label" x="400" y="335" text-anchor="middle">Database</text>
+                            <!-- Arrows -->
+                            <line x1="400" y1="120" x2="400" y2="155" stroke="#64748b" stroke-width="3" marker-end="url(#arrow)"/>
+                            <line x1="400" y1="245" x2="400" y2="280" stroke="#64748b" stroke-width="3" marker-end="url(#arrow)"/>
+                        </svg>
                         <ul class="list-unstyled mb-0">
                             <li><strong>Frontend:</strong> User interface, UX, browser code (HTML, CSS, JS, frameworks)</li>
                             <li><strong>Backend:</strong> Server logic, APIs, authentication, business rules</li>
@@ -285,31 +354,31 @@
                     </div>
                 </div>
                 <div class="col-lg-6">
-                    <div class="card h-100 p-4 shadow-sm tilt-card" data-tilt-depth="35">
+                    <div class="card h-100 p-4 shadow-sm tilt-card" id="technology-overview">
                         <h4 class="fw-bold text-success mb-3">Tech Stack Overview</h4>
                         <div class="row g-2">
                             <div class="col-4 text-center">
-                                <div class="mb-2"><i class="fab fa-html5 fa-2x text-danger"></i></div>
+                                <div class="mb-2"><i class="fab fa-html5 fa-2x text-danger" aria-hidden="true"></i></div>
                                 <span>HTML5</span>
                             </div>
                             <div class="col-4 text-center">
-                                <div class="mb-2"><i class="fab fa-css3-alt fa-2x text-primary"></i></div>
+                                <div class="mb-2"><i class="fab fa-css3-alt fa-2x text-primary" aria-hidden="true"></i></div>
                                 <span>CSS3</span>
                             </div>
                             <div class="col-4 text-center">
-                                <div class="mb-2"><i class="fab fa-js-square fa-2x text-warning"></i></div>
+                                <div class="mb-2"><i class="fab fa-js-square fa-2x text-warning" aria-hidden="true"></i></div>
                                 <span>JavaScript</span>
                             </div>
                             <div class="col-4 text-center">
-                                <div class="mb-2"><i class="fab fa-bootstrap fa-2x text-purple"></i></div>
+                                <div class="mb-2"><i class="fab fa-bootstrap fa-2x text-purple" aria-hidden="true"></i></div>
                                 <span>Bootstrap</span>
                             </div>
                             <div class="col-4 text-center">
-                                <div class="mb-2"><i class="fas fa-server fa-2x text-secondary"></i></div>
+                                <div class="mb-2"><i class="fas fa-server fa-2x text-secondary" aria-hidden="true"></i></div>
                                 <span>Node.js / Express</span>
                             </div>
                             <div class="col-4 text-center">
-                                <div class="mb-2"><i class="fas fa-database fa-2x text-success"></i></div>
+                                <div class="mb-2"><i class="fas fa-database fa-2x text-success" aria-hidden="true"></i></div>
                                 <span>MongoDB / SQL</span>
                             </div>
                         </div>
@@ -321,7 +390,7 @@
     </section>
 
     <!-- Popular Stacks Examples -->
-    <section class="py-5 bg-light">
+    <section class="py-5 bg-light" id="popular-stacks">
         <div class="container">
             <div class="row mb-4">
                 <div class="col-12 text-center">
@@ -378,6 +447,69 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Security & Data Modeling -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <div class="card h-100 p-4">
+                        <h4 class="fw-bold text-danger mb-3"><i class="fas fa-shield-alt me-2"></i>Security Basics</h4>
+                        <ul class="mb-3">
+                            <li><strong>XSS:</strong> Sanitize output, use <code>textContent</code> instead of <code>innerHTML</code>, set CSP.</li>
+                            <li><strong>CSRF:</strong> SameSite cookies, CSRF tokens on state-changing requests.</li>
+                            <li><strong>SQLi:</strong> Always use parameterized queries/ORM bindings.</li>
+                            <li><strong>AuthZ:</strong> Enforce server-side authorization, not only UI checks.</li>
+                            <li><strong>Secrets:</strong> Store in env/secret manager, never in code or client.</li>
+                        </ul>
+                        <small class="text-muted">OWASP Top risks: mitigate early and test continuously.</small>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card h-100 p-4">
+                        <h4 class="fw-bold text-success mb-3"><i class="fas fa-project-diagram me-2"></i>Data Modeling (ERD)</h4>
+                        <p class="mb-2">Example: Users ⇄ Posts ⇄ Comments (1‑to‑many relationships).</p>
+                        <ul class="mb-0">
+                            <li>User (id, name, email)</li>
+                            <li>Post (id, user_id, title, body)</li>
+                            <li>Comment (id, post_id, author, text)</li>
+                        </ul>
+                        <small class="text-muted">Normalize for integrity; denormalize selectively for performance.</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CI/CD & Deployment -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h3 class="fw-bold text-primary mb-3"><i class="fas fa-rocket me-2"></i>CI/CD & Deployment</h3>
+            <p class="mb-3">Automate tests and deploy on push. Example GitHub Actions workflow (static site):</p>
+            <div class="card p-3">
+<pre><code>name: Deploy
+on: { push: { branches: [ main ] } }
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build (static)
+        run: echo "No build step"
+      - name: Deploy to Pages
+        uses: actions/upload-pages-artifact@v3
+        with: { path: '.' }
+  deploy:
+    needs: build
+    permissions: { pages: write, id-token: write }
+    runs-on: ubuntu-latest
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4</code></pre>
+            </div>
+            <small class="text-muted">For full stacks, add lint/test steps and deploy backend to Render/Railway; frontend to Pages/Netlify/Vercel.</small>
         </div>
     </section>
 
@@ -882,8 +1014,8 @@ CREATE TABLE users (<br>
             <div class="row align-items-center">
                 <div class="col-md-6">
                     <div class="nav-link-prev">
-                        <a href="../modern-portfolio.html" class="btn btn-outline-light">
-                            <i class="fas fa-arrow-left me-2"></i>
+                        <a href="../index.html" class="btn btn-outline-light">
+                            <i class="fas fa-arrow-left me-2" aria-hidden="true"></i>
                             Back to Home
                         </a>
                     </div>
@@ -892,7 +1024,7 @@ CREATE TABLE users (<br>
                     <div class="nav-link-next">
                         <a href="html.html" class="btn btn-primary">
                             Next: HTML5 Mastery
-                            <i class="fas fa-arrow-right ms-2"></i>
+                            <i class="fas fa-arrow-right ms-2" aria-hidden="true"></i>
                         </a>
                     </div>
                 </div>
@@ -900,6 +1032,7 @@ CREATE TABLE users (<br>
         </div>
     </section>
 
+    </main>
     <!-- Footer -->
     <footer class="bg-dark text-light py-4">
         <div class="container">
@@ -921,32 +1054,13 @@ CREATE TABLE users (<br>
     <script src="../js/main.js"></script>
     
     <script>
-        // YGGY.ai Theme System
-        function toggleTheme() {
-            const currentTheme = document.body.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            
-            document.body.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-            
-            const icon = document.getElementById('themeIcon');
-            icon.className = newTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
-        }
-
-        function initTheme() {
-            const savedTheme = localStorage.getItem('theme');
-            const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            const defaultTheme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
-            
-            document.body.setAttribute('data-theme', defaultTheme);
-            
-            const icon = document.getElementById('themeIcon');
-            if (icon) {
-                icon.className = defaultTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
-            }
-        }
-
-        document.addEventListener('DOMContentLoaded', initTheme);
+        // Initialize skill bars
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.skill-level').forEach(el => {
+                const pct = parseInt(el.getAttribute('data-level') || '0', 10);
+                el.style.setProperty('--skill-pct', Math.max(0, Math.min(100, pct)) + '%');
+            });
+        });
     </script>
 </body>
 </html>

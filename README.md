@@ -8,8 +8,7 @@ This portfolio demonstrates comprehensive understanding and practical applicatio
 
 ```
 port/
-├── modern-portfolio.html   # Main landing page (primary entry point)
-├── index.html              # Legacy URL redirect to modern-portfolio.html
+├── index.html              # Main landing page (primary entry point)
 ├── home.html               # Older variant (not used; optional)
 ├── pages/
 │   ├── fullstack.html      # Full Stack overview

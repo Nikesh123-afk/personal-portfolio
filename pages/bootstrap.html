@@ -4,6 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Bootstrap Framework Mastery - Responsive design, component library, and customization">
+    <link rel="canonical" href="https://your-portfolio-url.com/pages/bootstrap.html">
+    <meta property="og:title" content="Bootstrap Framework | CET138 Portfolio">
+    <meta property="og:description" content="Components, grid, utilities, theming, and best practices for production UI.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://your-portfolio-url.com/pages/bootstrap.html">
+    <meta property="og:image" content="https://your-portfolio-url.com/assets/images/Picture11.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Bootstrap Framework | CET138 Portfolio">
+    <meta name="twitter:description" content="Components, grid, utilities, theming, and best practices for production UI.">
     <title>Bootstrap Framework | CET138 Portfolio</title>
     
     <!-- Bootstrap CSS -->
@@ -13,10 +22,21 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../css/style.css">
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Article",
+            "headline": "Bootstrap Framework",
+            "description": "Components, grid, utilities, theming, and best practices for production UI.",
+            "author": {"@type": "Person", "name": "Nikesh"}
+        }
+        </script>
     
     <style>
         /* Premium Section Page Styling - Matching Home Page Excellence */
@@ -115,62 +135,36 @@
             h1 { font-size: 2.25rem; }
         }
 
-        /* YGGY.ai Inspired Dark Mode */
-        [data-theme="dark"] {
-            --primary-color: #8b5cf6;
-            --bg-primary: #121212;
-            --bg-secondary: #1a1a1a;
-            --card-bg: #1a1a1a;
-            --text-primary: #f4f4f4;
-            --text-secondary: #cfcfcf;
-            --text-muted: #a6a6a6;
-            --card-shadow: rgba(0, 0, 0, 0.4);
-        }
+    /* Dark mode removed */
 
-        [data-theme="dark"] body { background: var(--bg-primary); color: var(--text-primary); }
+    /* Accessibility helpers */
+    .visually-hidden-focusable:not(:focus):not(:focus-within) {
+        position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+        overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+    }
 
-        [data-theme="dark"] .page-header {
-            background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 50%, #7c3aed 100%);
-        }
-
-        [data-theme="dark"] .card {
-            background: var(--card-bg);
-            border: 1px solid rgba(139, 92, 246, 0.2);
-            color: var(--text-primary);
-            box-shadow: 0 10px 40px var(--card-shadow);
-        }
-
-        [data-theme="dark"] .navbar {
-            background: rgba(10, 10, 10, 0.95) !important;
-            backdrop-filter: blur(20px);
-        }
-
-        [data-theme="dark"] .navbar-brand,
-        [data-theme="dark"] .nav-link {
-            color: var(--text-primary) !important;
-        }
-
-    [data-theme="dark"] .bg-light { background: var(--bg-secondary) !important; }
-    [data-theme="dark"] a:not(.btn):not(.nav-link) { color: #cdb4ff; }
-    [data-theme="dark"] a:not(.btn):not(.nav-link):hover { color: #e0d0ff; }
-    [data-theme="dark"] .form-control { color: var(--text-primary); }
-    [data-theme="dark"] .form-control::placeholder { color: var(--text-muted); opacity: 1; }
+    /* Respect reduced motion preferences */
+    @media (prefers-reduced-motion: reduce) {
+        * { scroll-behavior: auto !important; }
+        .card, .tilt-card { transition: none !important; }
+    }
     </style>
 </head>
 <body>
+    <a href="#grid-system" class="visually-hidden-focusable">Skip to content</a>
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
         <div class="container">
-            <a class="navbar-brand" href="../modern-portfolio.html">
+            <a class="navbar-brand" href="../index.html">
                 <span class="fw-bold">Portfolio</span>
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="../modern-portfolio.html">Home</a>
+                        <a class="nav-link" href="../index.html">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="fullstack.html">Full Stack</a>
@@ -182,16 +176,12 @@
                         <a class="nav-link" href="css.html">CSS</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="bootstrap.html">Bootstrap</a>
+                        <a class="nav-link active" href="bootstrap.html" aria-current="page">Bootstrap</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="javascript.html">JavaScript</a>
                     </li>
-                    <li class="nav-item">
-                        <button class="btn btn-outline-light btn-sm ms-2" id="themeToggle" onclick="toggleTheme()" title="Toggle Dark Mode">
-                            <i class="fas fa-moon" id="themeIcon"></i>
-                        </button>
-                    </li>
+                    
                 </ul>
             </div>
         </div>
@@ -214,7 +204,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-10 mx-auto">
-                    <div class="card p-4">
+                    <div class="card p-4" role="navigation" aria-label="Table of Contents">
                         <h5 class="fw-bold text-primary mb-3">
                             <i class="fas fa-list me-2"></i>Table of Contents
                         </h5>
@@ -236,6 +226,77 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Offcanvas Navbar Example -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="fw-bold text-primary mb-3"><i class="fas fa-bars me-2"></i>Offcanvas Navbar</h2>
+                    <p class="text-muted">Demonstrates a responsive offcanvas navigation using Bootstrap components.</p>
+                </div>
+            </div>
+            <nav class="navbar bg-light mb-3">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#">Demo</a>
+                    <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDemo" aria-controls="offcanvasDemo">
+                        Menu
+                    </button>
+                    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasDemo" aria-labelledby="offcanvasDemoLabel">
+                        <div class="offcanvas-header">
+                            <h5 class="offcanvas-title" id="offcanvasDemoLabel">Offcanvas</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                        </div>
+                        <div class="offcanvas-body">
+                            <ul class="list-unstyled mb-0">
+                                <li><a href="#grid-system" class="text-decoration-none">Grid</a></li>
+                                <li><a href="#components" class="text-decoration-none">Components</a></li>
+                                <li><a href="#customization" class="text-decoration-none">Customization</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </section>
+
+    <!-- Bootstrap Validation States -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h2 class="fw-bold text-success mb-3"><i class="fas fa-check-circle me-2"></i>Form Validation States</h2>
+            <form class="row g-3 needs-validation" novalidate>
+                <div class="col-md-6">
+                    <label for="validationCustom01" class="form-label">First name</label>
+                    <input type="text" class="form-control" id="validationCustom01" value="Mark" required>
+                    <div class="valid-feedback">Looks good!</div>
+                    <div class="invalid-feedback">Please provide a first name.</div>
+                </div>
+                <div class="col-md-6">
+                    <label for="validationCustom02" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="validationCustom02" required>
+                    <div class="valid-feedback">Email looks valid.</div>
+                    <div class="invalid-feedback">Please enter a valid email.</div>
+                </div>
+                <div class="col-12">
+                    <button class="btn btn-primary" type="submit">Submit form</button>
+                </div>
+            </form>
+            <script>
+            (function(){
+              const forms = document.querySelectorAll('.needs-validation');
+              Array.from(forms).forEach(form => {
+                form.addEventListener('submit', event => {
+                  if (!form.checkValidity()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                  }
+                  form.classList.add('was-validated');
+                }, false);
+              });
+            })();
+            </script>
         </div>
     </section>
 
@@ -547,7 +608,6 @@
             </div>
         </div>
     </section>
-    </section>
 
     <!-- Components Showcase -->
     <section class="py-5">
@@ -563,7 +623,7 @@
                 <div class="col-lg-4 mb-4">
                     <h4>Cards</h4>
                     <div class="card">
-                        <img loading="lazy" src="https://via.placeholder.com/300x200/007bff/ffffff?text=Card+Image" class="card-img-top" alt="Card image">
+                        <img loading="lazy" decoding="async" width="300" height="200" src="https://via.placeholder.com/300x200/007bff/ffffff?text=Card+Image" class="card-img-top" alt="Card image">
                         <div class="card-body">
                             <h5 class="card-title">Card Title</h5>
                             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -673,7 +733,7 @@
                             <span class="badge bg-primary rounded-pill">Proficient</span>
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <span><i class="fab fa-bootstrap me-2 text-purple"></i>Bootstrap</span>
+                            <span><i class="fab fa-bootstrap me-2 text-primary"></i>Bootstrap</span>
                             <span class="badge bg-primary rounded-pill">Advanced</span>
                         </li>
                     </ul>
@@ -933,32 +993,7 @@
             });
         });
 
-        // YGGY.ai Theme System
-        function toggleTheme() {
-            const currentTheme = document.body.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            
-            document.body.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-            
-            const icon = document.getElementById('themeIcon');
-            icon.className = newTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
-        }
-
-        function initTheme() {
-            const savedTheme = localStorage.getItem('theme');
-            const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            const defaultTheme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
-            
-            document.body.setAttribute('data-theme', defaultTheme);
-            
-            const icon = document.getElementById('themeIcon');
-            if (icon) {
-                icon.className = defaultTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
-            }
-        }
-
-        document.addEventListener('DOMContentLoaded', initTheme);
+    // Theme removed
     </script>
 </body>
 </html>

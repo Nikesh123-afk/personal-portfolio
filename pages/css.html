@@ -4,6 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="CSS3 Advanced Techniques - Modern styling, animations, and responsive design">
+    <link rel="canonical" href="https://your-portfolio-url.com/pages/css.html">
+    <meta property="og:title" content="CSS3 Advanced | CET138 Portfolio">
+    <meta property="og:description" content="Modern CSS: layout, animations, responsiveness, and best practices with examples.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://your-portfolio-url.com/pages/css.html">
+    <meta property="og:image" content="https://your-portfolio-url.com/assets/images/Picture11.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="CSS3 Advanced | CET138 Portfolio">
+    <meta name="twitter:description" content="Modern CSS: layout, animations, responsiveness, and best practices with examples.">
     <title>CSS3 Advanced | CET138 Portfolio</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -14,6 +23,15 @@
     
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../css/style.css">
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Article",
+            "headline": "CSS3 Advanced",
+            "description": "Modern CSS: layout, animations, responsiveness, and best practices with examples.",
+            "author": {"@type": "Person", "name": "Nikesh"}
+        }
+        </script>
     <style>
         /* Premium Section Page Styling - Matching Home Page Excellence */
         body { 
@@ -47,6 +65,9 @@
             background: linear-gradient(135deg, #1572b6 0%, #33a9dc 50%, #40e0d0 100%);
             position: relative;
             overflow: hidden;
+            width: 100vw;
+            margin-left: calc(50% - 50vw);
+            margin-right: calc(50% - 50vw);
         }
         
         .page-header::before {
@@ -109,6 +130,10 @@
         @media (max-width: 576px) {
             .section-title { font-size: 2rem; }
             h1 { font-size: 2.25rem; }
+        }
+        /* Reduce motion for users who prefer it */
+        @media (prefers-reduced-motion: reduce) {
+            * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
         }
 
         /* YGGY.ai Inspired Dark Mode */
@@ -261,7 +286,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
         <div class="container">
-            <a class="navbar-brand fw-bold" href="../modern-portfolio.html">
+            <a class="navbar-brand fw-bold" href="../index.html">
                 <i class="fas fa-code me-2"></i>
                 CET138 Portfolio
             </a>
@@ -271,7 +296,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="../modern-portfolio.html">Home</a>
+                        <a class="nav-link" href="../index.html">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="fullstack.html">Full Stack</a>
@@ -288,102 +313,79 @@
                     <li class="nav-item">
                         <a class="nav-link" href="javascript.html">JavaScript</a>
                     </li>
-                    <li class="nav-item">
-                        <button class="btn btn-outline-light btn-sm ms-2" id="themeToggle" onclick="toggleTheme()" title="Toggle Dark Mode">
-                            <i class="fas fa-moon" id="themeIcon"></i>
-                        </button>
-                    </li>
+                    
                 </ul>
             </div>
         </div>
     </nav>
 
     <!-- Section Title & Introduction -->
-        <section class="page-header py-5 hero-section" data-parallax>
-            <div class="container">
-                <div class="row align-items-center min-vh-50">
-                    <div class="col-lg-12 text-center">
-                        <h1 class="display-4 fw-bold mb-3"><i class="fab fa-css3-alt me-2"></i>CSS3 Advanced Techniques</h1>
-                        <p class="lead mb-0">Modern layouts, animations, responsive design, and scalable CSS architecture.</p>
-                    </div>
+    <section class="page-header py-5 hero-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h1 class="display-4 fw-bold mb-3">
+                        <i class="fab fa-css3-alt me-3" aria-hidden="true"></i>
+                        CSS3 Advanced Techniques
+                    </h1>
+                    <p class="lead mb-3">
+                        Explore modern CSS: responsive layouts, animations, variables, and best practices for beautiful, accessible UIs.
+                    </p>
+                    <p class="mb-0 text-muted">This section demonstrates core CSS3 topics with working examples and explanations.</p>
                 </div>
             </div>
-        </section>
-
+        </div>
+    </section>
+    <!-- Dark mode removed -->
+    
     <!-- Table of Contents -->
     <section class="toc-section py-3">
         <div class="container">
-            <div class="toc-card">
-                <h6 class="toc-heading"><i class="fas fa-list-ul"></i> Table of Contents</h6>
-                <ol id="tocListCss" class="toc-list"></ol>
-            </div>
-        </div>
-    </section>
-
-    <!-- Layout Techniques Subsection -->
-    <section id="layout-techniques" class="py-5">
-        <div class="container">
             <div class="row">
-                <div class="col-lg-12">
-                    <h2 class="fw-bold text-primary mb-4">
-                        <i class="fas fa-th me-2"></i>Layout Techniques (Flexbox & Grid)
-                    </h2>
-                    <p class="lead mb-4">Modern CSS provides powerful layout systems for creating flexible, responsive designs.</p>
-                </div>
-            </div>
-            
-            <div class="row g-4">
-                <div class="col-lg-6">
-                    <div class="card h-100 p-4 tilt-card" data-tilt-depth="35">
-                        <h5 class="fw-bold mb-3">Flexbox Demo</h5>
-                        <p>Flexbox is perfect for one-dimensional layouts and component alignment.</p>
-                        <div class="flexbox-demo-container">
-                            <div class="flex-item">Item 1</div>
-                            <div class="flex-item">Item 2</div>
-                            <div class="flex-item">Item 3</div>
-                        </div>
-                        <div class="code-example mt-3">
-                            <pre><code>.container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}</code></pre>
-                        </div>
-                        <small class="text-muted">
-                            <strong>Annotation:</strong> Flexbox automatically distributes items with equal spacing.
-                        </small>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="card h-100 p-4 tilt-card" data-tilt-depth="35">
-                        <h5 class="fw-bold mb-3">CSS Grid Demo</h5>
-                        <p>CSS Grid excels at two-dimensional layouts and complex page structures.</p>
-                        <div class="grid-demo-container">
-                            <div class="grid-item">Header</div>
-                            <div class="grid-item">Sidebar</div>
-                            <div class="grid-item">Main Content</div>
-                            <div class="grid-item">Footer</div>
-                        </div>
-                        <div class="code-example mt-3">
-                            <pre><code>.container {
-  display: grid;
-  grid-template-areas:
-    "header header"
-    "sidebar main"
-    "footer footer";
-}</code></pre>
-                        </div>
-                        <small class="text-muted">
-                            <strong>Annotation:</strong> Grid creates complex layouts with named areas.
-                        </small>
+                <div class="col-lg-10 mx-auto">
+                    <div class="toc-card" role="navigation" aria-label="Table of Contents">
+                        <h5 class="toc-heading mb-2">
+                            <i class="fas fa-list"></i>Table of Contents
+                        </h5>
+                        <ul class="toc-list">
+                            <li><a class="toc-link" href="#css-grid">1. CSS Grid</a></li>
+                            <li><a class="toc-link" href="#responsive-design">2. Responsive Design</a></li>
+                            <li><a class="toc-link" href="#modern-features">3. Modern Features</a></li>
+                            <li><a class="toc-link" href="#css-best-practices">4. Best Practices</a></li>
+                            <li><a class="toc-link" href="#css-summary">5. Summary</a></li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Responsive Design Subsection -->
-    <section id="responsive-design" class="py-5 bg-light">
+    <!-- CSS Grid Layout Demo -->
+    <section id="css-grid" class="py-5">
+        <div class="container">
+            <div class="row mb-4">
+                <div class="col-12 text-center">
+                    <h2 class="section-title">CSS Grid: Responsive Card Grid</h2>
+                    <p class="lead mb-0">Grid with auto-fit/minmax creates flexible, gap-aware card layouts.</p>
+                </div>
+            </div>
+            <div class="grid-demo">
+                <div class="grid-card card p-3"><h6 class="fw-bold">Card 1</h6><p class="mb-0">Content</p></div>
+                <div class="grid-card card p-3"><h6 class="fw-bold">Card 2</h6><p class="mb-0">Content</p></div>
+                <div class="grid-card card p-3"><h6 class="fw-bold">Card 3</h6><p class="mb-0">Content</p></div>
+                <div class="grid-card card p-3"><h6 class="fw-bold">Card 4</h6><p class="mb-0">Content</p></div>
+                <div class="grid-card card p-3"><h6 class="fw-bold">Card 5</h6><p class="mb-0">Content</p></div>
+                <div class="grid-card card p-3"><h6 class="fw-bold">Card 6</h6><p class="mb-0">Content</p></div>
+            </div>
+        </div>
+        <style>
+            .grid-demo { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
+            .grid-card { min-height: 110px; }
+        </style>
+    </section>
+
+    <!-- Intro Section wrapper (restored structure) -->
+    <section id="responsive-design" class="py-5">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -1073,47 +1075,7 @@ const primaryColor = getComputedStyle(document.documentElement)
             }
         })();
 
-        // YGGY.ai Theme System
-        function toggleTheme() {
-            const currentTheme = document.body.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            
-            document.body.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-            
-            // Update icon
-            const icon = document.getElementById('themeIcon');
-            icon.className = newTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
-        }
-
-        // Initialize theme
-        function initTheme() {
-            const savedTheme = localStorage.getItem('theme');
-            const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            const defaultTheme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
-            
-            document.body.setAttribute('data-theme', defaultTheme);
-            
-            const icon = document.getElementById('themeIcon');
-            if (icon) {
-                icon.className = defaultTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
-            }
-        }
-
-        // Initialize theme on page load
-        document.addEventListener('DOMContentLoaded', initTheme);
-        
-        // Listen for system theme changes
-        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-            if (!localStorage.getItem('theme')) {
-                const newTheme = e.matches ? 'dark' : 'light';
-                document.body.setAttribute('data-theme', newTheme);
-                const icon = document.getElementById('themeIcon');
-                if (icon) {
-                    icon.className = newTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
-                }
-            }
-        });
+    // Theme removed
     </script>
 
     <!-- Custom JavaScript -->

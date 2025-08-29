@@ -1,52 +1,22 @@
 {
     "name": "Nikesh Portfolio - Full Stack Developer",
     "short_name": "Nikesh Portfolio",
-    "description": "Award-winning full stack developer portfolio showcasing modern web development skills with advanced PWA features",
-    "start_url": "/modern-portfolio.html",
+    "description": "Award-winning full stack developer portfolio showcasing modern web development skills",
+    "start_url": ".",
+    "scope": ".",
     "display": "standalone",
-    "background_color": "#667eea",
-    "theme_color": "#667eea",
+    "background_color": "#3b4aab",
+    "theme_color": "#3b4aab",
     "orientation": "portrait-primary",
-    "scope": "/",
     "icons": [
         {
-            "src": "assets/images/Picture1.png",
-            "sizes": "72x72",
-            "type": "image/png",
-            "purpose": "any maskable"
-        },
-        {
-            "src": "assets/images/Picture1.png",
-            "sizes": "96x96",
-            "type": "image/png",
-            "purpose": "any maskable"
-        },
-        {
-            "src": "assets/images/Picture1.png",
-            "sizes": "128x128",
-            "type": "image/png",
-            "purpose": "any maskable"
-        },
-        {
-            "src": "assets/images/Picture1.png",
-            "sizes": "144x144",
-            "type": "image/png",
-            "purpose": "any maskable"
-        },
-        {
-            "src": "assets/images/Picture1.png",
+            "src": "assets/images/Picture11.png",
             "sizes": "192x192",
             "type": "image/png",
             "purpose": "any maskable"
         },
         {
-            "src": "assets/images/Picture1.png",
-            "sizes": "384x384",
-            "type": "image/png",
-            "purpose": "any maskable"
-        },
-        {
-            "src": "assets/images/Picture1.png",
+            "src": "assets/images/Picture11.png",
             "sizes": "512x512",
             "type": "image/png",
             "purpose": "any maskable"
@@ -60,50 +30,11 @@
     "lang": "en-US",
     "screenshots": [
         {
-            "src": "assets/images/Picture1.png",
+            "src": "assets/images/Picture11.png",
             "sizes": "1280x720",
             "type": "image/png",
             "form_factor": "wide",
             "label": "Portfolio Homepage"
         }
-    ],
-    "shortcuts": [
-        {
-            "name": "View Portfolio",
-            "short_name": "Portfolio",
-            "description": "View my complete portfolio showcase",
-            "url": "/modern-portfolio.html#portfolio",
-            "icons": [
-                {
-                    "src": "assets/images/Picture1.png",
-                    "sizes": "96x96"
-                }
-            ]
-        },
-        {
-            "name": "Download Resume",
-            "short_name": "Resume",
-            "description": "Download my latest resume",
-            "url": "/assets/resume.pdf",
-            "icons": [
-                {
-                    "src": "assets/images/Picture1.png",
-                    "sizes": "96x96"
-                }
-            ]
-        },
-        {
-            "name": "Contact Me",
-            "short_name": "Contact",
-            "description": "Get in touch with me",
-            "url": "/modern-portfolio.html#contact",
-            "icons": [
-                {
-                    "src": "assets/images/Picture1.png",
-                    "sizes": "96x96"
-                }
-            ]
-        }
-    ],
-    "prefer_related_applications": false
+    ]
 }
