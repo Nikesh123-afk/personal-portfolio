@@ -82,7 +82,7 @@ Optimized for all screen sizes:
 
 ## 📧 Contact
 
-- **Email:** [your.email@example.com]
+- **Email:** Nikeshmahato173@gmail.com
 - **GitHub:** [Nikesh123-afk](https://github.com/Nikesh123-afk)
 - **LinkedIn:** [Your LinkedIn Profile]
 
